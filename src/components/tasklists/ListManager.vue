@@ -3,6 +3,7 @@
 
 <template>
     <div class="list-manager">
+        {{ tasklists }}
         <tasklist></tasklist>
         <router-view></router-view>
     </div>
@@ -13,6 +14,7 @@
 
     export default {
         name: 'list-manager',
+        props: ['tasklists'],
         components: {
             Tasklist
         },

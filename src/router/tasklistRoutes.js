@@ -8,6 +8,7 @@ export default {
     // all tasklists
     path: '/tasklists',
     name: 'tasklist-manager',
+    props: true,
     component: ListManager,
     children: [
 
@@ -15,6 +16,7 @@ export default {
             // single tasklist
             path: '/tasklist/:listId',
             name: 'tasklist',
+            props: true,
             component: Tasklist,
             children: [
 

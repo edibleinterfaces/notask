@@ -3,7 +3,7 @@
 
 <template>
     <div class="tasklist">
-        <h1>tasklist {{ $route.params.taskId }}</h1>
+        {{ listId }}
         <task></task>
         <router-view></router-view>
     </div>
@@ -14,6 +14,7 @@
 
     export default {
         name: 'tasklist',
+        props: ['tasklists'],
         components: {
             Task
         },
