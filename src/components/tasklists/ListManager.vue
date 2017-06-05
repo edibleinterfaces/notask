@@ -3,8 +3,6 @@
 
 <template>
     <div class="list-manager">
-        <h1>ListManager</h1>
-        <h2>route params: {{ $route.params }}</h2>
         <tasklist></tasklist>
         <router-view></router-view>
     </div>
@@ -15,8 +13,12 @@
 
     export default {
         name: 'list-manager',
+        components: {
+            Tasklist
+        },
         data: function() {
-            return {};
+            return {
+            };
         }
     };
 </script>
