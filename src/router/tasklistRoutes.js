@@ -4,17 +4,20 @@ import Task from '../components/tasklists/Task';
 import TaskDetails from '../components/tasklists/TaskDetails';
 
 export default {
+
     // all tasklists
     path: '/tasklists',
-    name: 'tasklistManager',
+    name: 'tasklist-manager',
     component: ListManager,
     children: [
+
         {
             // single tasklist
             path: '/tasklist/:listId',
             name: 'tasklist',
             component: Tasklist,
             children: [
+
                 {
                     // single task
                     path: '/tasklist/:listId/task/:taskId',
@@ -24,12 +27,14 @@ export default {
                         {
                             // task details
                             path: '/tasklist/:listId/task/:taskId/details',
-                            name: 'taskDetails',
+                            name: 'task-details',
                             component: TaskDetails 
                         }
                     ]
                 }
+
             ]
         }
+
     ]
 };

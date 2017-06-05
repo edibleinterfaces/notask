@@ -3,8 +3,16 @@
 </template>
 
 <script>
+
+import Tasklist from './tasklists/Tasklist';
+import Task from './tasklists/Task';
+
 export default {
   name: 'landing-page',
+  components: {
+      Tasklist,
+      Task,
+  },
   data () {
       return {};
   }

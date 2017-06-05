@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        name: 'Tasklist',
+        name: 'task',
         data: function() {
             return {};
         }

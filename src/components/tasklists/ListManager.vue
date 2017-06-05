@@ -11,9 +11,10 @@
 </template>
 
 <script>
-    import TaskList from './Tasklist';
+    import Tasklist from './Tasklist';
 
     export default {
+        name: 'list-manager',
         data: function() {
             return {};
         }
