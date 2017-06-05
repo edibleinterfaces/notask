@@ -37,9 +37,7 @@ export default new Router({
         },
         {
             path: '*',
-            redirect: '/oops'
-        }
-
-
+            redirect: '/oops',
+        },
     ]
 });
