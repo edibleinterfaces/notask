@@ -1,5 +1,5 @@
 <template>
-<h1>No Task</h1>
+<router-link to="/tasklists">No Task</router-link>
 </template>
 
 <script>
