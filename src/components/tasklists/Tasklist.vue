@@ -3,7 +3,6 @@
 
 <template>
     <div class="tasklist">
-        {{ listId }}
         <task></task>
         <router-view></router-view>
     </div>

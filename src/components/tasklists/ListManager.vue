@@ -3,7 +3,6 @@
 
 <template>
     <div class="list-manager">
-        {{ tasklists }}
         <tasklist></tasklist>
         <router-view></router-view>
     </div>
@@ -19,8 +18,7 @@
             Tasklist
         },
         data: function() {
-            return {
-            };
+            return {};
         }
     };
 </script>
