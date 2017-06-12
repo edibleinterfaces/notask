@@ -1,24 +1,24 @@
-<style>
-</style>
-
 <template>
     <div class="tasklist">
-        <task></task>
-        <router-view></router-view>
+        <tasklist-header :list-id="listId"></tasklist-header>
+        <tasklist-body :list-id="listId"></tasklist-body>
     </div>
 </template>
 
 <script>
-    import Task from './Task';
+
+    import TasklistHeader from './TasklistHeader';
+    import TasklistBody from './TasklistBody';
 
     export default {
+
         name: 'tasklist',
-        props: ['tasklists'],
+        props: ['listId'], 
         components: {
-            Task
-        },
-        data: function() {
-            return {};
+            TasklistHeader,
+            TasklistBody
         }
+
     };
+
 </script>

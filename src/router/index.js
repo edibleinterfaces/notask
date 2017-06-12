@@ -7,6 +7,10 @@ import Sync from '../components/settings/Sync';
 import Storage from '../components/settings/Storage';
 
 
+import ListManager from '../components/tasklists/ListManager';
+import Tasklist from '../components/tasklists/Tasklist';
+import Task from '../components/tasklists/Task';
+
 import Oops from '../components/Oops';
 import tasklistRoutes from './tasklistRoutes';
 
@@ -27,7 +31,23 @@ export default new Router({
             name: 'oops',
             component: Oops
         },
-        tasklistRoutes, // nested routes to components
+        {
+            path: '/tasklists',
+            name: 'tasklists',
+            component: ListManager
+        },
+        {
+            path: '/tasklist/:listId',
+            name: 'tasklist',
+            props: true,
+            component: Tasklist
+        },
+        {
+            path: '/tasklist/:listId/tasks/:taskId',
+            name: 'task',
+            props: true,
+            component: Task
+        },
         {
             path: '/settings',
             name: 'settings',

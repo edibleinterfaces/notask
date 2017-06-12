@@ -6,12 +6,23 @@ import Tasklist from '../models/Tasklist';
 
 Vue.use(Vuex);
 
-const store = {
-    state: {
-        tasklists: [ Tasklist({ tasks: [ Task() ]  }) ]
-    },
-};
+export default new Vuex.Store({
 
-export default {
-    store
-};
+    state: {
+        tasklists: [ 
+            Tasklist({ 
+                tasks: [ Task() ]  
+            }), 
+            Tasklist({ 
+                tasks: [ Task() ]  
+            }), 
+            Tasklist({ 
+                tasks: [ Task() ]  
+            }), 
+            Tasklist({ 
+                tasks: [ Task() ]  
+            }), 
+        ],
+    }
+
+});

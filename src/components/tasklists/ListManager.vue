@@ -1,24 +1,25 @@
 <style>
+
 </style>
 
 <template>
     <div class="list-manager">
-        <tasklist></tasklist>
-        <router-view></router-view>
+        <tasklist v-for="tasklist in tasklists"></tasklist>
     </div>
 </template>
 
 <script>
+
     import Tasklist from './Tasklist';
 
     export default {
         name: 'list-manager',
-        props: ['tasklists'],
-        components: {
-            Tasklist
-        },
+        components: { Tasklist },
         data: function() {
-            return {};
+            return {
+                tasklists: this.$store.state.tasklists
+            };
         }
     };
+
 </script>
