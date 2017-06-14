@@ -12,7 +12,6 @@ import Tasklist from '../components/tasklists/Tasklist';
 import Task from '../components/tasklists/Task';
 
 import Oops from '../components/Oops';
-import tasklistRoutes from './tasklistRoutes';
 
 Vue.use(Router)
 
@@ -21,7 +20,6 @@ export default new Router({
     html5: true,
     routes: [
         {
-            // landing page
             path: '/',
             name: 'landing-page',
             component: LandingPage

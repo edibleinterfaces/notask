@@ -1,7 +1,9 @@
 <template>
     <div class="tasklist">
-        <tasklist-header :list-id="listId"></tasklist-header>
-        <tasklist-body :list-id="listId"></tasklist-body>
+        <tasklist-header :list-id="listId">
+        </tasklist-header>
+        <tasklist-body :list-id="listId">
+        </tasklist-body>
     </div>
 </template>
 

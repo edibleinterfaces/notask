@@ -1,10 +1,15 @@
-<style>
-</style>
+<style></style>
 
 <template>
     <div class="task">
-        <task-header :list-id="listId" :task-id="taskId"></task-header>
-        <task-body :list-id="listId" :task-id="taskId"></task-body>
+        <task-header 
+            :list-id="listId" 
+            :task-id="taskId">
+        </task-header>
+        <task-body 
+            :list-id="listId" 
+            :task-id="taskId">
+        </task-body>
     </div>
 </template>
 

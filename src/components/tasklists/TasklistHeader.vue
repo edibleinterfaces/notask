@@ -1,8 +1,9 @@
-<style>
-</style>
+<style></style>
 
 <template>
-    <div class="tasklist-header">{{ title }}</div>
+    <div class="tasklist-header">
+        Tasklist Header: {{ title }}
+    </div>
 </template>
 
 <script>

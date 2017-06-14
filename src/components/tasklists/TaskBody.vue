@@ -1,6 +1,5 @@
 <template>
-    <div class="task-body">
-    </div>
+    <div class="task-body">Task Body</div>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
     <div class="task-header">
-        {{ text }}
+        Task Header {{ text }}
     </div>
 </template>
 
