@@ -1,5 +1,9 @@
 <style>
-
+    .list-manager {
+        background: whitesmoke;
+        height: calc((100%/6)*5);
+        width: 100%;
+    }
 </style>
 
 <template>

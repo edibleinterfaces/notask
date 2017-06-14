@@ -1,17 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import LandingPage from '../components/LandingPage';
-import SettingsManager from '../components/settings/SettingsManager';
-import Appearance from '../components/settings/Appearance';
-import Sync from '../components/settings/Sync';
-import Storage from '../components/settings/Storage';
 
-
-import ListManager from '../components/tasklists/ListManager';
-import Tasklist from '../components/tasklists/Tasklist';
-import Task from '../components/tasklists/Task';
-
-import Oops from '../components/Oops';
+import LandingView from '../views/LandingView';
+import ListView from '../views/ListView';
+import ListsView from '../views/ListsView';
+import TaskView from '../views/TaskView';
+import SettingsView from '../views/SettingsView';
+import Oops from '../views/Oops';
 
 Vue.use(Router)
 
@@ -22,49 +17,34 @@ export default new Router({
         {
             path: '/',
             name: 'landing-page',
-            component: LandingPage
-        },
-        {
-            path: '/oops',
-            name: 'oops',
-            component: Oops
+            component: LandingView
         },
         {
             path: '/tasklists',
             name: 'tasklists',
-            component: ListManager
+            component: ListsView
         },
         {
             path: '/tasklist/:listId',
             name: 'tasklist',
             props: true,
-            component: Tasklist
+            component: ListView
         },
         {
             path: '/tasklist/:listId/tasks/:taskId',
             name: 'task',
             props: true,
-            component: Task
+            component: TaskView
         },
         {
             path: '/settings',
             name: 'settings',
-            component: SettingsManager,
+            component: SettingsView,
         },
         {
-            path: '/settings/appearance',
-            name: 'appearance',
-            component: Appearance
-        },
-        {
-            path: '/settings/storage',
-            name: 'storage',
-            component: Storage
-        },
-        {
-            path: '/settings/sync',
-            name: 'sync',
-            component: Sync
+            path: '/oops',
+            name: 'oops',
+            component: Oops
         },
         {
             path: '*',

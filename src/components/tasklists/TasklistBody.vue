@@ -3,6 +3,7 @@
 
 <template>
     <div class="tasklist">
+        <h1>Tasklist body</h1>
         <task 
         v-for="(task, taskId) in tasks" 
         :task-id="taskId" 
