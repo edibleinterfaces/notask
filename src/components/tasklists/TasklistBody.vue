@@ -3,28 +3,18 @@
 
 <template>
     <div class="tasklist">
-        <h1>Tasklist body</h1>
-        <task 
-        v-for="(task, taskId) in tasks" 
-        :task-id="taskId" 
-        :list-id="listId">
-        </task>
+        <task-header v-for="task in tasks"></task-header>
     </div>
 </template>
 
 <script>
-    import Task from './Task';
+    import TaskHeader from './TaskHeader';
 
     export default {
         name: 'tasklist-body',
-        props: ['listId'],
+        props: ['tasks'],
         components: {
-            Task
-        },
-        data: function() {
-            return {
-                tasks: this.$store.state.tasklists[ this.listId ].tasks
-            };
+            TaskHeader
         }
     };
 </script>

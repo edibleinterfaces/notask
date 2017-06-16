@@ -6,23 +6,29 @@ import Tasklist from '../models/Tasklist';
 
 Vue.use(Vuex);
 
+const demo = {
+    tasklists: [
+        Tasklist(
+            { 
+                title: 'Work',
+                tasks: [ 
+                    Task({ text:'Convert site to mobile friendly!' }), 
+                    Task({ text:'sass -> scss' }) 
+                ]  
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'Music',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ), 
+    ]
+};
+
 export default new Vuex.Store({
-
-    state: {
-        tasklists: [ 
-            Tasklist({ 
-                tasks: [ Task() ]  
-            }), 
-            Tasklist({ 
-                tasks: [ Task() ]  
-            }), 
-            Tasklist({ 
-                tasks: [ Task() ]  
-            }), 
-            Tasklist({ 
-                tasks: [ Task() ]  
-            }), 
-        ],
-    }
-
+    state: demo
 });

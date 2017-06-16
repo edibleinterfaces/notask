@@ -16,39 +16,33 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'landing-page',
             component: LandingView
         },
         {
             path: '/tasklists',
-            name: 'tasklists',
             component: ListsView
         },
         {
             path: '/tasklist/:listId',
-            name: 'tasklist',
             props: true,
             component: ListView
         },
         {
             path: '/tasklist/:listId/tasks/:taskId',
-            name: 'task',
             props: true,
             component: TaskView
         },
         {
             path: '/settings',
-            name: 'settings',
             component: SettingsView,
         },
         {
             path: '/oops',
-            name: 'oops',
             component: Oops
         },
         {
             path: '*',
             redirect: '/oops',
-        },
+        }
     ]
 });

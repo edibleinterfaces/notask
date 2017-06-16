@@ -1,7 +1,10 @@
 <style>
+    .dashboard {
+        height: 100%;
+    }
     .dashboard-container {
         width: 100%;
-        height: calc(100%/6);
+        height: 20%; 
         background: lightgray;
     }
 </style>

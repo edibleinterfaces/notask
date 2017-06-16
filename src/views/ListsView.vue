@@ -1,12 +1,24 @@
 <style>
+    .dashboard {
+
+    }
+    .lists-view-container {
+        height: 100%; 
+
+    }
     .lists-view {
-        height: 100%;
+        height: 80%;
         width: 100%;
     }
 </style>
 <template>
-    <div class="lists-view">
-        <tasklist-header></tasklist-header>
+    <div class="lists-view-container">
+        <div class="lists-view">
+            <tasklist-header 
+                v-for="(tasklist, index) in tasklists" 
+                :title="tasklists[index].title">
+            </tasklist-header>
+        </div>
         <dashboard></dashboard>
     </div>
 </template>
@@ -19,6 +31,12 @@
         components: {
             TasklistHeader,
             Dashboard
+        },
+        data: function() {
+            return {
+                tasklists: this.$store.state.tasklists
+            };
         }
+
     }
 </script>
