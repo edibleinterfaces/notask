@@ -11,7 +11,10 @@
 <template>
     <div class="lists-view-container">
         <div class="lists-view">
-            <tasklist-header v-for="(tasklist, index) in tasklists" :title="tasklist.title"></tasklist-header>
+            <tasklist-header 
+                v-for="(tasklist, index) in tasklists" 
+                :title="tasklist.title">
+            </tasklist-header>
         </div>
         <dashboard></dashboard>
     </div>

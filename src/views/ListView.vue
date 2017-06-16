@@ -14,7 +14,7 @@
     <div class="list-view-container">
         <div class="list-view">
             <task-header 
-                v-for="task in tasks" 
+                v-for="(task, indexIndex) in tasks" 
                 :text="task.text">
             </task-header>
         </div>
