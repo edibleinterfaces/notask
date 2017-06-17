@@ -1,18 +1,24 @@
-<style>
+<style lang="scss">
     .lists-view-container {
-        height: 100%; 
-
-    }
-    .lists-view {
-        height: 80%;
+        height: 100%;
         width: 100%;
+
+        .lists-view { 
+            height: 90%;
+            width: 100%;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
     }
 </style>
 <template>
     <div class="lists-view-container">
         <div class="lists-view">
             <tasklist-header 
-                v-for="(tasklist, index) in tasklists" 
+                v-for="(tasklist, listId) in tasklists" 
+                v-on:navigate="navigateTo"
+                :list-id="listId"
                 :title="tasklist.title">
             </tasklist-header>
         </div>
@@ -33,6 +39,13 @@
             return {
                 tasklists: this.$store.state.tasklists
             };
+        },
+        methods: {
+            // events on components are handled internally by component.
+            // component then emits event to parent, where parent can react.
+            navigateTo: function(newPath) {
+                this.$router.push(newPath);
+            }
         }
 
     }

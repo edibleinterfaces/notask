@@ -1,15 +1,22 @@
 <style>
 .task-header {
-    height: 20%;
+    height: calc(90%/5);
 }
 </style>
 <template>
-    <div class="task-header">{{ text }}</div>
+    <div 
+        v-on:click="navigate"
+        class="task-header">{{ text }}</div>
 </template>
 
 <script>
     export default {
         name: 'task-header',
-        props: ['text']
+        props: ['text', 'listId', 'taskId'],
+        methods: {
+            navigate: function() {
+                this.$emit('navigate', `/tasklist/${ this.listId }/task/${ this.taskId }/details`);
+            }
+        }
     };
 </script>

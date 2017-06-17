@@ -19,6 +19,78 @@ const demo = {
         ),
         Tasklist(
             { 
+                title: 'Work',
+                tasks: [ 
+                    Task({ text:'Convert site to mobile friendly!' }), 
+                    Task({ text:'sass -> scss' }) 
+                ]  
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'Work',
+                tasks: [ 
+                    Task({ text:'Convert site to mobile friendly!' }), 
+                    Task({ text:'sass -> scss' }) 
+                ]  
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'Work',
+                tasks: [ 
+                    Task({ text:'Convert site to mobile friendly!' }), 
+                    Task({ text:'sass -> scss' }) 
+                ]  
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'Work',
+                tasks: [ 
+                    Task({ text:'Convert site to mobile friendly!' }), 
+                    Task({ text:'sass -> scss' }) 
+                ]  
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'Music',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ), 
+        Tasklist(
+            { 
+                title: 'Music',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ), 
+        Tasklist(
+            { 
+                title: 'Music',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ), 
+        Tasklist(
+            { 
+                title: 'Music',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ), 
+        Tasklist(
+            { 
                 title: 'Music',
                 tasks: [ 
                     Task({ text:'Release Album.' }), 

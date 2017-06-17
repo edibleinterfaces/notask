@@ -5,6 +5,7 @@ import LandingView from '../views/LandingView';
 import ListView from '../views/ListView';
 import ListsView from '../views/ListsView';
 import TaskView from '../views/TaskView';
+import TaskDetailsView from '../views/TaskDetailsView';
 import SettingsView from '../views/SettingsView';
 import Oops from '../views/Oops';
 
@@ -28,9 +29,14 @@ export default new Router({
             component: ListView
         },
         {
-            path: '/tasklist/:listId/tasks/:taskId',
+            path: '/tasklist/:listId/task/:taskId',
             props: true,
             component: TaskView
+        },
+        {
+            path: '/tasklist/:listId/task/:taskId/details',
+            props: true,
+            component: TaskDetailsView
         },
         {
             path: '/settings',
