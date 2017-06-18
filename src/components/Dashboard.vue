@@ -9,7 +9,6 @@
         height: 10%; 
         background: lightgray;
 
-
         .settings-icon-container {
             display: flex;
             align-items: center;
@@ -20,6 +19,7 @@
                 font-size: 5vh;
             }
         }
+
     }
 
     @media(max-width: 750px) {

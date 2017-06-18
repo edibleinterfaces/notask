@@ -7,6 +7,13 @@
         font-size: 0;
         background: whitesmoke;
 
+        &.sortable-chosen > .sort-handle {
+            background: aquamarine;
+            > .fa-hand-paper-o {
+                color: white;
+            }
+        }
+
         .sort-handle,
         .tasklist-title {
             height: 100%;
