@@ -2,7 +2,6 @@
 
     .tasklist-header {
         display: flex;
-        height: calc(100%/5);
         width: 100%;
         font-size: 0;
         background: whitesmoke;
@@ -23,9 +22,10 @@
             align-items: center;
             justify-content: center;
             color: aquamarine;
+
+            .sort-handle-icon {
+                font-size: 5vh;
         }
-        .sort-handle-icon {
-            font-size: 5vh;
         }
         .tasklist-title {
             display: flex;
@@ -35,6 +35,17 @@
             padding-right: 10%;
             font-size: initial;
             text-align: center;
+        }
+    }
+
+    @media(max-height: 400px) {
+        .tasklist-header {
+            height: 50%;
+        }
+    }
+    @media (min-height: 400px) {
+        .tasklist-header {
+            height: 20%;
         }
     }
 

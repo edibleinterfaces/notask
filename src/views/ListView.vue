@@ -4,8 +4,18 @@
         height: 100%;
     }
     .list-view {
-        height: 90%;
         width: 100%;
+    }
+    @media(min-height:400px) {
+        .list-view {
+            height: 90%;
+        }
+    }
+    @media(max-height:400px) {
+
+        .list-view {
+            height: 75%;
+        }
     }
 
 </style>

@@ -1,7 +1,7 @@
 <style>
-.task-header {
-    height: calc(90%/5);
-}
+    .task-header {
+        height: calc(90%/5);
+    }
 </style>
 <template>
     <div 

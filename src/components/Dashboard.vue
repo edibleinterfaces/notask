@@ -6,7 +6,6 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        height: 10%; 
         background: lightgray;
 
         .settings-icon-container {
@@ -22,6 +21,18 @@
 
     }
 
+    @media (max-height:400px) {
+        .dashboard {
+            height: 25%; 
+        }
+
+    }
+    @media (min-height: 400px) {
+        .dashboard {
+            height: 10%; 
+        }
+
+    }
     @media(max-width: 750px) {
         .settings-icon-container {
             width: 20%;

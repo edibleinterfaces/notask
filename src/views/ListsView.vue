@@ -8,13 +8,22 @@
             display: none;
         }
 
-        .lists-view { 
-            height: 90%;
+        > .lists-view { 
             width: 100%;
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
         }
 
+    }
+    @media (max-height: 400px){
+        .lists-view {
+            height: 75%;
+        }
+    }
+    @media (min-height: 400px){
+        .lists-view {
+            height: 90%;
+        }
     }
 </style>
 <template>
