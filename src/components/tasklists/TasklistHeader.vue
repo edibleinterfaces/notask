@@ -12,7 +12,6 @@
             height: 100%;
         }
         .sort-handle {
-            width: 20%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,10 +25,26 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            width: 80%;
             padding-right: 10%;
             font-size: initial;
             text-align: center;
+        }
+    }
+
+    @media(max-width: 750px) {
+        .tasklist-title {
+            width: 80%;
+        }
+        .sort-handle {
+            width: 20%;
+        }
+    }
+    @media(min-width: 750px) {
+        .tasklist-title {
+            width: 90%;
+        }
+        .sort-handle {
+            width: 10%;
         }
     }
 

@@ -1,5 +1,7 @@
 <style lang="scss">
+
     .dashboard {
+
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -9,14 +11,25 @@
 
 
         .settings-icon-container {
-            width: 20%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: auto;
+
             .settings-icon {
                 font-size: 5vh;
             }
+        }
+    }
+
+    @media(max-width: 750px) {
+        .settings-icon-container {
+            width: 20%;
+        }
+    }
+    @media(min-width: 750px) {
+        .settings-icon-container {
+            width: 10%;
         }
     }
 </style>
