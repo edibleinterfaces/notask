@@ -3,7 +3,10 @@
 
 <template>
     <div class="tasklist">
-        <task-header v-for="task in tasks"></task-header>
+        <task-header 
+            v-for="(task, taskId) in tasks" 
+            :key="taskId">
+        </task-header>
     </div>
 </template>
 

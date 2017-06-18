@@ -18,6 +18,7 @@
                 v-on:navigate="navigateTo"
                 :list-id="listId"
                 :task-id="taskId"
+                :key="taskId"
                 :text="task.text">
             </task-header>
         </div>

@@ -18,26 +18,29 @@
 </style>
 <template>
     <div class="lists-view-container">
-        <div class="lists-view">
+        <draggable v-model="tasklists" class="lists-view">
             <tasklist-header 
                 v-for="(tasklist, listId) in tasklists" 
                 v-on:navigate="navigateTo"
                 :list-id="listId"
-                :title="tasklist.title">
+                :title="tasklist.title"
+                :key="listId">
             </tasklist-header>
-        </div>
+        </draggable>
         <dashboard></dashboard>
     </div>
 </template>
 
 <script>
+    import draggable from 'vuedraggable';
     import TasklistHeader from '../components/tasklists/TasklistHeader.vue';
     import Dashboard from '../components/Dashboard.vue';
     export default {
         name: 'listview',
         components: {
             TasklistHeader,
-            Dashboard
+            Dashboard,
+            draggable
         },
         data: function() {
             return {
