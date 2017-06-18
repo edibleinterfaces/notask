@@ -1,13 +1,18 @@
 <style lang="scss">
 
     .tasklist-header {
+
         right: 0%;
         position: relative;
         display: flex;
         font-size: 0;
         background: whitesmoke;
-        transition: right 0.1s ease-in;
-        -webkit-transition: right 0.1s ease-in;
+
+        &.trashcan-invisible {
+            -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+        }
         &.sortable-chosen > .sort-handle {
             background: aquamarine;
             > .fa-hand-paper-o {
@@ -79,7 +84,14 @@
             width: 20%; 
         }
         &.trashcan-visible {
-            right: 20%;
+            -webkit-transform: translateX(-20vw);
+            transform: translateX(-20vw);
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+        }
+        &.trashcan-invisible {
+            -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
         }
     }
     @media(min-width: 750px) {
@@ -96,7 +108,14 @@
             width: 10%; 
         }
         &.trashcan-visible {
-            right: 10%;
+            -webkit-transform: translateX(-10vw);
+            transform: translateX(-10vw);
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+        }
+        &.trashcan-invisible {
+            -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+            -webkit-transition: -webkit-transform 0.1s ease-in-out;
         }
     }
 
@@ -105,7 +124,10 @@
 <template>
 
     <div
-       v-bind:class="{'trashcan-visible': trashcanVisible}"
+        v-bind:class="{
+            'trashcan-visible': trashcanVisible, 
+            'trashcan-invisible': trashcanInvisible
+        }"
         class="tasklist-header">
         <div class="sort-handle">
             <i class="fa fa-hand-paper-o sort-handle-icon"></i>
@@ -135,21 +157,21 @@
         props: ['title', 'listId'],
         data: function() {
             return {
+                trashcanInvisible: true,
                 trashcanVisible: false
             };
         },
         methods: {
-            testToggle: function() {
-                this.trashcanVisible = this.trashcanVisible ? false : true;
-            },
             navigate: function(index) {
                 // send parent information about where to navigate to.
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
             showTrashcan: function(e) {
+                this.trashcanInvisible = false;
                 this.trashcanVisible = true;
             },
             hideTrashcan: function(e) {
+                this.trashcanInvisible = true;
                 this.trashcanVisible = false;
             }
         }
