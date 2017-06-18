@@ -45,9 +45,11 @@
 </template>
 
 <script>
-    import draggable from 'vuedraggable';
+
     import TasklistHeader from '../components/tasklists/TasklistHeader.vue';
     import Dashboard from '../components/Dashboard.vue';
+    import draggable from 'vuedraggable';
+
     export default {
         name: 'listview',
         components: {

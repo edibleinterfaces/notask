@@ -25,7 +25,7 @@
 
             .sort-handle-icon {
                 font-size: 5vh;
-        }
+            }
         }
         .tasklist-title {
             display: flex;
@@ -36,6 +36,10 @@
             font-size: initial;
             text-align: center;
         }
+    }
+
+    .trashcan-visible {
+        color: red;
     }
 
     @media(max-height: 400px) {
@@ -70,24 +74,48 @@
 
 <template>
 
-    <div v-on:click="navigate" class="tasklist-header">
+    <div
+        v-on:click="navigate" 
+        class="tasklist-header">
         <div class="sort-handle">
             <i class="fa fa-hand-paper-o sort-handle-icon"></i>
         </div>
-        <div class="tasklist-title">{{ title }}</div>
+        <v-touch 
+            v-on:swiperight="showTrashcan"
+            v-on:swipeleft="hideTrashcan"
+            v-bind:class="{ 'trashcan-visible': trashcanVisible }"
+            class="tasklist-title"
+            >
+                {{ title }}
+        </v-touch>
     </div>
 
 </template>
 
 <script>
 
+    import Vue from 'vue';
+    import VueTouch from 'vue-touch';
+    Vue.use(VueTouch);
+
     export default {
         name: 'tasklist-header',
         props: ['title', 'listId'],
+        data: function() {
+            return {
+                trashcanVisible: false
+            };
+        },
         methods: {
             navigate: function(index) {
                 // send parent information about where to navigate to.
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
+            },
+            showTrashcan: function(e) {
+                this.trashcanVisible = true;
+            },
+            hideTrashcan: function(e) {
+                this.trashcanVisible = false;
             }
         }
     };
