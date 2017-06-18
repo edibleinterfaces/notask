@@ -75,12 +75,12 @@
 <template>
 
     <div
-        v-on:click="navigate" 
         class="tasklist-header">
         <div class="sort-handle">
             <i class="fa fa-hand-paper-o sort-handle-icon"></i>
         </div>
         <v-touch 
+            v-on:tap="navigate" 
             v-on:swiperight="showTrashcan"
             v-on:swipeleft="hideTrashcan"
             v-bind:class="{ 'trashcan-visible': trashcanVisible }"
