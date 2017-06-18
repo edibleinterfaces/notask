@@ -28,7 +28,10 @@
 </style>
 <template>
     <div class="lists-view-container">
-        <draggable v-model="tasklists" class="lists-view">
+        <draggable 
+         :options="{ handle: '.sort-handle' }"
+            v-model="tasklists" 
+            class="lists-view">
             <tasklist-header 
                 v-for="(tasklist, listId) in tasklists" 
                 v-on:navigate="navigateTo"
