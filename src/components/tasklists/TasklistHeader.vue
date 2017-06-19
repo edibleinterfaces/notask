@@ -52,8 +52,8 @@
             font-size: initial;
 
             .delete-tasklist-icon {
-                color: black;
-                font-size: 1em;
+                font-size: 5vh;
+                color: whitesmoke;
             }
         }
     }
@@ -139,8 +139,8 @@
             class="tasklist-title">
                 {{ title }}
         </v-touch>
-        <div class="trashcan"> 
-            <i class="fa fa-trashcan delete-tasklist-icon"></i>
+        <div v-on:click="deleteTasklist(listId)" class="trashcan"> 
+            <i class="fa fa-trash delete-tasklist-icon"></i>
         </div>
     </div>
 
@@ -173,6 +173,9 @@
             hideTrashcan: function(e) {
                 this.trashcanInvisible = true;
                 this.trashcanVisible = false;
+            },
+            deleteTasklist(index) {
+                this.$store.state.tasklists.splice(index,1);
             }
         }
     };
