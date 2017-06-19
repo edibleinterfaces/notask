@@ -10,52 +10,7 @@ const demo = {
     tasklists: [
         Tasklist(
             { 
-                title: 'Work',
-                tasks: [ 
-                    Task({ text:'Convert site to mobile friendly!' }), 
-                    Task({ text:'sass -> scss' }) 
-                ]  
-            }
-        ),
-        Tasklist(
-            { 
-                title: 'Work',
-                tasks: [ 
-                    Task({ text:'Convert site to mobile friendly!' }), 
-                    Task({ text:'sass -> scss' }) 
-                ]  
-            }
-        ),
-        Tasklist(
-            { 
-                title: 'Work',
-                tasks: [ 
-                    Task({ text:'Convert site to mobile friendly!' }), 
-                    Task({ text:'sass -> scss' }) 
-                ]  
-            }
-        ),
-        Tasklist(
-            { 
-                title: 'Work',
-                tasks: [ 
-                    Task({ text:'Convert site to mobile friendly!' }), 
-                    Task({ text:'sass -> scss' }) 
-                ]  
-            }
-        ),
-        Tasklist(
-            { 
-                title: 'Work',
-                tasks: [ 
-                    Task({ text:'Convert site to mobile friendly!' }), 
-                    Task({ text:'sass -> scss' }) 
-                ]  
-            }
-        ),
-        Tasklist(
-            { 
-                title: 'Music',
+                title: 'A',
                 tasks: [ 
                     Task({ text:'Release Album.' }), 
                     Task({ text:'Market Album.' }) 
@@ -64,7 +19,7 @@ const demo = {
         ), 
         Tasklist(
             { 
-                title: 'Music',
+                title: 'B',
                 tasks: [ 
                     Task({ text:'Release Album.' }), 
                     Task({ text:'Market Album.' }) 
@@ -73,31 +28,13 @@ const demo = {
         ), 
         Tasklist(
             { 
-                title: 'Music',
+                title: 'C',
                 tasks: [ 
                     Task({ text:'Release Album.' }), 
                     Task({ text:'Market Album.' }) 
                 ]
             }
-        ), 
-        Tasklist(
-            { 
-                title: 'Music',
-                tasks: [ 
-                    Task({ text:'Release Album.' }), 
-                    Task({ text:'Market Album.' }) 
-                ]
-            }
-        ), 
-        Tasklist(
-            { 
-                title: 'Music',
-                tasks: [ 
-                    Task({ text:'Release Album.' }), 
-                    Task({ text:'Market Album.' }) 
-                ]
-            }
-        ), 
+        )
     ]
 };
 

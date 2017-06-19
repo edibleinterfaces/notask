@@ -174,8 +174,12 @@
                 this.trashcanInvisible = true;
                 this.trashcanVisible = false;
             },
-            deleteTasklist(index) {
-                this.$store.state.tasklists.splice(index,1);
+            deleteTasklist(listId) {
+                // this masks a bug where the css state for a deleted item is
+                // somehow transferred to the adjacent on in the dom.
+                this.trashcanInvisible = true;
+                this.trashcanVisible = false;
+                this.$store.state.tasklists.splice(listId, 1);
             }
         }
     };
