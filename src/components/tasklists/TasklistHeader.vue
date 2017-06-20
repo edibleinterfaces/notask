@@ -77,10 +77,10 @@
             width: 20%;
         }
         .tasklist-title-container {
+            padding-right: 10%;
             width: 80%;
         }
         .tasklist-title {
-            padding-right: 10%;
         }
         .trashcan {
             width: 20%;
@@ -101,9 +101,9 @@
         }
         .tasklist-title-container {
             width: 90%;
+            padding-right: 5%;
         }
         .tasklist-title {
-            padding-right: 5%;
         }
         .trashcan {
             width: 10%;

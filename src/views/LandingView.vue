@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
     .landing-container {
         height: 100%;
         width: 100%;
@@ -12,6 +12,7 @@
         font-size: 10vw;
         font-family: arial;
         font-weight: 600;
+        padding: 5%;
     }
     .no {
         color: whitesmoke;
@@ -21,12 +22,12 @@
     }
 </style>
 <template>
-    <router-link to="/tasklists" class="title">
         <div class="landing-container">
+            <router-link to="/tasklists" class="title">
                 <span class="no">No</span>
                 <span class="task">Task</span>
+            </router-link>
         </div>
-    </router-link>
 </template>
 
 <script>
