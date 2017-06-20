@@ -32,7 +32,7 @@
 <template>
     <div class="lists-view-container">
         <draggable 
-         :options="{ handle: '.sort-handle' }"
+            :options="{ handle: '.sort-handle' }"
             v-model="tasklists" 
             class="lists-view">
             <tasklist-header 

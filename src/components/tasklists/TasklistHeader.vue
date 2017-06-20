@@ -21,7 +21,7 @@
         }
 
         .sort-handle,
-        .tasklist-title {
+        .tasklist-title-container {
             height: 100%;
         }
         .sort-handle {
@@ -34,7 +34,7 @@
                 font-size: 5vh;
             }
         }
-        .tasklist-title {
+        .tasklist-title-container {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -74,8 +74,11 @@
         .tasklist-header {
             width: 120%;
         }
-        .tasklist-title {
+        .tasklist-title-container {
             width: 80%;
+        }
+        .tasklist-title {
+            padding-right: 20%;
         }
         .sort-handle {
             width: 20%;
@@ -98,8 +101,11 @@
         .tasklist-header {
             width: 110%;
         }
-        .tasklist-title {
+        .tasklist-title-container {
             width: 90%;
+        }
+        .tasklist-title {
+            padding-right: 10%;
         }
         .sort-handle {
             width: 10%;
@@ -136,8 +142,8 @@
             v-on:tap="navigate" 
             v-on:swipeleft="showTrashcan"
             v-on:swiperight="hideTrashcan"
-            class="tasklist-title">
-                {{ title }}
+            class="tasklist-title-container">
+            <h1 class="tasklist-title">{{ title }}</h1>
         </v-touch>
         <div 
             v-if="trashcanVisible" 
@@ -182,8 +188,9 @@
                 // somehow transferred to the adjacent on in the dom.
                 this.trashcanVisible = false;
                 this.trashcanInvisible = true;
-                // try Vue.nextTick
-                this.$store.state.tasklists.splice(listId, 1);
+                Vue.nextTick(function() {
+                    this.$store.state.tasklists.splice(listId, 1);
+                });
             }
         }
     };
