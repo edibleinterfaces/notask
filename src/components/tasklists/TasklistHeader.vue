@@ -61,6 +61,11 @@
     @media(max-height: 400px) {
         .tasklist-header {
             height: 50%;
+            .sort-handle {
+                .sort-handle-icon {
+                    font-size: 15vh;
+                }
+            }
         }
     }
     @media (min-height: 400px) {

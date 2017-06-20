@@ -33,6 +33,12 @@
     @media (max-height:400px) {
         .dashboard {
             height: 25%; 
+            .settings-icons-container {
+                .add-tasklist-icon,
+                .settings-icon {
+                    font-size: 15vh;
+                }
+            }
         }
 
     }
