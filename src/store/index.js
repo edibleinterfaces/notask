@@ -34,7 +34,44 @@ const demo = {
                     Task({ text:'Market Album.' }) 
                 ]
             }
+        ),
+        Tasklist(
+            { 
+                title: 'D',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'E',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'F',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
+        ),
+        Tasklist(
+            { 
+                title: 'G',
+                tasks: [ 
+                    Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }) 
+                ]
+            }
         )
+
     ]
 };
 
