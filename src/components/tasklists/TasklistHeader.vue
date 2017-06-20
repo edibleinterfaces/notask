@@ -3,16 +3,13 @@
     .tasklist-header {
 
         right: 0%;
+        transition: right 0.2s ease;
+        -webkit-transition: right 0.2s ease;
         position: relative;
         display: flex;
         font-size: 0;
         background: whitesmoke;
 
-        &.trashcan-invisible {
-            -webkit-transform: translateX(0vw);
-            transform: translateX(0vw);
-            -webkit-transition: -webkit-transform 0.1s ease-in-out;
-        }
         &.sortable-chosen > .sort-handle {
             background: aquamarine;
             > .fa-hand-paper-o {
@@ -24,6 +21,7 @@
         .tasklist-title-container {
             height: 100%;
         }
+
         .sort-handle {
             display: flex;
             align-items: center;
@@ -34,15 +32,16 @@
                 font-size: 5vh;
             }
         }
+
         .tasklist-title-container {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            padding-right: 10%;
             font-size: initial;
             text-align: center;
         }
+
         .trashcan {
             background: salmon;
             display: flex;
@@ -74,30 +73,29 @@
         .tasklist-header {
             width: 120%;
         }
+        .sort-handle {
+            width: 20%;
+        }
         .tasklist-title-container {
             width: 80%;
         }
         .tasklist-title {
-            padding-right: 20%;
-        }
-        .sort-handle {
-            width: 20%;
+            padding-right: 10%;
         }
         .trashcan {
-            width: 20%; 
+            width: 20%;
         }
         &.trashcan-visible {
-            -webkit-transform: translateX(-20vw);
-            transform: translateX(-20vw);
-            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+            right: 20%;
         }
         &.trashcan-invisible {
-            -webkit-transform: translateX(0vw);
-            transform: translateX(0vw);
-            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+            right: 0%;
         }
     }
     @media(min-width: 750px) {
+        .sort-handle {
+            width: 10%;
+        }
         .tasklist-header {
             width: 110%;
         }
@@ -105,23 +103,16 @@
             width: 90%;
         }
         .tasklist-title {
-            padding-right: 10%;
-        }
-        .sort-handle {
-            width: 10%;
+            padding-right: 5%;
         }
         .trashcan {
-            width: 10%; 
+            width: 10%;
         }
         &.trashcan-visible {
-            -webkit-transform: translateX(-10vw);
-            transform: translateX(-10vw);
-            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+            right: 10%;
         }
         &.trashcan-invisible {
-            -webkit-transform: translateX(0vw);
-            transform: translateX(0vw);
-            -webkit-transition: -webkit-transform 0.1s ease-in-out;
+            right: 0%;
         }
     }
 
@@ -146,7 +137,6 @@
             <h1 class="tasklist-title">{{ title }}</h1>
         </v-touch>
         <div 
-            v-if="trashcanVisible" 
             v-on:click="deleteTasklist(listId)" 
             class="trashcan"> 
             <i class="fa fa-trash delete-tasklist-icon"></i>
@@ -188,9 +178,7 @@
                 // somehow transferred to the adjacent on in the dom.
                 this.trashcanVisible = false;
                 this.trashcanInvisible = true;
-                Vue.nextTick(function() {
-                    this.$store.state.tasklists.splice(listId, 1);
-                });
+                this.$store.state.tasklists.splice(listId, 1);
             }
         }
     };
