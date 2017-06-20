@@ -139,7 +139,10 @@
             class="tasklist-title">
                 {{ title }}
         </v-touch>
-        <div v-on:click="deleteTasklist(listId)" class="trashcan"> 
+        <div 
+            v-if="trashcanVisible" 
+            v-on:click="deleteTasklist(listId)" 
+            class="trashcan"> 
             <i class="fa fa-trash delete-tasklist-icon"></i>
         </div>
     </div>
@@ -177,8 +180,9 @@
             deleteTasklist(listId) {
                 // this masks a bug where the css state for a deleted item is
                 // somehow transferred to the adjacent on in the dom.
-                this.trashcanInvisible = true;
                 this.trashcanVisible = false;
+                this.trashcanInvisible = true;
+                // try Vue.nextTick
                 this.$store.state.tasklists.splice(listId, 1);
             }
         }

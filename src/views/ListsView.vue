@@ -16,6 +16,7 @@
         }
 
     }
+
     @media (max-height: 400px){
         .lists-view {
             height: 75%;
@@ -26,6 +27,7 @@
             height: 90%;
         }
     }
+
 </style>
 <template>
     <div class="lists-view-container">
