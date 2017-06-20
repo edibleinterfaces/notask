@@ -8,16 +8,25 @@
         width: 100%;
         background: lightgray;
 
-        .settings-icon-container {
+        .settings-icons-container {
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-right: auto;
 
+            .add-tasklist-icon,
             .settings-icon {
                 font-size: 5vh;
+                text-align: center;
             }
+            .add-tasklist-icon {
+                margin-left: auto;
+            }
+            .settings-icon {
+                margin-right: auto;
+            }
+
         }
+
 
     }
 
@@ -34,12 +43,12 @@
 
     }
     @media(max-width: 750px) {
-        .settings-icon-container {
+        .settings-icons-container  i {
             width: 20%;
         }
     }
     @media(min-width: 750px) {
-        .settings-icon-container {
+        .settings-icons-container  i{
             width: 10%;
         }
     }
@@ -47,14 +56,24 @@
 
 <template>
     <div class="dashboard">
-        <div class="settings-icon-container">
+        <div class="settings-icons-container">
             <i class="fa fa-cog settings-icon"></i>
+            <i 
+                v-on:click="addTasklist" 
+                class="fa fa-plus add-tasklist-icon"></i>
         </div>
     </div>
 </template>
 
 <script>
+
     export default {
         name: 'dashboard',
+        methods: {
+            addTasklist: function() {
+                console.log('add tasklist');
+                console.log(this.$store.state.tasklists.push(this.$store.state.tasklists.slice(-1)[0]));
+            }
+        }
     };
 </script>
