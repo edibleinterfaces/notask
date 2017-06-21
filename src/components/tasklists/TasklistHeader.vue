@@ -154,10 +154,10 @@
 
     import Vue from 'vue';
     import VueTouch from 'vue-touch';
+    import store from '../../store';
+
     Vue.use(VueTouch);
-    VueTouch.config.swipe = {
-        direction: 'horizontal'
-    };
+    VueTouch.config.swipe = { direction: 'horizontal' }; // fixes scroll bug
 
     export default {
         name: 'tasklist-header',
@@ -182,11 +182,17 @@
                 this.trashcanVisible = false;
             },
             deleteTasklist(listId) {
-                // this masks a bug where the css state for a deleted item is
-                // somehow transferred to the adjacent on in the dom.
+                // masking a bug where the css state for a deleted item is
+                // somehow transferred to the item one above 
+                // in dom
                 this.trashcanVisible = false;
                 this.trashcanInvisible = true;
-                this.$store.state.tasklists.splice(listId, 1);
+                const CSS_FADEOUT_INTERVAL = 200;
+
+                setTimeout(function() {
+                    store.commit('removeTasklist', listId);
+                }, CSS_FADEOUT_INTERVAL);
+
             }
         }
     };

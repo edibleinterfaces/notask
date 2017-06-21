@@ -73,12 +73,13 @@
 
 <script>
 
+    import store from '../store';
+
     export default {
         name: 'dashboard',
         methods: {
-            addTasklist: function() {
-                console.log('add tasklist');
-                console.log(this.$store.state.tasklists.push(this.$store.state.tasklists.slice(-1)[0]));
+            addTasklist() {
+                store.commit('addTasklist');
             }
         }
     };

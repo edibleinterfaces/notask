@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
 
+import mutations from './mutations'; 
+
 Vue.use(Vuex);
 
 const demo = {
@@ -76,5 +78,6 @@ const demo = {
 };
 
 export default new Vuex.Store({
-    state: demo
+    state: demo,
+    mutations
 });

@@ -3,6 +3,7 @@
     .lists-view-container {
         height: 100%;
         width: 100%;
+        background: whitesmoke;
 
         ::-webkit-scrollbar {
             display: none;
