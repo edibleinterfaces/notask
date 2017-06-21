@@ -25,5 +25,7 @@
 **Features:**
 
     + UI 
-        - fade in and out on tasklist sort handle 
+        - fade in and out on tasklist sort handle
+        - set min tap time for drag handle engage state 
         - dashboard colors vary for on and offline
+
