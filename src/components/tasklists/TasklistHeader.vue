@@ -106,7 +106,7 @@
         }
         .tasklist-title-container {
             width: 90%;
-            padding-right: 5%;
+            padding-right: 10%;
         }
         .tasklist-title {
         }
