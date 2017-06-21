@@ -10,6 +10,7 @@
         font-size: 0;
         background: whitesmoke;
 
+
         &.sortable-chosen > .sort-handle {
             background: aquamarine;
             > .fa-hand-paper-o {
@@ -23,6 +24,7 @@
         }
 
         .sort-handle {
+            transition: background 0.2s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
