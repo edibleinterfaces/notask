@@ -8,6 +8,8 @@
         currently, the workaround is to mask it by toggling trashcanVisible 
         off on delete.
 
+    - Drag on desktop shows the trashcan outside the browser. reasearch.
+
     Fixed
 
     -  Tasklist view can't scroll on ios inside list view
