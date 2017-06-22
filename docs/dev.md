@@ -27,6 +27,7 @@
         even on an adequate machine, the css3 transition on the right 
         property is not so great. Originally, the mechanism was translateX, 
         but there were issues with hammer.js causing it to function poorly.
+    - scroll to bottom when adding a new task
 
 **Features:**
 
@@ -34,4 +35,6 @@
         - fade in and out on tasklist sort handle
         - set min tap time for drag handle engage state 
         - dashboard colors vary for on and offline
+        - add vertical ellipses on right side of tasklist header to indicate swipe
+        - distance from top directive
 
