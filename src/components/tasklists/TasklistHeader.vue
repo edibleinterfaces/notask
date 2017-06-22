@@ -20,6 +20,7 @@
         .nav-handle {
             text-decoration: none;
         }
+
         .nav-handle,
         .tasklist-sort-handle,
         .tasklist-title-container {

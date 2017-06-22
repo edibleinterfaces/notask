@@ -80,8 +80,10 @@
         props: ['listId'],
         methods: {
             add() {
-                if (this.listId) store.commit('addTask', this.listId);
-                else store.commit('addTasklist');
+                if (this.$route.name === 'ListView') 
+                    store.commit('addTask', this.listId);
+                if (this.$route.name === 'ListsView') 
+                    store.commit('addTasklist');
             }
         }
     };
