@@ -1,6 +1,9 @@
-<style>
-    .list-view-container {
+<style lang="scss">
+    .list-view-outer-container {
         height: 100%;
+        .list-view-inner-container {
+            height: 90%;
+        }
     }
     .list-view {
         width: 100%;
@@ -10,7 +13,7 @@
     }
     @media(min-height:400px) {
         .list-view {
-            height: 90%;
+            height: 80%;
         }
     }
     @media(max-height:400px) {
@@ -27,22 +30,24 @@
 </style>
 <template>
 
-    <div class="list-view-container">
+    <div class="list-view-outer-container">
+        <div class="list-view-inner-container">
             <tasklist-header :list-id="listId"></tasklist-header>
-        <draggable
-            :options="{ handle: '.task-sort-handle', draggable: '.task-header'}"
-            v-model="tasks"
-            class="list-view">
-            <task-header 
+            <draggable
+                :options="{ handle: '.task-sort-handle', draggable: '.task-header'}"
                 v-model="tasks"
-                v-for="(task, taskId) in tasks" 
-                v-on:navigate="navigateTo"
-                :list-id="listId"
-                :task-id="taskId"
-                :key="taskId"
-                :text="task.text">
-            </task-header>
-        </draggable>
+                class="list-view">
+                <task-header 
+                    v-model="tasks"
+                    v-for="(task, taskId) in tasks" 
+                    v-on:navigate="navigateTo"
+                    :list-id="listId"
+                    :task-id="taskId"
+                    :key="taskId"
+                    :text="task.text">
+                </task-header>
+            </draggable>
+        </div>
         <dashboard></dashboard>
     </div>
 
