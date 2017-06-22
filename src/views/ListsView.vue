@@ -13,7 +13,7 @@
         > .lists-view { 
             width: 100%;
             overflow-y: scroll;
-            overflow-x: hidden;
+            overflow-x: hidden; 
             -webkit-overflow-scrolling: touch;
         }
 
@@ -39,7 +39,7 @@
             class="lists-view">
             <tasklist-header 
                 v-for="(tasklist, listId) in tasklists" 
-                v-on:navigate="navigateTo"
+                v-on:navigate="navigate"
                 :list-id="listId"
                 :title="tasklist.title"
                 :key="listId">
@@ -74,9 +74,7 @@
             }
         },
         methods: {
-            // events on components are handled internally by component.
-            // component then emits event to parent, where parent can react.
-            navigateTo: function(newPath) {
+            navigate: function(newPath) {
                 this.$router.push(newPath);
             }
         }

@@ -10,7 +10,6 @@
         font-size: 0;
         background: whitesmoke;
 
-
         &.sortable-chosen > .sort-handle {
             background: aquamarine;
             > .fa-hand-paper-o {

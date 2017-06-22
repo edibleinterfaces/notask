@@ -8,6 +8,11 @@ export default {
                 title: 'A',
                 tasks: [ 
                     Task({ text:'Release Album.' }), 
+                    Task({ text:'Market Album.' }),
+                    Task({ text:'Market Album.' }),
+                    Task({ text:'Market Album.' }),
+                    Task({ text:'Market Album.' }),
+                    Task({ text:'Market Album.' }), 
                     Task({ text:'Market Album.' }) 
                 ]
             }

@@ -1,10 +1,14 @@
 <style>
 
     .list-view-container {
+        overflow-x: hidden;
         height: 100%;
     }
     .list-view {
         width: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
     @media(min-height:400px) {
         .list-view {
@@ -15,6 +19,11 @@
         .list-view {
             height: 75%;
         }
+    }
+    @media(min-width: 750px) {
+        
+    }
+    @media(max-width: 750px) {
     }
 
 </style>
