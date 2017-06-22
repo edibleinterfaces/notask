@@ -102,9 +102,6 @@
         &.trashcan-visible {
             right: 20%;
         }
-        &.trashcan-invisible {
-            right: 0%;
-        }
     }
     @media(min-width: 750px) {
         .sort-handle,
@@ -126,9 +123,6 @@
         &.trashcan-visible {
             right: 10%;
         }
-        &.trashcan-invisible {
-            right: 0%;
-        }
     }
 
 </style>
@@ -138,7 +132,6 @@
     <div
         v-bind:class="{
             'trashcan-visible': trashcanVisible, 
-            'trashcan-invisible': trashcanInvisible
         }"
         class="tasklist-header">
         <div 
@@ -182,7 +175,6 @@
         props: ['title', 'listId'],
         data: function() {
             return {
-                trashcanInvisible: true,
                 trashcanVisible: false
             };
         },
@@ -200,11 +192,9 @@
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
             showTrashcan: function(e) {
-                this.trashcanInvisible = false;
                 this.trashcanVisible = true;
             },
             hideTrashcan: function(e) {
-                this.trashcanInvisible = true;
                 this.trashcanVisible = false;
             },
             deleteTasklist(listId) {
@@ -212,7 +202,6 @@
                 const CSS_FADEOUT_INTERVAL = 200;
 
                 this.trashcanVisible = false;
-                this.trashcanInvisible = true;
 
                 setTimeout(function() {
                     store.commit('removeTasklist', listId);

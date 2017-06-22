@@ -1,6 +1,7 @@
 <style lang="scss">
 
     .lists-view-container {
+
         height: 100%;
         width: 100%;
         background: whitesmoke;
