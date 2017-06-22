@@ -12,6 +12,10 @@
 
     Fixed
 
+    - Tasklist header included in sortable dom elements when task header are sorted.
+    fix:
+        move tasklist header out of the draggable container for the task header list.
+
     -  Tasklist view can't scroll on ios inside list view
     fix: 
         add direction: horizontal to VueTouch.config.swipe object. 
