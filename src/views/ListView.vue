@@ -24,6 +24,7 @@
         <div class="list-view">
             <tasklist-header :list-id="listId"></tasklist-header>
             <task-header 
+                v-model="tasks"
                 v-for="(task, taskId) in tasks" 
                 v-on:navigate="navigateTo"
                 :list-id="listId"
@@ -42,6 +43,8 @@
     import TaskHeader from '../components/tasklists/TaskHeader';
     import Dashboard from '../components/Dashboard';
 
+    import store from '../store';
+
     export default {
         name: 'list-view',
         props: ['listId'],
@@ -50,10 +53,12 @@
             TaskHeader,
             Dashboard
         },
-        data: function() {
-            return {
-                tasks: this.$store.state.tasklists[ this.listId ].tasks
-            };
+        computed: { 
+            tasks: {
+                get() {
+                    return store.getters.tasklists[ this.listId ].tasks;
+                },
+            }
         },
         methods: { 
             navigateTo: function(path) {

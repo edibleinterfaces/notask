@@ -53,6 +53,7 @@
     import TasklistHeader from '../components/tasklists/TasklistHeader.vue';
     import Dashboard from '../components/Dashboard.vue';
     import draggable from 'vuedraggable';
+    import store from '../store';
 
     export default {
         name: 'listview',
@@ -61,10 +62,15 @@
             Dashboard,
             draggable
         },
-        data: function() {
-            return {
-                tasklists: this.$store.state.tasklists
-            };
+        computed: {
+            tasklists: {
+                get() {
+                    return store.getters.tasklists;
+                },
+                set(newTasklists) {
+                    store.commit('updateTasklists', newTasklists);
+                }
+            }
         },
         methods: {
             // events on components are handled internally by component.
