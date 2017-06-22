@@ -18,11 +18,16 @@
             }
         }
 
+        .nav-handle {
+            text-decoration: none;
+        }
+        .nav-handle,
         .sort-handle,
         .tasklist-title-container {
             height: 100%;
         }
 
+        .nav-handle,
         .sort-handle {
             transition: background 0.2s ease-in-out;
             display: flex;
@@ -30,7 +35,7 @@
             justify-content: center;
             color: aquamarine;
 
-            .sort-handle-icon {
+            .handle-icon {
                 font-size: 5vh;
             }
         }
@@ -63,8 +68,9 @@
     @media(max-height: 400px) {
         .tasklist-header {
             height: 50%;
-            .sort-handle {
-                .sort-handle-icon {
+            .sort-handle,
+            .nav-handle {
+                .handle-icon {
                     font-size: 15vh;
                 }
             }
@@ -80,7 +86,8 @@
         .tasklist-header {
             width: 120%;
         }
-        .sort-handle {
+        .sort-handle,
+        .nav-handle {
             width: 20%;
         }
         .tasklist-title-container {
@@ -100,7 +107,8 @@
         }
     }
     @media(min-width: 750px) {
-        .sort-handle {
+        .sort-handle,
+        .nav-handle {
             width: 10%;
         }
         .tasklist-header {
@@ -133,15 +141,23 @@
             'trashcan-invisible': trashcanInvisible
         }"
         class="tasklist-header">
-        <div class="sort-handle">
-            <i class="fa fa-hand-paper-o sort-handle-icon"></i>
+        <div 
+            v-if="Number.isInteger(listId)" 
+            class="sort-handle">
+            <i class="fa fa-hand-paper-o handle-icon"></i>
         </div>
+        <router-link 
+            v-else
+            to="/tasklists"
+            class="nav-handle">
+            <i class="fa fa-arrow-left handle-icon"></i>
+        </router-link>
         <v-touch 
             v-on:tap="navigate" 
             v-on:swipeleft="showTrashcan"
             v-on:swiperight="hideTrashcan"
             class="tasklist-title-container">
-            <h1 class="tasklist-title">{{ title }}</h1>
+            <h1 class="tasklist-title">{{ listTitle }}</h1>
         </v-touch>
         <div 
             v-on:click="deleteTasklist(listId)" 
@@ -170,9 +186,17 @@
                 trashcanVisible: false
             };
         },
+        computed: {
+            tasklists: function() {
+                return store.getters.tasklists;
+            },
+            listTitle: function() {
+                return store.getters.tasklists[ this.listId ].title;
+            }
+
+        },
         methods: {
             navigate: function(index) {
-                // send parent information about where to navigate to.
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
             showTrashcan: function(e) {
@@ -184,12 +208,11 @@
                 this.trashcanVisible = false;
             },
             deleteTasklist(listId) {
-                // masking a bug where the css state for a deleted item is
-                // somehow transferred to the item one above 
-                // in dom
+
+                const CSS_FADEOUT_INTERVAL = 200;
+
                 this.trashcanVisible = false;
                 this.trashcanInvisible = true;
-                const CSS_FADEOUT_INTERVAL = 200;
 
                 setTimeout(function() {
                     store.commit('removeTasklist', listId);

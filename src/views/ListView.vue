@@ -12,7 +12,6 @@
         }
     }
     @media(max-height:400px) {
-
         .list-view {
             height: 75%;
         }
@@ -23,6 +22,7 @@
 
     <div class="list-view-container">
         <div class="list-view">
+            <tasklist-header :list-id="listId"></tasklist-header>
             <task-header 
                 v-for="(task, taskId) in tasks" 
                 v-on:navigate="navigateTo"
@@ -38,6 +38,7 @@
 </template>
 <script>
 
+    import TasklistHeader from '../components/tasklists/TasklistHeader';
     import TaskHeader from '../components/tasklists/TaskHeader';
     import Dashboard from '../components/Dashboard';
 
@@ -45,6 +46,7 @@
         name: 'list-view',
         props: ['listId'],
         components: {
+            TasklistHeader,
             TaskHeader,
             Dashboard
         },
