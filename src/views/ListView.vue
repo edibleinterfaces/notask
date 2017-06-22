@@ -1,7 +1,5 @@
 <style>
-
     .list-view-container {
-        overflow-x: hidden;
         height: 100%;
     }
     .list-view {
@@ -30,8 +28,11 @@
 <template>
 
     <div class="list-view-container">
-        <div class="list-view">
             <tasklist-header :list-id="listId"></tasklist-header>
+        <draggable
+            :options="{ handle: '.task-sort-handle', draggable: '.task-header'}"
+            v-model="tasks"
+            class="list-view">
             <task-header 
                 v-model="tasks"
                 v-for="(task, taskId) in tasks" 
@@ -41,7 +42,7 @@
                 :key="taskId"
                 :text="task.text">
             </task-header>
-        </div>
+        </draggable>
         <dashboard></dashboard>
     </div>
 
@@ -51,6 +52,7 @@
     import TasklistHeader from '../components/tasklists/TasklistHeader';
     import TaskHeader from '../components/tasklists/TaskHeader';
     import Dashboard from '../components/Dashboard';
+    import draggable from 'vuedraggable';
 
     import store from '../store';
 
@@ -60,19 +62,27 @@
         components: {
             TasklistHeader,
             TaskHeader,
-            Dashboard
+            Dashboard,
+            draggable
         },
         computed: { 
             tasks: {
                 get() {
-                    return store.getters.tasklists[ this.listId ].tasks;
+                    return store.getters.tasks(this.listId);
                 },
+                set(newTasks) {
+                    const payload = {
+                        listId: this.listId,
+                        newTasks
+                    };
+                    store.commit('updateTasks', payload);
+                }
             }
         },
         methods: { 
-            navigateTo: function(path) {
+            navigateTo(path) {
                 this.$router.push(path);
-            }
+            },
         }
 
     };

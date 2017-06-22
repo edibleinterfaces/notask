@@ -1,27 +1,36 @@
 <style lang="scss">
     .task-header {
-        width: 100%;
+        background: whitesmoke;
+        width: 120%;
         display: inline-flex; 
+        position: relative;
+        right: 0%; 
+        transition: right 0.2s ease-in-out;
 
-        .edit-task-container {
+        &.trashcan-visible {
+            right: 20%;
+        }
+        .task-sort-handle {
+            background: whitesmoke;
+            outline: none;
             border: none;
+            padding: 0;
             cursor: pointer;
-            background: white;
             transition: background 0.2s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
 
-            &:hover {
-                background: aquamarine;
-                .edit-task-icon {
-                    color: whitesmoke
-                }
-            }
-
-            .edit-task-icon {
+            .task-sort-handle-icon {
                 color: lightgray;
                 font-size: 5vh;
+            }
+
+            &:hover {
+                background: aquamarine;
+                .task-sort-handle-icon {
+                    color: whitesmoke;
+                }
             }
         }
         .task-title-container {
@@ -30,14 +39,29 @@
             align-items: center;
             justify-content: center;
         }
+        .trashcan {
+            width: 20%;
+            color: whitesmoke;
+            .delete-task-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: salmon;
+                width: 100%;
+                height: 100%;
+                font-size: 5vh;
+            }
+        }
+
     }
     
     @media (max-width: 750px) {
         .task-header {
             .task-title-container {
+                padding-right: 10%;
                 width: 80%;
             }
-            .edit-task-container {
+            .task-sort-handle {
                 width: 20%;
             }
         }
@@ -48,7 +72,7 @@
             .task-title-container {
                 width: 90%;
             }
-            .edit-task-container {
+            .task-sort-handle {
                 width: 10%;
             }
         }
@@ -56,8 +80,8 @@
     @media (max-height: 400px) {
         .task-header {
             height:50%; 
-            .edit-task-container {
-                .edit-task-icon {
+            .task-sort-handle {
+                .task-sort-handle-icon {
                     font-size: 15vh;
                 }
             }
@@ -65,32 +89,62 @@
     }
     @media (min-height: 400px) {
         .task-header {
-            height: calc(80%/5);
+            height: calc(100%/5);
         }
     }
 </style>
 <template>
     <div 
+        v-bind:class="{'trashcan-visible': trashcanVisible}"
         class="task-header">
         <button 
             v-on:click="navigate"
-            class="edit-task-container">
-            <i class="fa fa-ellipsis-v edit-task-icon"></i>
+            class="task-sort-handle">
+            <i class="fa fa-hand-paper-o task-sort-handle-icon"></i>
         </button>
-        <div class="task-title-container">
+        <v-touch 
+            v-on:swiperight="swipeRight"
+            v-on:swipeleft="swipeLeft"
+            class="task-title-container">
             {{ text }}
-        </div>
+        </v-touch>
+        <div 
+            v-on:click="deleteTask(taskId)" 
+            class="trashcan">
+            <i class="fa fa-trash delete-task-icon"></i>
+        </div>        
+
     </div>
 </template>
 
 <script>
+    import vueTouch from 'vue-touch';
+    import store from '../../store';
+
     export default {
         name: 'task-header',
         props: ['text', 'listId', 'taskId'],
+        data: function() {
+            return {
+                trashcanVisible: false
+            };
+        },
+        components: {
+            vueTouch
+        },
         methods: {
-            navigate: function() {
+            navigate() {
                 this.$emit('navigate', `/tasklist/${ this.listId }/task/${ this.taskId }/details`);
+            },
+            swipeLeft() {
+                console.log('yes');
+                this.trashcanVisible = true;
+            },
+            swipeRight() {
+                console.log('yes');
+                this.trashcanVisible = false;
             }
+
         }
-    };
+   };
 </script>

@@ -6,6 +6,7 @@
         width: 100%;
         background: whitesmoke;
 
+        overflow-x: hidden; 
         ::-webkit-scrollbar {
             display: none;
         }
@@ -34,7 +35,7 @@
 <template>
     <div class="lists-view-container">
         <draggable 
-            :options="{ handle: '.sort-handle' }"
+            :options="{ handle: '.tasklist-sort-handle', draggable: '.tasklist-header' }"
             v-model="tasklists" 
             class="lists-view">
             <tasklist-header 

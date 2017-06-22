@@ -7,13 +7,12 @@ export default {
             { 
                 title: 'A',
                 tasks: [ 
-                    Task({ text:'Release Album.' }), 
-                    Task({ text:'Market Album.' }),
-                    Task({ text:'Market Album.' }),
-                    Task({ text:'Market Album.' }),
-                    Task({ text:'Market Album.' }),
-                    Task({ text:'Market Album.' }), 
-                    Task({ text:'Market Album.' }) 
+                    Task({ text:'A1.' }), 
+                    Task({ text:'B1.' }), 
+                    Task({ text:'C1.' }), 
+                    Task({ text:'D1.' }), 
+                    Task({ text:'E1.' }), 
+                    Task({ text:'F1.' }) 
                 ]
             }
         ), 

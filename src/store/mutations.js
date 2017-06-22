@@ -5,6 +5,9 @@ export default {
     updateTasklists(state, newTasklists) {
         state.tasklists = newTasklists;
     },
+    updateTasks(state, {listId, newTasks}) {
+        state.tasklists[ listId ].tasks = newTasks;
+    },
     addTasklist(state) {
         state.tasklists.push( Tasklist({ tasks: [Task]} ) );
     },

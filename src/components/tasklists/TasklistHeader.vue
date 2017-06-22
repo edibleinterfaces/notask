@@ -10,7 +10,7 @@
         font-size: 0;
         background: whitesmoke;
 
-        &.sortable-chosen > .sort-handle {
+        &.sortable-chosen > .tasklist-sort-handle {
             background: aquamarine;
             > .fa-hand-paper-o {
                 color: white;
@@ -21,13 +21,14 @@
             text-decoration: none;
         }
         .nav-handle,
-        .sort-handle,
+        .tasklist-sort-handle,
         .tasklist-title-container {
+            cursor: pointer;
             height: 100%;
         }
 
         .nav-handle,
-        .sort-handle {
+        .tasklist-sort-handle {
             transition: background 0.2s ease-in-out;
             display: flex;
             align-items: center;
@@ -49,6 +50,7 @@
         }
 
         .trashcan {
+            cursor: pointer;
             background: salmon;
             display: flex;
             align-items: center;
@@ -67,7 +69,7 @@
     @media(max-height: 400px) {
         .tasklist-header {
             height: 50%;
-            .sort-handle,
+            .tasklist-sort-handle,
             .nav-handle {
                 .handle-icon {
                     font-size: 15vh;
@@ -85,7 +87,7 @@
         .tasklist-header {
             width: 120%;
         }
-        .sort-handle,
+        .tasklist-sort-handle,
         .nav-handle {
             width: 20%;
         }
@@ -103,7 +105,7 @@
         }
     }
     @media(min-width: 750px) {
-        .sort-handle,
+        .tasklist-sort-handle,
         .nav-handle {
             width: 10%;
         }
@@ -135,7 +137,7 @@
         class="tasklist-header">
         <div 
             v-if="Number.isInteger(listId)" 
-            class="sort-handle">
+            class="tasklist-sort-handle">
             <i class="fa fa-hand-paper-o handle-icon"></i>
         </div>
         <router-link 
