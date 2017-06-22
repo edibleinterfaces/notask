@@ -109,7 +109,7 @@
             {{ text }}
         </v-touch>
         <div 
-            v-on:click="deleteTask(taskId)" 
+            v-on:click="deleteTask()" 
             class="trashcan">
             <i class="fa fa-trash delete-task-icon"></i>
         </div>        
@@ -133,15 +133,24 @@
             vueTouch
         },
         methods: {
+            deleteTask() {
+                this.trashcanVisible = false;
+                const payload = {
+                    listId: this.listId,
+                    taskId: this.taskId
+                };
+
+                setTimeout(function() {
+                    store.commit('removeTask', payload);
+                }, 300);
+            },
             navigate() {
                 this.$emit('navigate', `/tasklist/${ this.listId }/task/${ this.taskId }/details`);
             },
             swipeLeft() {
-                console.log('yes');
                 this.trashcanVisible = true;
             },
             swipeRight() {
-                console.log('yes');
                 this.trashcanVisible = false;
             }
 

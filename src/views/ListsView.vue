@@ -35,7 +35,10 @@
 <template>
     <div class="lists-view-container">
         <draggable 
-            :options="{ handle: '.tasklist-sort-handle', draggable: '.tasklist-header' }"
+            :options="{ 
+                handle: '.tasklist-sort-handle', 
+                draggable: '.tasklist-header' 
+            }"
             v-model="tasklists" 
             class="lists-view">
             <tasklist-header 
@@ -64,6 +67,7 @@
             Dashboard,
             draggable
         },
+        props: ['listId', 'taskId'],
         computed: {
             tasklists: {
                 get() {

@@ -21,6 +21,7 @@ export default new Router({
         },
         {
             path: '/tasklists',
+            props: true,
             component: ListsView
         },
         {

@@ -65,7 +65,7 @@
         <div class="settings-icons-container">
             <i class="fa fa-cog settings-icon"></i>
             <i 
-                v-on:click="addTasklist" 
+                v-on:click="add" 
                 class="fa fa-plus add-tasklist-icon"></i>
         </div>
     </div>
@@ -77,9 +77,11 @@
 
     export default {
         name: 'dashboard',
+        props: ['listId'],
         methods: {
-            addTasklist() {
-                store.commit('addTasklist');
+            add() {
+                if (this.listId) store.commit('addTask', this.listId);
+                else store.commit('addTasklist');
             }
         }
     };

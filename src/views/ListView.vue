@@ -48,7 +48,7 @@
                 </task-header>
             </draggable>
         </div>
-        <dashboard></dashboard>
+        <dashboard :list-id="listId"></dashboard>
     </div>
 
 </template>
