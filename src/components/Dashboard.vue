@@ -63,8 +63,11 @@
 <template>
     <div class="dashboard">
         <div class="settings-icons-container">
-            <i class="fa fa-cog settings-icon"></i>
+            <i
+                v-on:click="navigate"
+                class="fa fa-cog settings-icon"></i>
             <i 
+                v-show="['ListsView','ListView'].includes($route.name)"
                 v-on:click="add" 
                 class="fa fa-plus add-tasklist-icon"></i>
         </div>
@@ -79,6 +82,14 @@
         name: 'dashboard',
         props: ['listId'],
         methods: {
+            navigate() {
+                if (this.$route.name === 'SettingsView') { 
+                    this.$router.back();
+                } else {
+                    this.$router.push('/settings');
+                }
+                console.log(this.$router);
+            },
             add() {
                 if (this.$route.name === 'ListView') 
                     store.commit('addTask', this.listId);
