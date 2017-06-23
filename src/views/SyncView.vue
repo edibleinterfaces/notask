@@ -1,19 +1,19 @@
 <style lang="scss">
-    .storage-view-container {
+    .sync-view-container {
         height: 100%;
         width: 100%;
         display: flex;
         flex-direction: column;
-        .storage-view {
+        .sync-view {
             height: 90%;
             width: 100%;
             background: aquamarine;
-            ul.storage-options {
+            ul.sync-options {
                 margin: 0;
                 padding: 0;
                 height: 100%;
             }
-            li.storage-option {
+            li.sync-option {
                 position: relative;
                 display: flex;
                 justify-content: center;
@@ -35,12 +35,12 @@
 </style>
 
 <template>
-    <div class="storage-view-container">
-        <div class="storage-view">
-            <ul class="storage-options">
-                <li class="storage-option">Reinitialize Storage</li>
-                <li class="storage-option">Import App Data From URL</li>
-                <li class="storage-option">Export App Data</li>
+    <div class="sync-view-container">
+        <div class="sync-view">
+            <ul class="sync-options">
+                <li class="sync-option">Sync Option A</li>
+                <li class="sync-option">Sync Option B</li>
+                <li class="sync-option">Sync Option C</li>
             </ul>
         </div>
         <dashboard></dashboard>
@@ -51,6 +51,7 @@
     import Dashboard from '../components/Dashboard';
 
     export default {
+        name: 'SyncView',
         data: function() {
             return {};
         },

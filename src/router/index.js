@@ -8,6 +8,7 @@ import TaskView from '../views/TaskView';
 import TaskDetailsView from '../views/TaskDetailsView';
 import SettingsView from '../views/SettingsView';
 import StorageView from '../views/StorageView';
+import SyncView from '../views/SyncView';
 import Oops from '../views/Oops';
 
 Vue.use(Router)
