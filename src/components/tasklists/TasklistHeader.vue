@@ -27,6 +27,16 @@
             cursor: pointer;
             height: 100%;
         }
+        .tasklist-title-container {
+            position: relative;
+            .tasklist-swipe-icon {
+                color: lightgray;
+                position: absolute;
+                right: 5%;
+                font-size: 4vh;
+                top: calc(50% - 2vh);
+            }
+        }
 
         .nav-handle,
         .tasklist-sort-handle {
@@ -153,6 +163,7 @@
             v-on:swiperight="hideTrashcan"
             class="tasklist-title-container">
             <h1 class="tasklist-title">{{ listTitle }}</h1>
+            <i class="fa fa-ellipsis-v tasklist-swipe-icon"></i>
         </v-touch>
         <div 
             v-on:click="deleteTasklist(listId)" 
