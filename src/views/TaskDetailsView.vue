@@ -1,15 +1,21 @@
-<style>
+<style lang="scss">
 
     .task-details-container {
         height: 100%;
         width: 100%;
+        .task-details {
+            height: 90%;
+            width: 100%;
+        }
     }
 
 </style>
 <template>
 
     <div class="task-details-container">
-        <task-details></task-details>
+        <div class="task-details">
+            <task-details :list-id="listId" :task-id="taskId"></task-details>
+        </div>
         <dashboard></dashboard>
     </div>
 
@@ -21,6 +27,7 @@
 
     export default {
         name: 'list-view',
+        props: ['listId', 'taskId'],
         components: {
             TaskDetails,
             Dashboard

@@ -103,6 +103,7 @@
             <i class="fa fa-hand-paper-o task-sort-handle-icon"></i>
         </button>
         <v-touch 
+            v-on:tap="navigate"
             v-on:swiperight="swipeRight"
             v-on:swipeleft="swipeLeft"
             class="task-title-container">
