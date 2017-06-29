@@ -2,6 +2,7 @@
 
     Active
 
+    - Overflow scroll bar needs work on all pages
     - Trashcan Delete UI CSS
         when a tasklist is toggled in delete mode and then deleted,
         that css is applied to the next tasklist in the dom.
@@ -38,3 +39,9 @@
         - add vertical ellipses on right side of tasklist header to indicate swipe
         - distance from top directive
 
+    + Task Details view
+        - mark complete
+        - mark as syncable
+        - Let Task Details 
+        - schedule reminders
+        - move task to another list
