@@ -142,9 +142,7 @@
 <template>
 
     <div
-        v-bind:class="{
-            'trashcan-visible': trashcanVisible, 
-        }"
+        v-bind:class="{'trashcan-visible': trashcanVisible}"
         class="tasklist-header">
         <div 
             v-if="Number.isInteger(listId)" 

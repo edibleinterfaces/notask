@@ -14,7 +14,10 @@
 
     <div class="task-details-container">
         <div class="task-details">
-            <task-details :list-id="listId" :task-id="taskId"></task-details>
+            <task-details 
+                :list-id="listId" 
+                :task-id="taskId">
+            </task-details>
         </div>
         <dashboard></dashboard>
     </div>

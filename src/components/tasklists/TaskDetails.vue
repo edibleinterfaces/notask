@@ -1,7 +1,7 @@
 <template>
     <div class="task-details">
-        <task-header></task-header>
-        <div class="task-body">Task Details</div>
+        <task-header :text="task.text"></task-header>
+        <div class="task-body">{{ task.details }}</div>
     </div>
 </template>
 
@@ -16,9 +16,11 @@
             TaskHeader
         },
         computed: {
-            task: function() {
-                store.getters.task(this.listId)
-            }
-        }
+            task() {
+                //return store.state.tasklists[ this.listId ].tasks[ this.taskId ];
+                return store.getters.task({ listId: this.listId, taskId: this.taskId});
+
+            } 
+        },
     };
 </script>

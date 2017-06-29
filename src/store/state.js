@@ -7,7 +7,10 @@ export default {
             { 
                 title: 'A',
                 tasks: [ 
-                    Task({ text:'A1.' }), 
+                    Task({ 
+                        text:'A1!.', 
+                        details: 'test details'
+                    }), 
                     Task({ text:'B1.' }), 
                     Task({ text:'C1.' }), 
                     Task({ text:'D1.' }), 
