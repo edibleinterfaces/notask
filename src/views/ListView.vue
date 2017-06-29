@@ -1,6 +1,7 @@
 <style lang="scss">
     .list-view-outer-container {
         height: 100%;
+        overflow-x: hidden;
         .list-view-inner-container {
             height: 90%;
         }

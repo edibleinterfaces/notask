@@ -1,6 +1,7 @@
 <style lang="scss">
 
     .task-details-container {
+        overflow-x: hidden;
         height: 100%;
         width: 100%;
         .task-details {
@@ -13,12 +14,10 @@
 <template>
 
     <div class="task-details-container">
-        <div class="task-details">
-            <task-details 
-                :list-id="listId" 
-                :task-id="taskId">
-            </task-details>
-        </div>
+        <task-details 
+            :list-id="listId" 
+            :task-id="taskId">
+        </task-details>
         <dashboard></dashboard>
     </div>
 

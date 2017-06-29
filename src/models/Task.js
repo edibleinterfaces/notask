@@ -1,9 +1,9 @@
-export default function Task( text='New Task' ) {
+export default function Task({ text='New Task', details='Test Details' }) {
 
     return {
-        text: text.text,
-        complete: false,
-        details: ''
+        text, 
+        details, 
+        complete: false
     };
 
 };
