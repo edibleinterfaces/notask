@@ -62,7 +62,7 @@
                 padding-right: 10%;
                 width: 80%;
             }
-            .task-sort-handle,
+            button.task-sort-handle,
             .task-nav-back-icon
             {
                 width: 20%;

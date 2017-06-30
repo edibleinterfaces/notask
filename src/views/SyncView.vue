@@ -38,9 +38,9 @@
     <div class="sync-view-container">
         <div class="sync-view">
             <ul class="sync-options">
-                <li class="sync-option">Sync Option A</li>
-                <li class="sync-option">Sync Option B</li>
-                <li class="sync-option">Sync Option C</li>
+                <li class="sync-option">Paste It!</li>
+                <li class="sync-option">Load from the cloud</li>
+                <li class="sync-option">Load from URL</li>
             </ul>
         </div>
         <dashboard></dashboard>

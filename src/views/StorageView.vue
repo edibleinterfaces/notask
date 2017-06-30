@@ -38,9 +38,9 @@
     <div class="storage-view-container">
         <div class="storage-view">
             <ul class="storage-options">
-                <li class="storage-option">Reinitialize Storage</li>
-                <li class="storage-option">Import App Data From URL</li>
-                <li class="storage-option">Export App Data</li>
+                <li class="storage-option">Reset storage</li>
+                <li class="storage-option">Import</li>
+                <li class="storage-option">Export</li>
             </ul>
         </div>
         <dashboard></dashboard>

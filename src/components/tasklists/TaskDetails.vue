@@ -8,6 +8,7 @@
             height: 90%;
             overflow-x: hidden;
             .task-details {
+                overflow-y: scroll;
                 height: 80%;
                 padding: 5%;
                 .task-details-description-container {
