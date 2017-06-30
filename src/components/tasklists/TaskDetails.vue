@@ -16,6 +16,11 @@
             }
         }
         .task-details {
+            .reminder-unit,
+            .reminder-set-unset, 
+            .reminder-date {
+                display: inline-block;
+            }
             .task-details-input {
                 height: 200px !important;
                 width: 100%;
@@ -33,25 +38,19 @@
                 Task Description
             </h2>
             <div class="task-details-description-container">
-                <textarea class="task-details-input">{{ task.text }}
-
-{{ task.details }}
-                </textarea>
+                <textarea class="task-details-input">{{ task.details }}</textarea>
             </div>
             <h2>
                 <i class="fa fa-clock-o task-details-reminder-icon"></i>
                 Schedule a Reminder
             </h2>
             <div class="task-details-reminder-container">
-                <h3>Remind me in: </h3>
-                <input class="reminder-quantity"></input>
-                <select>
-                    <option class="reminder-unit">minutes</option>
-                    <option class="reminder-unit">hours</option>
-                    <option class="reminder-unit">days</option>
-                </select>
-                <button class="reminder-set-unset" v-on:click="toggleReminder">{{reminderActive ? 'disable' : 'set'}}</button>
-                <button>x</button>
+                <datepicker 
+                    v-model="reminderDateString" 
+                    :inline="true">
+                </datepicker>
+                <h3>Remind me on </h3>
+                {{ reminderHours }}:{{reminderMinutes}}, {{ reminderDate }}
             </div>
         </div>
     </div>
@@ -60,16 +59,22 @@
 <script>
     import store from '../../store';
     import TaskHeader from './TaskHeader';
+    import Datepicker from 'vuejs-datepicker';
+    import dateFns from 'date-fns';
 
     export default {
         name: 'task-details',
         props: ['listId','taskId'],
         components: {
-            TaskHeader
+            TaskHeader,
+            Datepicker
         },
         data: function() {
             return {
-                reminderActive: false
+                reminderActive: false,
+                reminderDateString: new Date(),
+                reminderMinutesString: 0,
+                reminderHoursString: 0
             };
         },
         methods: {
@@ -78,6 +83,16 @@
             } 
         },
         computed: {
+
+            reminderDate() {
+                return dateFns.format(this.reminderDateString, 'MMMM Do, YYYY');
+            },
+            reminderHours() {
+                return dateFns.format(this.reminderHoursString, 'HH A');
+            },
+            reminderMinutes() {
+                return dateFns.format(this.reminderMinutesString, 'mm');
+            },
             task() {
                 //return store.state.tasklists[ this.listId ].tasks[ this.taskId ];
                 return store.getters.task({ listId: this.listId, taskId: this.taskId});
