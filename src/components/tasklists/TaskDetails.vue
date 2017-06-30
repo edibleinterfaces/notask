@@ -15,6 +15,9 @@
                 }
             }
         }
+        .datepicker {
+            width: 100%;
+        }
         .task-details {
             .reminder-unit,
             .reminder-set-unset, 
@@ -22,11 +25,39 @@
                 display: inline-block;
             }
             .task-details-input {
+                &:focus {
+                    outline: none;
+                        background: aquamarine;
+                }
                 height: 200px !important;
                 width: 100%;
                 margin: 0;
+                padding: 2%;
             }
         }
+        .datepicker-container {
+            > div:nth-child(2) { 
+                padding: 4%;
+                width: 100%;
+                display: inline-block;
+            }
+
+        }
+        @media(max-width:750px) {
+            .task-details {
+                h2 {
+                    text-align: center;
+                }
+            }
+        }
+        @media(min-width:750px) {
+            .task-details {
+                h2 {
+                    text-align: left;
+                }
+            }
+        }
+
     }
 </style>
 <template>
@@ -46,6 +77,7 @@
             </h2>
             <div class="task-details-reminder-container">
                 <datepicker 
+                    wrapper-class="datepicker-container"
                     v-model="reminderDateString" 
                     :inline="true">
                 </datepicker>

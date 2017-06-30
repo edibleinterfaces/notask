@@ -21,7 +21,8 @@
             align-items: center;
             justify-content: center;
 
-            .task-sort-handle-icon {
+            .task-sort-handle-icon,
+            .task-nav-back-icon {
                 color: lightgray;
                 font-size: 5vh;
             }
@@ -61,7 +62,9 @@
                 padding-right: 10%;
                 width: 80%;
             }
-            .task-sort-handle {
+            .task-sort-handle,
+            .task-nav-back-icon
+            {
                 width: 20%;
             }
         }
@@ -72,7 +75,9 @@
             .task-title-container {
                 width: 90%;
             }
-            .task-sort-handle {
+            .task-sort-handle 
+            .task-nav-back-icon
+            {
                 width: 10%;
             }
         }
@@ -98,9 +103,14 @@
         v-bind:class="{'trashcan-visible': trashcanVisible}"
         class="task-header">
         <button 
-            v-on:click="navigate"
+            v-if="$route.name === 'TaskDetailsView'"
             class="task-sort-handle">
-            <i class="fa fa-hand-paper-o task-sort-handle-icon"></i>
+            <i  v-on:click="$router.go(-1)"
+                class="fa fa-arrow-left task-sort-handle-icon"></i>
+        </button>
+        <button v-else> 
+            <i v-on:click="router.go(-1)"
+                class="fa fa-hand-paper-o task-sort-handle-icon"></i>
         </button>
         <v-touch 
             v-on:tap="navigate"
@@ -132,6 +142,8 @@
         },
         components: {
             vueTouch
+        },
+        created() {
         },
         methods: {
             deleteTask() {
