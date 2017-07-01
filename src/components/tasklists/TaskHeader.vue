@@ -36,6 +36,7 @@
             align-items: center;
             justify-content: center;
             .task-title-input {
+                transition: background 0.2s ease;
                 background: whitesmoke;
                 outline: none;
                 border: 0;
@@ -47,6 +48,7 @@
                 font-size: 1em;
 
                 &:focus {
+                    background: bisque;
                 }
                 &[disabled] {
                     user-select: none;
