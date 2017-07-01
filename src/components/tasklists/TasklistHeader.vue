@@ -63,6 +63,12 @@
             justify-content: center;
             font-size: initial;
             text-align: center;
+            .tasklist-title {
+                width: 100%;
+                margin:0;
+                padding:0;
+                    flex: 1;
+            }
         }
 
         .trashcan {
@@ -102,7 +108,7 @@
 
     @media(max-width: 750px) {
         .tasklist-header {
-            width: 120%;
+            width: 125%;
         }
         .sort-handle,
         .nav-handle,
@@ -110,13 +116,13 @@
             width: 25%;
         }
         .title-container {
-            width: 80%;
+            width: 75%;
         }
         .trashcan {
-            width: 20%;
+            width: 25%;
         }
         .tasklist-header.trashcan-visible {
-            right: 20%;
+            right: 25%;
         }
     }
     @media(min-width: 750px) {
@@ -208,18 +214,20 @@
         methods: {
             delegatedClick(e) {
 
-                const handleWasClicked = e.target.classList.contains('handle-icon');
-                if (handleWasClicked) {
+                const allowed = ['sort-handle','handle-icon','title-container','tasklist-title'];
+                const catchTheClick = allowed.some(c => e.target.classList.contains(c));
+
+                console.log(catchTheClick);
+                if (catchTheClick) {
                     this.navigate();
                 }
-
-                e.preventDefault();
             },
             navigate() {
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
             showTrashcan(e) {
                 this.trashcanVisible = true;
+                e.preventDefault();
             },
             hideTrashcan(e) {
                 this.trashcanVisible = false;

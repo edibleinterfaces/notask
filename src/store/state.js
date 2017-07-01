@@ -5,17 +5,20 @@ export default {
     tasklists: [
         Tasklist(
             { 
-                title: 'A',
+                title: 'VSTS Tasks',
                 tasks: [ 
                     Task({ 
-                        text:'A1!.', 
-                        details: 'test details'
+                        text:'Closed Captioning', 
+                        details: 'Do this by 6.30'
                     }), 
-                    Task({ text:'B1.' }), 
-                    Task({ text:'C1.' }), 
-                    Task({ text:'D1.' }), 
-                    Task({ text:'E1.' }), 
-                    Task({ text:'F1.' }) 
+                    Task({ 
+                        text:'Video Bugs on IE', 
+                        details: 'loader stops at phase 2 on IE.'
+                    }), 
+                    Task({ 
+                        text:'Endpoint for Video Delete', 
+                        details: ''
+                    })
                 ]
             }
         ), 
