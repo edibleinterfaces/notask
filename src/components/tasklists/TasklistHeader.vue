@@ -10,7 +10,7 @@
         font-size: 0;
         background: whitesmoke;
 
-        &.sortable-chosen > .tasklist-sort-handle {
+        &.sortable-chosen > .sort-handle {
             background: aquamarine;
             > .fa-hand-paper-o {
                 color: white;
@@ -22,36 +22,41 @@
         }
 
         .nav-handle,
-        .tasklist-sort-handle,
-        .tasklist-title-container {
+        .sort-handle,
+        .title-container {
             cursor: pointer;
             height: 100%;
         }
-        .tasklist-title-container {
+        .title-container {
             position: relative;
-            .tasklist-swipe-icon {
+        }
+        .swipe-handle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .swipe-icon {
                 color: lightgray;
-                position: absolute;
-                right: 5%;
                 font-size: 4vh;
-                top: calc(50% - 2vh);
             }
         }
 
         .nav-handle,
-        .tasklist-sort-handle {
+        .sort-handle {
             transition: background 0.2s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
             color: aquamarine;
+            height: 100%;
 
             .handle-icon {
                 font-size: 5vh;
+                width: 100%;
+                text-align: center;
             }
         }
 
-        .tasklist-title-container {
+        .title-container {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -80,7 +85,7 @@
     @media(max-height: 400px) {
         .tasklist-header {
             height: 50%;
-            .tasklist-sort-handle,
+            .sort-handle,
             .nav-handle {
                 .handle-icon {
                     font-size: 15vh;
@@ -88,6 +93,7 @@
             }
         }
     }
+
     @media (min-height: 400px) {
         .tasklist-header {
             height: 20%;
@@ -98,41 +104,37 @@
         .tasklist-header {
             width: 120%;
         }
-        .tasklist-sort-handle,
-        .nav-handle {
-            width: 20%;
+        .sort-handle,
+        .nav-handle,
+        .swipe-handle {
+            width: 25%;
         }
-        .tasklist-title-container {
-            padding-right: 10%;
+        .title-container {
             width: 80%;
-        }
-        .tasklist-title {
         }
         .trashcan {
             width: 20%;
         }
-        &.trashcan-visible {
+        .tasklist-header.trashcan-visible {
             right: 20%;
         }
     }
     @media(min-width: 750px) {
-        .tasklist-sort-handle,
-        .nav-handle {
-            width: 10%;
-        }
         .tasklist-header {
             width: 110%;
         }
-        .tasklist-title-container {
-            width: 90%;
-            padding-right: 10%;
+        .sort-handle,
+        .swipe-handle,
+        .nav-handle {
+            width: 10%;
         }
-        .tasklist-title {
+        .title-container {
+            width: 90%;
         }
         .trashcan {
             width: 10%;
         }
-        &.trashcan-visible {
+        .tasklist-header.trashcan-visible {
             right: 10%;
         }
     }
@@ -143,10 +145,12 @@
 
     <div
         v-bind:class="{'trashcan-visible': trashcanVisible}"
+        v-on:click="delegatedClick"
         class="tasklist-header">
         <div 
+            v-on:tap="navigate" 
             v-if="Number.isInteger(listId)" 
-            class="tasklist-sort-handle">
+            class="sort-handle">
             <i class="fa fa-hand-paper-o handle-icon"></i>
         </div>
         <router-link 
@@ -156,13 +160,16 @@
             <i class="fa fa-arrow-left handle-icon"></i>
         </router-link>
         <v-touch 
-            v-on:tap="navigate" 
             v-on:swipeleft="showTrashcan"
             v-on:swiperight="hideTrashcan"
-            class="tasklist-title-container">
+            class="title-container">
             <h1 class="tasklist-title">{{ listTitle }}</h1>
-            <i class="fa fa-ellipsis-v tasklist-swipe-icon"></i>
         </v-touch>
+        <div 
+            v-on:click="toggleTrashcan" 
+            class="swipe-handle">
+            <i class="fa fa-ellipsis-v swipe-icon"></i>
+        </div>
         <div 
             v-on:click="deleteTasklist(listId)" 
             class="trashcan"> 
@@ -199,14 +206,26 @@
 
         },
         methods: {
-            navigate: function(index) {
+            delegatedClick(e) {
+
+                const handleWasClicked = e.target.classList.contains('handle-icon');
+                if (handleWasClicked) {
+                    this.navigate();
+                }
+
+                e.preventDefault();
+            },
+            navigate() {
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
-            showTrashcan: function(e) {
+            showTrashcan(e) {
                 this.trashcanVisible = true;
             },
-            hideTrashcan: function(e) {
+            hideTrashcan(e) {
                 this.trashcanVisible = false;
+            },
+            toggleTrashcan() {
+                this.trashcanVisible = !this.trashcanVisible;
             },
             deleteTasklist(listId) {
 
