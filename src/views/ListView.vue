@@ -35,7 +35,7 @@
         <div class="list-view-inner-container">
             <tasklist-header :list-id="listId"></tasklist-header>
             <draggable
-                :options="{ handle: '.task-sort-handle', draggable: '.task-header'}"
+                :options="{ handle: '.sort-handle', draggable: '.task-header'}"
                 v-model="tasks"
                 class="list-view">
                 <task-header 

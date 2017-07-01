@@ -1,16 +1,16 @@
 <style lang="scss">
     .task-header {
         background: whitesmoke;
-        width: 120%;
+        width: 125%;
         display: inline-flex; 
         position: relative;
         right: 0%; 
         transition: right 0.2s ease-in-out;
 
         &.trashcan-visible {
-            right: 20%;
+            right: 25%;
         }
-        .task-sort-handle {
+        .sort-handle {
             background: whitesmoke;
             outline: none;
             border: none;
@@ -27,21 +27,35 @@
                 font-size: 5vh;
             }
 
-            &:hover {
-                background: aquamarine;
-                .task-sort-handle-icon {
-                    color: whitesmoke;
-                }
+            .task-sort-handle-icon:hover {
+                color: aquamarine;
             }
         }
         .task-title-container {
-            padding-right: 10%;
             display: flex;
             align-items: center;
             justify-content: center;
+            .task-title-input {
+                background: whitesmoke;
+                outline: none;
+                border: 0;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                font-size: 1em;
+
+                &:focus {
+                }
+                &[disabled] {
+                    user-select: none;
+                    color: black;
+                }
+            }
         }
         .trashcan {
-            width: 20%;
+            width: 25%;
             color: whitesmoke;
             .delete-task-icon {
                 display: flex;
@@ -59,13 +73,12 @@
     @media (max-width: 750px) {
         .task-header {
             .task-title-container {
-                padding-right: 10%;
-                width: 80%;
+                width: 50%;
             }
-            button.task-sort-handle,
+            button.sort-handle,
             .task-nav-back-icon
             {
-                width: 20%;
+                width: 25%;
             }
         }
 
@@ -75,7 +88,7 @@
             .task-title-container {
                 width: 90%;
             }
-            .task-sort-handle 
+            .sort-handle 
             .task-nav-back-icon
             {
                 width: 10%;
@@ -85,7 +98,7 @@
     @media (max-height: 400px) {
         .task-header {
             height:50%; 
-            .task-sort-handle {
+            .sort-handle {
                 .task-sort-handle-icon {
                     font-size: 15vh;
                 }
@@ -104,21 +117,30 @@
         class="task-header">
         <button 
             v-if="$route.name === 'TaskDetailsView'"
-            class="task-sort-handle">
+            class="sort-handle">
             <i  v-on:click="$router.go(-1)"
                 class="fa fa-arrow-left task-sort-handle-icon"></i>
         </button>
-        <button v-else> 
-            <i v-on:click="router.go(-1)"
+        <button v-else class="sort-handle"> 
+            <i v-on:click="$router.go(-1)"
                 class="fa fa-hand-paper-o task-sort-handle-icon"></i>
         </button>
         <v-touch 
-            v-on:tap="navigate"
+            v-on:tap="enableInput"
             v-on:swiperight="swipeRight"
             v-on:swipeleft="swipeLeft"
             class="task-title-container">
-            {{ text }}
+            <input 
+                v-on:blur="editingTitle = false"
+                :v-model="text"
+                :value="editingTitle" 
+                :disabled="!editingTitle"
+                class="task-title-input"> 
+            </input>
         </v-touch>
+        <button class="sort-handle"> 
+            <i v-on:click="navigate" class="fa fa-pencil task-sort-handle-icon"></i>
+        </button>
         <div 
             v-on:click="deleteTask()" 
             class="trashcan">
@@ -129,6 +151,7 @@
 </template>
 
 <script>
+    import Vue from 'vue';
     import vueTouch from 'vue-touch';
     import store from '../../store';
 
@@ -137,7 +160,8 @@
         props: ['text', 'listId', 'taskId'],
         data: function() {
             return {
-                trashcanVisible: false
+                trashcanVisible: false,
+                editingTitle: false
             };
         },
         components: {
@@ -146,6 +170,14 @@
         created() {
         },
         methods: {
+            enableInput(e) {
+                this.editingTitle = true;
+                Vue.nextTick(function() {
+                    e.target.focus()
+                });
+            },
+            disableInput() {
+            },
             deleteTask() {
                 this.trashcanVisible = false;
                 const payload = {

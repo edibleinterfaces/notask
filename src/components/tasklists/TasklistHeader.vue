@@ -116,7 +116,7 @@
             width: 25%;
         }
         .title-container {
-            width: 75%;
+            width: 50%;
         }
         .trashcan {
             width: 25%;
@@ -192,7 +192,10 @@
     import store from '../../store';
 
     Vue.use(VueTouch);
-    VueTouch.config.swipe = { direction: 'horizontal' }; // fixes scroll bug
+    VueTouch.config.swipe = { 
+        direction: 'horizontal', 
+        threshold: 0
+    }; // fixes scroll bug
 
     export default {
         name: 'tasklist-header',
@@ -213,11 +216,14 @@
         },
         methods: {
             delegatedClick(e) {
-
-                const allowed = ['sort-handle','handle-icon','title-container','tasklist-title'];
+                const allowed = [
+                    'sort-handle',
+                    'handle-icon',
+                    'title-container',
+                    'tasklist-title'
+                ];
                 const catchTheClick = allowed.some(c => e.target.classList.contains(c));
 
-                console.log(catchTheClick);
                 if (catchTheClick) {
                     this.navigate();
                 }
@@ -227,7 +233,6 @@
             },
             showTrashcan(e) {
                 this.trashcanVisible = true;
-                e.preventDefault();
             },
             hideTrashcan(e) {
                 this.trashcanVisible = false;
