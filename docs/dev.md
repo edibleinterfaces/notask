@@ -2,6 +2,9 @@
 
     Active
 
+    - When deleteMode is toggled, and the tasklist is deleted, the next item 
+    has its deleteMode toggled.  bug in the library?
+
     - Overflow scroll bar needs work on all pages
     - Trashcan Delete UI CSS
         when a tasklist is toggled in delete mode and then deleted,

@@ -178,7 +178,7 @@
         v-bind:class="{
             'delete-mode': deleteMode,
             'edit-mode': editingTitle
-       }"
+        }"
         v-on:click="delegatedClick"
         class="tasklist-header">
         <div 
@@ -303,6 +303,7 @@
             },
             enableDeleteMode() {
                 this.deleteMode = true;
+                this.deleteConfirmed = false;
             },
             disableDeleteMode() {
                 this.deleteMode = false;
