@@ -10,8 +10,7 @@
     .tasklist-header {
 
         right: 0%;
-        transition: right 0.2s ease;
-        -webkit-transition: right 0.2s ease;
+        -webkit-transition: right 0.2s ease, background 0.2s ease;
         position: relative;
         display: flex;
         font-size: 0;
@@ -77,10 +76,6 @@
             font-size: initial;
             text-align: center;
 
-            .tasklist-title-input[disabled] {
-                user-select: none;
-            }
-
             .tasklist-title-input {
                 background: transparent;
                 width: 100%;
@@ -93,6 +88,11 @@
                 border: none;
                 outline: none;
             }
+
+            .tasklist-title-input[disabled] {
+                user-select: none;
+            }
+
         }
 
         .trashcan {
@@ -143,7 +143,7 @@
         .trashcan {
             width: 20%;
         }
-        .tasklist-header.trashcan-visible {
+        .tasklist-header.delete-mode {
             right: 20%;
         }
     }
@@ -160,7 +160,7 @@
         .trashcan {
             width: 10%;
         }
-        .tasklist-header.trashcan-visible {
+        .tasklist-header.delete-mode {
             right: 10%;
         }
     }
@@ -171,7 +171,7 @@
 
     <div
         v-bind:class="{
-            'trashcan-visible': trashcanVisible,
+            'delete-mode': deleteMode,
             'edit-mode': editingTitle
        }"
         v-on:click="delegatedClick"
@@ -189,29 +189,32 @@
             <i class="fa fa-arrow-left handle-icon"></i>
         </router-link>
         <v-touch 
-            v-on:swipeleft="showTrashcan"
-            v-on:swiperight="hideTrashcan"
+            v-on:swipeleft="enableDeleteMode"
+            v-on:swiperight="disableDeleteMode"
             class="title-container">
             <input 
                 :value="listTitle" 
                 :disabled="this.$route.name === 'ListsView'"
                 v-on:click="navigateOrEdit"
                 v-on:focus="selectText($event.target)"
-                v-on:blur="editingTitle = false"
+                v-on:blur="disableDeleteMode"
                 v-on:keydown.enter="triggerBlur($event.target)"
                 v-on:change="updateTasklistTitle"
                 class="tasklist-title-input"> 
             </input>
         </v-touch>
         <div 
-            v-on:click="toggleTrashcan" 
+            v-on:click="toggleDeleteMode" 
             class="swipe-handle">
             <i class="fa fa-ellipsis-v swipe-icon"></i>
         </div>
         <div 
             v-on:click="deleteTasklist(listId)" 
             class="trashcan"> 
-            <i class="fa fa-trash delete-tasklist-icon"></i>
+            <i 
+                v-if="deleteMode && deleteConfirmed" 
+                class="fa fa-trash delete-tasklist-icon"></i>
+            <i v-else class="fa fa-trash delete-tasklist-icon"></i>
         </div>
     </div>
 
@@ -237,7 +240,9 @@
         data: function() {
             return {
                 trashcanVisible: false,
-                editingTitle: false
+                editingTitle: false,
+                deleteMode: false,
+                deleteConfirmed: false
             };
         },
         computed: {
@@ -286,20 +291,22 @@
             navigate() {
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
-            showTrashcan(e) {
-                this.trashcanVisible = true;
+            toggleDeleteMode() {
+                this.deleteMode = !this.deleteMode;
             },
-            hideTrashcan(e) {
-                this.trashcanVisible = false;
+            enableDeleteMode() {
+                this.deleteMode = true;
+                console.log(this.deleteMode);
             },
-            toggleTrashcan() {
-                this.trashcanVisible = !this.trashcanVisible;
+            disableDeleteMode() {
+                this.deleteMode = false;
+                console.log(this.deleteMode);
             },
             deleteTasklist(listId) {
 
                 const CSS_FADEOUT_INTERVAL = 200;
 
-                this.trashcanVisible = false;
+                this.deleteMode = false;
 
                 setTimeout(function() {
                     store.commit('removeTasklist', listId);
