@@ -157,9 +157,12 @@
             v-on:swipeleft="swipeLeft"
             class="task-title-container">
             <input 
+                v-on:focus="selectText($event.target)"
                 v-on:blur="editingTitle = false"
+                v-on:keydown.enter="editingTitle = false"
+                v-on:change="updateTask"
                 :v-model="text"
-                :value="editingTitle" 
+                :value="text" 
                 :disabled="!editingTitle"
                 class="task-title-input"> 
             </input>
@@ -180,6 +183,7 @@
     import Vue from 'vue';
     import vueTouch from 'vue-touch';
     import store from '../../store';
+    import { selectText } from '../../utils';
 
     export default {
         name: 'task-header',
@@ -196,13 +200,20 @@
         created() {
         },
         methods: {
+            selectText,
+            updateTask(e) {
+                const payload = {
+                    listId: this.listId,
+                    taskId: this.taskId,
+                    text: e.target.value 
+                };
+                store.commit('updateTaskText', payload); 
+            },
             enableInput(e) {
                 this.editingTitle = true;
                 Vue.nextTick(function() {
                     e.target.focus()
                 });
-            },
-            disableInput() {
             },
             deleteTask() {
                 this.trashcanVisible = false;
