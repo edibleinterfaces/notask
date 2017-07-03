@@ -5,7 +5,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: turquoise;
+        background: white;
     }
     .title {
         text-decoration: none;
@@ -15,7 +15,7 @@
         padding: 5%;
     }
     .no {
-        color: whitesmoke;
+        color: aquamarine;
     }
     .title {
         color: salmon;

@@ -9,7 +9,9 @@
         background: lightgray;
 
         .settings-icons-container {
+            background: white;
             width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
 

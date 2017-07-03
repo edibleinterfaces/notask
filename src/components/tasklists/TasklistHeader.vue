@@ -1,5 +1,9 @@
 <style lang="scss">
 
+    ::selection{
+        background: salmon;
+    }
+
     .tasklist-header {
 
         right: 0%;
@@ -35,8 +39,9 @@
             align-items: center;
             justify-content: center;
             .swipe-icon {
-                color: lightgray;
+                color: #efbbbb;
                 font-size: 4vh;
+                    
             }
         }
 

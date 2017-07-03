@@ -61,7 +61,6 @@
                 font-size: 1em;
 
                 &:focus {
-                    background: bisque;
                 }
                 &[disabled] {
                     user-select: none;
