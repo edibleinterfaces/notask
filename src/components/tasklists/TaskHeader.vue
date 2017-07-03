@@ -1,15 +1,14 @@
 <style lang="scss">
     .task-header {
         background: whitesmoke;
-        width: 125%;
         display: inline-flex; 
+        align-items: center;
+        justify-content: center;
         position: relative;
         right: 0%; 
         transition: right 0.2s ease-in-out;
 
-        &.trashcan-visible {
-            right: 25%;
-        }
+        .details-handle,
         .sort-handle {
             background: whitesmoke;
             outline: none;
@@ -20,9 +19,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100%;
+            text-align: center !important;
 
+        }
+        .details-handle {
+            .details-handle-icon {
+                text-align: center;
+                color: lightgray;
+                font-size: 5vh;
+                width: 100%;
+            }
+        }
+        .sort-handle {
             .task-sort-handle-icon,
             .task-nav-back-icon {
+                width: 100%;
+                text-align: center;
                 color: lightgray;
                 font-size: 5vh;
             }
@@ -35,6 +48,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100%;
             .task-title-input {
                 transition: background 0.2s ease;
                 background: whitesmoke;
@@ -42,7 +56,7 @@
                 border: 0;
                 margin: 0;
                 padding: 0;
-                width: 100%;
+                width: 120%;
                 height: 100%;
                 text-align: center;
                 font-size: 1em;
@@ -57,16 +71,16 @@
             }
         }
         .trashcan {
-            width: 25%;
             color: whitesmoke;
+            background: salmon;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             .delete-task-icon {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: salmon;
                 width: 100%;
-                height: 100%;
                 font-size: 5vh;
+                text-align: center;
             }
         }
 
@@ -74,32 +88,42 @@
     
     @media (max-width: 750px) {
         .task-header {
+            width: 120%;
             .task-title-container {
-                width: 50%;
+                width: 60%;
             }
-            button.sort-handle,
-            .task-nav-back-icon
-            {
-                width: 25%;
+            .sort-handle,
+            .details-handle,
+            .task-nav-back-icon,
+            .trashcan {
+                width: 20%;
+            }
+            &.trashcan-visible {
+                right: 20%;
             }
         }
 
     }
     @media (min-width: 750px) {
         .task-header {
+            width: 110%;
             .task-title-container {
-                width: 90%;
+                width: 80%;
             }
-            .sort-handle 
-            .task-nav-back-icon
-            {
+            .sort-handle, 
+            .details-handle,
+            .task-nav-back-icon,
+            .trashcan {
                 width: 10%;
+            }
+            &.trashcan-visible {
+                right: 10%;
             }
         }
     }
     @media (max-height: 400px) {
         .task-header {
-            height:50%; 
+            height: 50%; 
             .sort-handle {
                 .task-sort-handle-icon {
                     font-size: 15vh;
@@ -109,7 +133,7 @@
     }
     @media (min-height: 400px) {
         .task-header {
-            height: calc(100%/5);
+            height: 20%;
         }
     }
 </style>
@@ -140,8 +164,8 @@
                 class="task-title-input"> 
             </input>
         </v-touch>
-        <button class="sort-handle"> 
-            <i v-on:click="navigate" class="fa fa-pencil task-sort-handle-icon"></i>
+        <button class="details-handle"> 
+            <i v-on:click="navigate" class="fa fa-pencil details-handle-icon"></i>
         </button>
         <div 
             v-on:click="deleteTask()" 

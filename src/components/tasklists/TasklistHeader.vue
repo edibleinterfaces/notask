@@ -108,35 +108,31 @@
 
     @media(max-width: 750px) {
         .tasklist-header {
-            width: 125%;
+            width: 120%;
+        }
+        .title-container {
+            width: 60%;
         }
         .sort-handle,
         .nav-handle,
-        .swipe-handle {
-            width: 25%;
-        }
-        .title-container {
-            width: 50%;
-        }
+        .swipe-handle,
         .trashcan {
-            width: 25%;
+            width: 20%;
         }
         .tasklist-header.trashcan-visible {
-            right: 25%;
+            right: 20%;
         }
     }
     @media(min-width: 750px) {
         .tasklist-header {
             width: 110%;
         }
+        .title-container {
+            width: 80%;
+        }
         .sort-handle,
         .swipe-handle,
-        .nav-handle {
-            width: 10%;
-        }
-        .title-container {
-            width: 90%;
-        }
+        .nav-handle,
         .trashcan {
             width: 10%;
         }
@@ -194,6 +190,8 @@
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
         direction: 'horizontal', 
+        velocity: 0.1,
+        threshold: 0
     }; // fixes scroll bug
 
     export default {
