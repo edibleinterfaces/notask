@@ -1,4 +1,4 @@
-export default function Task({ text='New Task', details='Test Details' }) {
+export default function Task({ text='New Task', details='Test Details' } = {}) {
 
     return {
         text, 

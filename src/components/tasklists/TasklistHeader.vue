@@ -194,7 +194,6 @@
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
         direction: 'horizontal', 
-        threshold: 0
     }; // fixes scroll bug
 
     export default {
@@ -214,6 +213,8 @@
             }
 
         },
+        created() {
+        },
         methods: {
             delegatedClick(e) {
                 const allowed = [
@@ -232,9 +233,11 @@
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
             showTrashcan(e) {
+                console.log('swipe');
                 this.trashcanVisible = true;
             },
             hideTrashcan(e) {
+                console.log('swipe');
                 this.trashcanVisible = false;
             },
             toggleTrashcan() {
