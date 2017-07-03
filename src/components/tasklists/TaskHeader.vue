@@ -21,7 +21,6 @@
             justify-content: center;
             height: 100%;
             text-align: center !important;
-
         }
         .details-handle {
             .details-handle-icon {
@@ -158,12 +157,12 @@
             class="task-title-container">
             <input 
                 v-on:focus="selectText($event.target)"
-                v-on:blur="editingTitle = false"
+                v-on:blur="editingText = false"
                 v-on:keydown.enter="triggerBlur($event.target)"
-                v-on:change="updateTask"
+                v-on:change="updateTaskText"
                 :v-model="text"
                 :value="text" 
-                :disabled="!editingTitle"
+                :disabled="!editingText"
                 class="task-title-input"> 
             </input>
         </v-touch>
@@ -191,7 +190,8 @@
         data: function() {
             return {
                 trashcanVisible: false,
-                editingTitle: false
+                editingTitle: false,
+                editingText: false,
             };
         },
         components: {
@@ -204,7 +204,7 @@
                 element.blur();
             },
             selectText,
-            updateTask(e) {
+            updateTaskText(e) {
                 const payload = {
                     listId: this.listId,
                     taskId: this.taskId,
@@ -213,7 +213,7 @@
                 store.commit('updateTaskText', payload); 
             },
             enableInput(e) {
-                this.editingTitle = true;
+                this.editingText = true;
                 Vue.nextTick(function() {
                     e.target.focus()
                 });

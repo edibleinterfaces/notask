@@ -63,11 +63,21 @@
             justify-content: center;
             font-size: initial;
             text-align: center;
-            .tasklist-title {
+
+            .tasklist-title-input[disabled] {
+            }
+
+            .tasklist-title-input {
                 width: 100%;
+                height: 100%;
                 margin:0;
                 padding:0;
-                    flex: 1;
+                flex: 1;
+                text-align: center;
+                font-size: 5vh;
+                background: whitesmoke;
+                border: none;
+                outline: none;
             }
         }
 
@@ -165,7 +175,16 @@
             v-on:swipeleft="showTrashcan"
             v-on:swiperight="hideTrashcan"
             class="title-container">
-            <h1 class="tasklist-title">{{ listTitle }}</h1>
+            <input 
+                :value="listTitle" 
+                :disabled="this.$route.name === 'ListsView'"
+                v-on:click="navigateOrEdit"
+                v-on:focus="selectText($event.target)"
+                v-on:blur="editingTitle = false"
+                v-on:keydown.enter="triggerBlur($event.target)"
+                v-on:change="updateTasklistTitle"
+                class="tasklist-title-input"> 
+            </input>
         </v-touch>
         <div 
             v-on:click="toggleTrashcan" 
@@ -186,6 +205,7 @@
     import Vue from 'vue';
     import VueTouch from 'vue-touch';
     import store from '../../store';
+    import { selectText } from '../../utils';
 
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
@@ -196,10 +216,11 @@
 
     export default {
         name: 'tasklist-header',
-        props: ['title', 'listId'],
+        props: ['listId'],
         data: function() {
             return {
-                trashcanVisible: false
+                trashcanVisible: false,
+                editingTitle: false
             };
         },
         computed: {
@@ -211,15 +232,31 @@
             }
 
         },
-        created() {
-        },
         methods: {
+            selectText,
+            navigateOrEdit() {
+                if (this.$route.name === 'ListsView')
+                    this.delegatedClick(e);
+                else 
+                    this.editingTitle = true;
+            },
+            triggerBlur(element) {
+                element.blur();
+            },
+            updateTasklistTitle(e) {
+                const payload = {
+                    listId: this.listId,
+                    title: e.target.value, 
+                };
+                store.commit('updateTasklistTitle', payload);
+                console.log(store);
+            },
             delegatedClick(e) {
                 const allowed = [
                     'sort-handle',
                     'handle-icon',
                     'title-container',
-                    'tasklist-title'
+                    'tasklist-title-input'
                 ];
                 const catchTheClick = allowed.some(c => e.target.classList.contains(c));
 
@@ -231,11 +268,9 @@
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
             showTrashcan(e) {
-                console.log('swipe');
                 this.trashcanVisible = true;
             },
             hideTrashcan(e) {
-                console.log('swipe');
                 this.trashcanVisible = false;
             },
             toggleTrashcan() {

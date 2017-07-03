@@ -21,8 +21,11 @@ export default {
         console.log(listId, taskId);
         state.tasklists[ listId ].tasks.splice(taskId, 1);
     },
-    updateTaskText(state, {listId, taskId, text}) {
+    updateTaskText(state, { listId, taskId, text }) {
         state.tasklists[ listId ].tasks[ taskId ].text = text;
-        
+    },
+    updateTasklistTitle(state, { listId, title }) {
+        state.tasklists[ listId ].title = title;
     }
+        
 };
