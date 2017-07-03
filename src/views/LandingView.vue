@@ -22,12 +22,13 @@
     }
 </style>
 <template>
-        <div class="landing-container">
-            <router-link to="/tasklists" class="title">
-                <span class="no">No</span>
-                <span class="task">Task</span>
-            </router-link>
-        </div>
+    <div class="landing-container">
+        <router-link to="/tasklists" class="title">
+            <span class="no">No</span>
+            <span class="task">Task</span>
+            <i class="fa fa-bath"></i>
+        </router-link>
+    </div>
 </template>
 
 <script>
