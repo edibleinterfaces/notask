@@ -7,6 +7,7 @@
         align-items: center;
         width: 100%;
         background: lightgray;
+        border-top: 1px solid #f1f1f1;
 
         .settings-icons-container {
             background: white;
@@ -14,6 +15,12 @@
             height: 100%;
             display: flex;
             align-items: center;
+
+            .add-tasklist-icon,
+            .settings-icon,
+            .settings-icon {
+                color: lightgray;
+            }
 
             .add-tasklist-icon,
             .settings-icon {

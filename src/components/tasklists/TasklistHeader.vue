@@ -3,6 +3,9 @@
     ::selection{
         background: salmon;
     }
+    .edit-mode {
+        background: whitesmoke;
+    }
 
     .tasklist-header {
 
@@ -12,17 +15,21 @@
         position: relative;
         display: flex;
         font-size: 0;
-        background: whitesmoke;
 
         &.sortable-chosen > .sort-handle {
-            background: aquamarine;
             > .fa-hand-paper-o {
-                color: white;
             }
         }
 
         .nav-handle {
             text-decoration: none;
+        }
+
+        button.sort-handle {
+            background-color: transparent;
+            .handle-icon {
+                color: aquamarine;
+            }
         }
 
         .nav-handle,
@@ -61,6 +68,7 @@
             }
         }
 
+
         .title-container {
             display: flex;
             flex-direction: row;
@@ -70,9 +78,11 @@
             text-align: center;
 
             .tasklist-title-input[disabled] {
+                user-select: none;
             }
 
             .tasklist-title-input {
+                background: transparent;
                 width: 100%;
                 height: 100%;
                 margin:0;
@@ -80,7 +90,6 @@
                 flex: 1;
                 text-align: center;
                 font-size: 5vh;
-                background: whitesmoke;
                 border: none;
                 outline: none;
             }
@@ -161,7 +170,10 @@
 <template>
 
     <div
-        v-bind:class="{'trashcan-visible': trashcanVisible}"
+        v-bind:class="{
+            'trashcan-visible': trashcanVisible,
+            'edit-mode': editingTitle
+       }"
         v-on:click="delegatedClick"
         class="tasklist-header">
         <div 
@@ -214,10 +226,10 @@
 
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
-        direction: 'horizontal', 
+        direction: 'horizontal', // fixed scroll bug
         velocity: 0.1,
         threshold: 0
-    }; // fixes scroll bug
+    }; 
 
     export default {
         name: 'tasklist-header',
@@ -236,6 +248,8 @@
                 return store.getters.tasklists[ this.listId ].title;
             }
 
+        },
+        mounted() {
         },
         methods: {
             selectText,

@@ -1,6 +1,5 @@
 <style lang="scss">
     .task-header {
-        background: whitesmoke;
         display: inline-flex; 
         align-items: center;
         justify-content: center;
@@ -10,7 +9,6 @@
 
         .details-handle,
         .sort-handle {
-            background: whitesmoke;
             outline: none;
             border: none;
             padding: 0;
@@ -21,6 +19,7 @@
             justify-content: center;
             height: 100%;
             text-align: center !important;
+            background: transparent;
         }
         .details-handle {
             .details-handle-icon {
@@ -50,7 +49,6 @@
             height: 100%;
             .task-title-input {
                 transition: background 0.2s ease;
-                background: whitesmoke;
                 outline: none;
                 border: 0;
                 margin: 0;
