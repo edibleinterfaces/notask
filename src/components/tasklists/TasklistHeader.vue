@@ -14,6 +14,7 @@
         position: relative;
         display: flex;
         font-size: 0;
+            border-bottom: 1px solid whitesmoke;
 
         &.sortable-chosen > .sort-handle {
             > .fa-hand-paper-o {
@@ -314,6 +315,7 @@
                 const CSS_FADEOUT_INTERVAL = 200;
 
                 this.deleteMode = false;
+                this.deleteConfirmed = false;
 
                 setTimeout(function() {
                     store.commit('removeTasklist', listId);
