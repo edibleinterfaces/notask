@@ -3,14 +3,14 @@
     ::selection{
         background: salmon;
     }
-    .edit-mode {
-        background: whitesmoke;
-    }
 
     .tasklist-header {
 
+        &.edit-mode {
+            background: whitesmoke;
+        }
         right: 0%;
-        -webkit-transition: right 0.2s ease, background 0.2s ease;
+        -webkit-transition: right 0.2s ease, background 0.4s ease;
         position: relative;
         display: flex;
         font-size: 0;
@@ -90,6 +90,7 @@
             }
 
             .tasklist-title-input[disabled] {
+                -webkit-user-select: none;
                 user-select: none;
             }
 
@@ -104,9 +105,13 @@
             height: 100%;
             font-size: initial;
 
-            .delete-tasklist-icon {
+            .delete-tasklist-icon,
+            .delete-tasklist-icon-confirm {
                 font-size: 5vh;
                 color: whitesmoke;
+            }
+            .delete-tasklist-icon-confirm {
+
             }
         }
     }
@@ -195,26 +200,29 @@
             <input 
                 :value="listTitle" 
                 :disabled="this.$route.name === 'ListsView'"
-                v-on:click="navigateOrEdit"
                 v-on:focus="selectText($event.target)"
-                v-on:blur="disableDeleteMode"
-                v-on:keydown.enter="triggerBlur($event.target)"
                 v-on:change="updateTasklistTitle"
+                v-on:click="navigateOrEnableInput"
+                v-on:blur="disableInput"
+                v-on:keydown.enter="triggerBlur($event.target)"
                 class="tasklist-title-input"> 
             </input>
         </v-touch>
         <div 
-            v-on:click="toggleDeleteMode" 
+            v-on:click="deleteMode = deleteMode ? false : true"
             class="swipe-handle">
             <i class="fa fa-ellipsis-v swipe-icon"></i>
         </div>
         <div 
-            v-on:click="deleteTasklist(listId)" 
             class="trashcan"> 
             <i 
-                v-if="deleteMode && deleteConfirmed" 
+                v-if="deleteMode && !deleteConfirmed" 
+                v-on:click="deleteConfirmed = true"
                 class="fa fa-trash delete-tasklist-icon"></i>
-            <i v-else class="fa fa-trash delete-tasklist-icon"></i>
+            <i 
+                v-else 
+                v-on:click="deleteTasklist(listId)" 
+                class="fa fa-times delete-tasklist-icon-confirm"></i>
         </div>
     </div>
 
@@ -258,7 +266,10 @@
         },
         methods: {
             selectText,
-            navigateOrEdit() {
+            disableInput() {
+                this.editingTitle = false;
+            },
+            navigateOrEnableInput() {
                 if (this.$route.name === 'ListsView')
                     this.delegatedClick(e);
                 else 
@@ -273,7 +284,6 @@
                     title: e.target.value, 
                 };
                 store.commit('updateTasklistTitle', payload);
-                console.log(store);
             },
             delegatedClick(e) {
                 const allowed = [
@@ -291,16 +301,12 @@
             navigate() {
                 this.$emit('navigate', `/tasklist/${ this.listId }`);
             },
-            toggleDeleteMode() {
-                this.deleteMode = !this.deleteMode;
-            },
             enableDeleteMode() {
                 this.deleteMode = true;
-                console.log(this.deleteMode);
             },
             disableDeleteMode() {
                 this.deleteMode = false;
-                console.log(this.deleteMode);
+                this.deleteConfirmed = false;
             },
             deleteTasklist(listId) {
 
