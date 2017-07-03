@@ -159,7 +159,7 @@
             <input 
                 v-on:focus="selectText($event.target)"
                 v-on:blur="editingTitle = false"
-                v-on:keydown.enter="editingTitle = false"
+                v-on:keydown.enter="triggerBlur($event.target)"
                 v-on:change="updateTask"
                 :v-model="text"
                 :value="text" 
@@ -200,6 +200,9 @@
         created() {
         },
         methods: {
+            triggerBlur(element) {
+                element.blur();
+            },
             selectText,
             updateTask(e) {
                 const payload = {
