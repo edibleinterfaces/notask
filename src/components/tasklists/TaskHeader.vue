@@ -107,7 +107,7 @@
     }
     @media (min-width: 750px) {
         .task-header {
-            width: 110%;
+            width: 115%;
             .task-title-container {
                 width: 80%;
             }
@@ -115,10 +115,10 @@
             .details-handle,
             .task-nav-back-icon,
             .trashcan {
-                width: 10%;
+                width: 15%;
             }
             &.trashcan-visible {
-                right: 10%;
+                right: 15%;
             }
         }
     }
@@ -134,7 +134,7 @@
     }
     @media (min-height: 400px) {
         .task-header {
-            height: 20%;
+            height: 25%;
         }
     }
 </style>

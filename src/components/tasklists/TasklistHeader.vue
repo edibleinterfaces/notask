@@ -161,7 +161,7 @@
     }
     @media(min-width: 750px) {
         .tasklist-header {
-            width: 110%;
+            width: 115%;
         }
         .title-container {
             width: 80%;
@@ -170,10 +170,10 @@
         .swipe-handle,
         .nav-handle,
         .trashcan {
-            width: 10%;
+            width: 15%;
         }
         .tasklist-header.delete-mode {
-            right: 10%;
+            right: 15%;
         }
     }
 

@@ -64,7 +64,7 @@
     }
     @media(min-width: 750px) {
         .settings-icons-container  i{
-            width: 10%;
+            width: 15%;
         }
     }
 </style>
