@@ -9,7 +9,6 @@
     .list-view {
         width: 100%;
         overflow-x: hidden;
-        overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
     }
     @media(min-height:400px) {

@@ -7,6 +7,14 @@
         right: 0%; 
         transition: right 0.2s ease-in-out;
 
+
+        &.sortable-chosen:not(.sortable-ghost) {
+            background: whitesmoke !important;
+            .trashcan {
+                display: none !important;
+            }
+        }
+
         .details-handle,
         .sort-handle {
             outline: none;
@@ -48,6 +56,7 @@
             justify-content: center;
             height: 100%;
             .task-title-input {
+                background: transparent;
                 transition: background 0.2s ease;
                 outline: none;
                 border: 0;
@@ -197,10 +206,10 @@
         created() {
         },
         methods: {
+            selectText,
             triggerBlur(element) {
                 element.blur();
             },
-            selectText,
             updateTaskText(e) {
                 const payload = {
                     listId: this.listId,

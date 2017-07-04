@@ -16,6 +16,12 @@
         font-size: 0;
             border-bottom: 1px solid whitesmoke;
 
+        &.sortable-chosen:not(.sortable-ghost) {
+            background: lightgray;
+            .trashcan {
+                display: none !important;
+            }
+        }
         &.sortable-chosen > .sort-handle {
             > .fa-hand-paper-o {
             }
@@ -221,7 +227,7 @@
                 v-on:click="deleteConfirmed = true"
                 class="fa fa-trash delete-tasklist-icon"></i>
             <i 
-                v-else 
+                v-if="deleteMode && deleteConfirmed" 
                 v-on:click="deleteTasklist(listId)" 
                 class="fa fa-times delete-tasklist-icon-confirm"></i>
         </div>

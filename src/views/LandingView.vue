@@ -20,6 +20,13 @@
     .title {
         color: salmon;
     }
+    .marquee-close-icon {
+        color: #ececec;
+    }
+    .marquee-close-icon:hover {
+        color: salmon;
+    }
+
 </style>
 <template>
     <div class="landing-container">
