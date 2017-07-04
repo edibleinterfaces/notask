@@ -35,8 +35,17 @@ const selectText = function(element) {
 
 };
 
+const selectTextAlt = function(element) {
+
+    console.log(element);
+    element.setSelectionRange(0,9999);
+
+};
+
+
 export { 
     moveCursorToEnd, 
     selectText,
+    selectTextAlt,
     createFile
 };

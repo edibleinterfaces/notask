@@ -6,24 +6,21 @@
 
     .tasklist-header {
 
-        &.edit-mode {
-            background: whitesmoke;
-        }
         right: 0%;
         -webkit-transition: right 0.2s ease, background 0.4s ease;
         position: relative;
         display: flex;
         font-size: 0;
-            border-bottom: 1px solid whitesmoke;
+        border-bottom: 1px solid whitesmoke;
+
+        &.edit-mode {
+            background: whitesmoke;
+        }
 
         &.sortable-chosen:not(.sortable-ghost) {
             background: lightgray;
             .trashcan {
                 display: none !important;
-            }
-        }
-        &.sortable-chosen > .sort-handle {
-            > .fa-hand-paper-o {
             }
         }
 
@@ -44,9 +41,11 @@
             cursor: pointer;
             height: 100%;
         }
+
         .title-container {
             position: relative;
         }
+
         .swipe-handle {
             display: flex;
             align-items: center;
@@ -84,6 +83,7 @@
             text-align: center;
 
             .tasklist-title-input {
+                overflow-x: scroll;
                 background: transparent;
                 width: 100%;
                 height: 100%;
@@ -207,7 +207,8 @@
             <input 
                 :value="listTitle" 
                 :disabled="this.$route.name === 'ListsView'"
-                v-on:focus="selectText($event.target)"
+                v-on:focus="selectTextAlt($event.target)"
+                v-on:mouseup.stop
                 v-on:change="updateTasklistTitle"
                 v-on:click="navigateOrEnableInput"
                 v-on:blur="disableInput"
@@ -240,7 +241,10 @@
     import Vue from 'vue';
     import VueTouch from 'vue-touch';
     import store from '../../store';
-    import { selectText } from '../../utils';
+    import { 
+        selectText, 
+        selectTextAlt 
+    } from '../../utils';
 
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
@@ -272,7 +276,7 @@
         mounted() {
         },
         methods: {
-            selectText,
+            selectTextAlt,
             disableInput() {
                 this.editingTitle = false;
             },
@@ -284,6 +288,7 @@
             },
             triggerBlur(element) {
                 element.blur();
+                this.selectTextAlt(element);
             },
             updateTasklistTitle(e) {
                 const payload = {

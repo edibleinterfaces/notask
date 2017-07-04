@@ -82,7 +82,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            .delete-task-icon {
+
+            .delete-task-icon,
+            .delete-task-icon-confirmed {
                 width: 100%;
                 font-size: 5vh;
                 text-align: center;
@@ -176,9 +178,15 @@
             <i v-on:click="navigate" class="fa fa-pencil details-handle-icon"></i>
         </button>
         <div 
-            v-on:click="deleteTask()" 
             class="trashcan">
-            <i class="fa fa-trash delete-task-icon"></i>
+            <i 
+                v-show="deleteMode && !deleteConfirmed" 
+                v-on:click="deleteConfirmed = true"
+                class="fa fa-trash delete-task-icon"></i>
+            <i 
+                v-show="deleteMode && deleteConfirmed" 
+                v-on:click="deleteTask" 
+                class="fa fa-times delete-task-icon-confirmed"></i>
         </div>        
 
     </div>
@@ -195,6 +203,8 @@
         props: ['text', 'listId', 'taskId'],
         data: function() {
             return {
+                deleteMode: false,
+                deleteConfirmed: false,
                 trashcanVisible: false,
                 editingTitle: false,
                 editingText: false,
@@ -239,9 +249,13 @@
                 this.$emit('navigate', `/tasklist/${ this.listId }/task/${ this.taskId }/details`);
             },
             swipeLeft() {
+                this.deleteMode = true;
+                this.deleteConfirmed = false;
                 this.trashcanVisible = true;
             },
             swipeRight() {
+                this.deleteMode = false;
+                this.deleteConfirmed = false;
                 this.trashcanVisible = false;
             }
 

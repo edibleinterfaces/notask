@@ -32,6 +32,7 @@
         property is not so great. Originally, the mechanism was translateX, 
         but there were issues with hammer.js causing it to function poorly.
     - scroll to bottom when adding a new task
+    - add a truncation feature for task title. scrolling won't work with swipe.
 
 **Features:**
 
