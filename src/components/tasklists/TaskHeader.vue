@@ -67,12 +67,6 @@
                 text-align: center;
                 font-size: 1em;
 
-                &:focus {
-                }
-                &[disabled] {
-                    user-select: none;
-                    color: black;
-                }
             }
         }
         .trashcan {
@@ -164,7 +158,7 @@
             v-on:swipeleft="swipeLeft"
             class="task-title-container">
             <input 
-                v-on:focus="selectText($event.target)"
+                v-on:click="triggerFocusAndSelect($event.target)"
                 v-on:blur="editingText = false"
                 v-on:keydown.enter="triggerBlur($event.target)"
                 v-on:change="updateTaskText"
@@ -196,7 +190,6 @@
     import Vue from 'vue';
     import vueTouch from 'vue-touch';
     import store from '../../store';
-    import { selectText } from '../../utils';
 
     export default {
         name: 'task-header',
@@ -216,7 +209,11 @@
         created() {
         },
         methods: {
-            selectText,
+            triggerFocusAndSelect(element) {
+                console.log(element);
+                element.focus();
+                element.setSelectionRange(0,9999);
+            },
             triggerBlur(element) {
                 element.blur();
             },

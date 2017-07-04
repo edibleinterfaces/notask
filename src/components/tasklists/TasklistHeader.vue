@@ -186,7 +186,7 @@
             'delete-mode': deleteMode,
             'edit-mode': editingTitle
         }"
-        v-on:click="delegatedClick"
+        v-on:click="delegatedClick($event.target)"
         class="tasklist-header">
         <div 
             v-on:tap="navigate" 
@@ -207,10 +207,8 @@
             <input 
                 :value="listTitle" 
                 :disabled="this.$route.name === 'ListsView'"
-                v-on:focus="selectTextAlt($event.target)"
-                v-on:mouseup.stop
+                v-on:click="navigateOrEnableInput($event.target)"
                 v-on:change="updateTasklistTitle"
-                v-on:click="navigateOrEnableInput"
                 v-on:blur="disableInput"
                 v-on:keydown.enter="triggerBlur($event.target)"
                 class="tasklist-title-input"> 
@@ -241,10 +239,6 @@
     import Vue from 'vue';
     import VueTouch from 'vue-touch';
     import store from '../../store';
-    import { 
-        selectText, 
-        selectTextAlt 
-    } from '../../utils';
 
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
@@ -276,19 +270,22 @@
         mounted() {
         },
         methods: {
-            selectTextAlt,
             disableInput() {
                 this.editingTitle = false;
             },
-            navigateOrEnableInput() {
+            enableInput(element) {
+                this.editingTitle = true;
+                element.focus();
+                element.setSelectionRange(0,9999);
+            },
+            navigateOrEnableInput(element) {
                 if (this.$route.name === 'ListsView')
-                    this.delegatedClick(e);
+                    this.delegatedClick(element);
                 else 
-                    this.editingTitle = true;
+                    this.enableInput(element);
             },
             triggerBlur(element) {
                 element.blur();
-                this.selectTextAlt(element);
             },
             updateTasklistTitle(e) {
                 const payload = {
@@ -297,14 +294,14 @@
                 };
                 store.commit('updateTasklistTitle', payload);
             },
-            delegatedClick(e) {
+            delegatedClick(element) {
                 const allowed = [
                     'sort-handle',
                     'handle-icon',
                     'title-container',
                     'tasklist-title-input'
                 ];
-                const catchTheClick = allowed.some(c => e.target.classList.contains(c));
+                const catchTheClick = allowed.some(c => element.classList.contains(c));
 
                 if (catchTheClick) {
                     this.navigate();
