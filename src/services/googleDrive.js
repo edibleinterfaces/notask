@@ -1,10 +1,8 @@
 import store from '../store';
 import creds from './creds.js';
 
-
 function googleDrive() {
 
-    
     const apiKey = creds.drive.apiKey;
     const clientId = creds.oauth.clientId;
 
