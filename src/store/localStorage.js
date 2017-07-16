@@ -3,7 +3,7 @@ import Task from '../models/Task';
 import testData from './testData';
 
 const testing = Boolean(window.location.origin.match('localhost'));
-const defaultData = testing ? testData : { tasklists: [ Tasklist({ title: '', tasks: [new Task()] }) ] };
+const defaultData = { tasklists: [ Tasklist({ title: 'Tasklist', tasks: [new Task()] }) ] };
 
 function LocalStorage() {
     const STORAGE_KEY = 'no-task-v2';
@@ -32,8 +32,6 @@ function LocalStorage() {
         appData.tasklists = defaultData.tasklists;
         ls.setItems(STORAGE_KEY, JSON.stringify(appData));
     }
-
-    init();
 
     return {
         init, 

@@ -38,9 +38,7 @@
     <div class="sync-view-container">
         <div class="sync-view">
             <ul class="sync-options">
-                <li class="sync-option">Paste It!</li>
-                <li class="sync-option">Load from the cloud</li>
-                <li class="sync-option">Load from URL</li>
+                <li v-on:click="signIntoGoogleDrive" class="sync-option">Sign into Google</li>
             </ul>
         </div>
         <dashboard></dashboard>
@@ -49,6 +47,7 @@
 
 <script>
     import Dashboard from '../components/Dashboard';
+    import googleDrive from './../services/googleDrive';
 
     export default {
         name: 'SyncView',
@@ -57,6 +56,11 @@
         },
         components: {
             Dashboard
+        },
+        methods: {
+            signIntoGoogleDrive: function() {
+                googleDrive.handleAuthClick()
+            }
         }
     };
 </script>

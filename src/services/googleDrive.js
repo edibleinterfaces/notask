@@ -9,10 +9,11 @@ function googleDrive() {
 
     function authenticate() {
         try {
-            gapi.load('client:auth2').then(initAuth);
+            gapi.load('client:auth2',initAuth);
         } catch(e) {
+            console.log(e);
             if (e.name === 'ReferenceError')
-                store.dispatch('UPDATE_SIGNIN_STATUS', false);
+                store.commit('updateSigninStatus', false);
         }
     }
     function initAuth() {
@@ -28,7 +29,8 @@ function googleDrive() {
 
     }
     function updateSigninStatus(isSignedIn) {
-        store.dispatch('UPDATE_SIGNIN_STATUS', isSignedIn);
+        store.commit('updateSigninStatus', isSignedIn);
+        console.log(isSignedIn);
     }
     function handleAuthClick(event) {
         auth2.signIn();
@@ -36,13 +38,11 @@ function googleDrive() {
     function handleSignoutClick(event) {
         auth2.signOut();
     }
-
     function saveFile(file) {
         gapi.client.load('drive', 'v2', function() {
             _saveFile(file);
         });
     } 
-
     function _saveFile(fileData, callback) {
 
         const boundary = '-------314159265358979323846';

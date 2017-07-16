@@ -35,7 +35,7 @@
                 Storage
             </router-link>
             <router-link to="/settings/sync">
-                Sync
+                Sync from the Cloud
             </router-link>
             <router-link to="/settings/appearance">
                 Appearance

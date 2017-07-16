@@ -94,12 +94,10 @@
         created: googleDrive.authenticate,
         methods: {
             navigate() {
-                if (this.$route.name === 'SettingsView') { 
+                if (this.$route.name === 'SettingsView')
                     this.$router.back();
-                } else {
+                else
                     this.$router.push('/settings');
-                }
-                console.log(this.$router);
             },
             add() {
                 if (this.$route.name === 'ListView') 
