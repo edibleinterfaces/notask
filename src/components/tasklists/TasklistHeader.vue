@@ -19,8 +19,8 @@
 
         &.sortable-chosen:not(.sortable-ghost) {
             background: lightgray;
-            .trashcan {
-                display: none !important;
+            div.trashcan {
+                visibility: hidden !important;
             }
         }
 
