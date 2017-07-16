@@ -1,10 +1,8 @@
-export default function Tasklist({ title, tasks=[]}) {
+export default function Tasklist({ title='New Task List', tasks=[]} = {}) {
 
     return {
-
-        title: title || 'New Task List',
-        tasks: tasks
-
+        title,
+        tasks
     };
 
 };

@@ -1,21 +1,28 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
+import LocalStorage from './localStorage';
 
 export default {
+
+    /* tasklist & task data */
+
+    addTasklist(state) {
+        state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
+    },
+    removeTasklist(state, index) {
+        state.tasklists.splice(index, 1);
+    },
+    updateTasklistTitle(state, { listId, title }) {
+        state.tasklists[ listId ].title = title;
+    },
     updateTasklists(state, newTasklists) {
         state.tasklists = newTasklists;
     },
     updateTasks(state, {listId, newTasks}) {
         state.tasklists[ listId ].tasks = newTasks;
     },
-    addTasklist(state) {
-        state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
-    },
     addTask(state, listId) {
         state.tasklists[ listId ].tasks.push(Task({text: 'test title'}));
-    },
-    removeTasklist(state, index) {
-        state.tasklists.splice(index, 1);
     },
     removeTask(state, { listId, taskId }) {
         console.log(listId, taskId);
@@ -24,8 +31,8 @@ export default {
     updateTaskText(state, { listId, taskId, text }) {
         state.tasklists[ listId ].tasks[ taskId ].text = text;
     },
-    updateTasklistTitle(state, { listId, title }) {
-        state.tasklists[ listId ].title = title;
+
+    /* google drive authentication */
+    updateSigninStatus(state, isSignedIn) {
     }
-        
 };

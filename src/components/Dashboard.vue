@@ -86,10 +86,12 @@
 <script>
 
     import store from '../store';
+    import googleDrive from '../services/googleDrive';
 
     export default {
         name: 'dashboard',
         props: ['listId'],
+        created: googleDrive.authenticate,
         methods: {
             navigate() {
                 if (this.$route.name === 'SettingsView') { 

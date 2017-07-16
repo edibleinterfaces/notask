@@ -2,78 +2,45 @@ import store from '../store';
 import creds from './creds.js';
 
 function googleDrive() {
-
     const apiKey = creds.drive.apiKey;
     const clientId = creds.oauth.clientId;
-
     const scopes = 'https://www.googleapis.com/auth/drive';
     let auth2;
 
-    /* AUTHENTICATION FUNCTIONS */
-
     function authenticate() {
-
         try {
-
-            gapi.load('client:auth2', initAuth);
-
+            gapi.load('client:auth2').then(initAuth);
         } catch(e) {
-
-            if (e.name === 'ReferenceError') {
+            if (e.name === 'ReferenceError')
                 store.dispatch('UPDATE_SIGNIN_STATUS', false);
-            }
-
         }
-
     }
     function initAuth() {
-
         gapi.client.setApiKey(apiKey);
-
         gapi.auth2.init({
-
             client_id: clientId,
             scope: scopes
-
         }).then(function () {
-
             auth2 = gapi.auth2.getAuthInstance();
-
-            // Listen for sign-in state changes.
             auth2.isSignedIn.listen(updateSigninStatus);
-
-            // Handle the initial sign-in state.
             updateSigninStatus(auth2.isSignedIn.get());
-
         });
 
     }
     function updateSigninStatus(isSignedIn) {
-
         store.dispatch('UPDATE_SIGNIN_STATUS', isSignedIn);
-
     }
     function handleAuthClick(event) {
-
         auth2.signIn();
-
     }
     function handleSignoutClick(event) {
-
         auth2.signOut();
-
     }
 
-    /* FILE SYNC */
-
     function saveFile(file) {
-
         gapi.client.load('drive', 'v2', function() {
-
             _saveFile(file);
-
         });
-
     } 
 
     function _saveFile(fileData, callback) {
