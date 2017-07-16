@@ -1,11 +1,11 @@
 import store from '../store';
 
-store.dispatch('UPDATE_ONLINE_STATUS', navigator.onLine);
-
 window.addEventListener('offline', function(e) {
-    store.dispatch('UPDATE_ONLINE_STATUS', false);
+    console.log('offline');
+    store.commit('updateConnectivityStatus', false);
 });
 
 window.addEventListener('online', function(e) {
-    store.dispatch('UPDATE_ONLINE_STATUS', true);
+    console.log('online');
+    store.commit('updateConnectivityStatus', true);
 });

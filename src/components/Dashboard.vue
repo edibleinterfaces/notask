@@ -79,6 +79,7 @@
                 v-show="['ListsView','ListView'].includes($route.name)"
                 v-on:click="add" 
                 class="fa fa-plus add-tasklist-icon"></i>
+            network online: {{ online }}
         </div>
     </div>
 </template>
@@ -92,6 +93,11 @@
         name: 'dashboard',
         props: ['listId'],
         created: googleDrive.authenticate,
+        computed: {
+            online: function() {
+                return store.getters.online;
+            }
+        },
         methods: {
             navigate() {
                 if (this.$route.name === 'SettingsView')

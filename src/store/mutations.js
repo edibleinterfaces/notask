@@ -35,5 +35,10 @@ export default {
     /* google drive authentication */
     updateSigninStatus(state, isSignedIn) {
         state.auth.signedIntoGoogle = isSignedIn;
+    },
+
+    /* internet connectivity */
+    updateConnectivityStatus(state, isOnline) {
+        state.online = isOnline;
     }
 };

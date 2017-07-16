@@ -235,14 +235,13 @@
 </template>
 
 <script>
-
     import Vue from 'vue';
     import VueTouch from 'vue-touch';
     import store from '../../store';
 
     Vue.use(VueTouch);
     VueTouch.config.swipe = { 
-        direction: 'horizontal', // fixed scroll bug
+        direction: 'horizontal', // fixes scroll bug
         velocity: 0.1,
         threshold: 0
     }; 
@@ -319,18 +318,13 @@
                 this.deleteConfirmed = false;
             },
             deleteTasklist(listId) {
-
                 const CSS_FADEOUT_INTERVAL = 200;
-
                 this.deleteMode = false;
                 this.deleteConfirmed = false;
-
                 setTimeout(function() {
                     store.commit('removeTasklist', listId);
                 }, CSS_FADEOUT_INTERVAL);
-
             }
         }
     };
-
 </script>

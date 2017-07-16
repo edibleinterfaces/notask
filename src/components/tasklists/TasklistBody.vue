@@ -1,5 +1,4 @@
-<style>
-</style>
+<style></style>
 
 <template>
     <div class="tasklist">

@@ -127,7 +127,6 @@
                 return dateFns.format(this.reminderMinutesString, 'mm');
             },
             task() {
-                //return store.state.tasklists[ this.listId ].tasks[ this.taskId ];
                 return store.getters.task({ listId: this.listId, taskId: this.taskId});
 
             } 

@@ -29,7 +29,7 @@
 <script>
 export default {
   name: 'modal',
-  data () {
+  data() {
       return {
           active: false
       };
@@ -37,5 +37,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

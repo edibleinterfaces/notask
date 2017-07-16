@@ -8,5 +8,6 @@ export default {
     tasklists: localStorage.getTasklists(),
     auth: {
         signedIntoGoogle: false
-    }
+    },
+    online: navigator.onLine
 };
