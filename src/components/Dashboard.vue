@@ -79,7 +79,6 @@
                 v-show="['ListsView','ListView'].includes($route.name)"
                 v-on:click="add" 
                 class="fa fa-plus add-tasklist-icon"></i>
-            network online: {{ online }}
         </div>
     </div>
 </template>
