@@ -134,7 +134,7 @@
     }
     @media (min-height: 400px) {
         .task-header {
-            height: 25%;
+            height: 20%;
         }
     }
 </style>
