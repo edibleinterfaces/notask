@@ -1,6 +1,7 @@
 <style lang="scss">
 
     .task-details-container {
+        -webkit-overflow-scrolling: touch;
         overflow-x: hidden;
         height: 100%;
         width: 100%;
