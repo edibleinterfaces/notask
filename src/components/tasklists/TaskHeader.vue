@@ -7,11 +7,11 @@
         right: 0%; 
         transition: right 0.2s ease-in-out;
 
-
         &.sortable-chosen:not(.sortable-ghost) {
             background: whitesmoke !important;
-            .trashcan {
-                display: none !important;
+            div.trashcan {
+                background: transparent !important;
+                visibility: hidden !important;
             }
         }
 
@@ -29,6 +29,7 @@
             text-align: center !important;
             background: transparent;
         }
+
         .details-handle {
             .details-handle-icon {
                 text-align: center;
@@ -37,6 +38,7 @@
                 width: 100%;
             }
         }
+
         .sort-handle {
             .task-sort-handle-icon,
             .task-nav-back-icon {
@@ -50,6 +52,7 @@
                 color: aquamarine;
             }
         }
+
         .task-title-container {
             display: flex;
             align-items: center;
@@ -66,9 +69,9 @@
                 height: 100%;
                 text-align: center;
                 font-size: 1em;
-
             }
         }
+
         .trashcan {
             color: whitesmoke;
             background: salmon;
@@ -84,7 +87,6 @@
                 text-align: center;
             }
         }
-
     }
     
     @media (max-width: 750px) {
@@ -149,8 +151,7 @@
                 class="fa fa-arrow-left task-sort-handle-icon"></i>
         </button>
         <button v-else class="sort-handle"> 
-            <i v-on:click="$router.go(-1)"
-                class="fa fa-hand-paper-o task-sort-handle-icon"></i>
+            <i class="fa fa-hand-paper-o task-sort-handle-icon"></i>
         </button>
         <v-touch 
             v-on:tap="enableInput"
