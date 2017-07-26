@@ -1,16 +1,14 @@
 <style lang="scss">
 
     .dashboard {
-
         display: flex;
         flex-direction: row;
         align-items: center;
         width: 100%;
-        background: lightgray;
+        background: rgba(251,251,251,1);
         border-top: 1px solid #f1f1f1;
 
         .settings-icons-container {
-            background: white;
             width: 100%;
             height: 100%;
             display: flex;
