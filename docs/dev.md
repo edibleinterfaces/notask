@@ -27,6 +27,7 @@
 
 ** Improvements **
 
+    - centralize navigation into a single module that has the $route.params and $router's view name as dependencies 
     - css3 transitions suboptimal
         even on an adequate machine, the css3 transition on the right 
         property is not so great. Originally, the mechanism was translateX, 
