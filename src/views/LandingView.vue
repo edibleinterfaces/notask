@@ -10,7 +10,6 @@
     .title {
         text-decoration: none;
         font-size: 10vw;
-        font-family: arial;
         font-weight: 600;
         padding: 5%;
     }
@@ -31,9 +30,7 @@
 <template>
     <div class="landing-container">
         <router-link to="/tasklists" class="title">
-            <span class="no">No</span>
-            <span class="task">Task</span>
-            <i class="fa fa-bath"></i>
+            <span class="no">No</span><span class="task">Task</span>
         </router-link>
     </div>
 </template>
