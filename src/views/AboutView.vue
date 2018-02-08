@@ -1,17 +1,23 @@
 <style lang="scss">
-    .settings-view-container {
+    .storage-view-container {
         height: 100%;
         width: 100%;
-        .settings-view {
+        display: flex;
+        flex-direction: column;
+        .storage-view {
             height: 90%;
             width: 100%;
             background: aquamarine;
-            a {
+            ul.storage-options {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+            li.storage-option {
                 position: relative;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                text-decoration: none;
                 height: 20%;
                 width: 100%;
                 border-bottom: 1px solid lightgray;
@@ -29,20 +35,10 @@
 </style>
 
 <template>
-    <div class="settings-view-container">
-        <div class="settings-view">
-            <router-link to="/settings/storage">
-                Storage
-            </router-link>
-            <router-link to="/settings/sync">
-                Sync from the Cloud
-            </router-link>
-            <router-link to="/settings/appearance">
-                Appearance
-            </router-link>
-            <router-link to="/settings/about">
-                About NoTask
-            </router-link>
+    <div class="storage-view-container">
+        <div class="storage-view">
+            <ul class="storage-options">
+            </ul>
         </div>
         <dashboard></dashboard>
     </div>

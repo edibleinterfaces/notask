@@ -1,3 +1,4 @@
+import 'localforage';
 import Tasklist from '../models/Tasklist'; 
 import Task from '../models/Task'; 
 import testData from './testData';

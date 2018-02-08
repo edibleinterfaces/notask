@@ -9,6 +9,7 @@ import TaskDetailsView from '../views/TaskDetailsView';
 import SettingsView from '../views/SettingsView';
 import StorageView from '../views/StorageView';
 import SyncView from '../views/SyncView';
+import AboutView from '../views/AboutView';
 import Oops from '../views/Oops';
 
 Vue.use(Router)
@@ -55,6 +56,11 @@ export default new Router({
             path: '/settings/storage',
             name: 'StorageView',
             component: StorageView
+        },
+        {
+            path: '/settings/about',
+            name: 'AboutView',
+            component: AboutView
         },
         {
             path: '/settings/sync',
