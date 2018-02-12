@@ -38,6 +38,9 @@ export default {
     updateTaskText(state, { listId, taskId, text }) {
         state.tasklists[ listId ].tasks[ taskId ].text = text;
     },
+    updateTaskDetails(state, { listId, taskId, details }) {
+        state.tasklists[ listId ].tasks[ taskId ].details = details;
+    },
 
     /* google drive authentication */
     updateSigninStatus(state, isSignedIn) {

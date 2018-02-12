@@ -67,10 +67,10 @@
         <div class="task-details">
             <h2>
                 <i class="fa fa-pencil task-details-edit-icon"></i>
-                Task Description
+                Task Details
             </h2>
             <div class="task-details-description-container">
-                <textarea class="task-details-input">{{ task.details }}</textarea>
+                <textarea @blur="updateTaskDetails" class="task-details-input">{{ task.details }}</textarea>
             </div>
             <h2>
                 <i class="fa fa-clock-o task-details-reminder-icon"></i>
@@ -113,7 +113,15 @@
         methods: {
             toggleReminder() {
                 this.reminderActive = !this.reminderActive;
-            } 
+            }, 
+            updateTaskDetails(event) {
+                const payload = {
+                    listId: this.listId,
+                    taskId: this.taskId,
+                    details: event.target.value
+                };
+                store.commit('updateTaskDetails', payload); 
+            }
         },
         computed: {
 
