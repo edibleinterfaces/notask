@@ -63,7 +63,7 @@
 </style>
 <template>
     <div class="task-details-container">
-        <task-header :text="task.text"></task-header>
+        <task-header :text="task.text" :list-id="listId" :task-id="taskId" />
         <div class="task-details">
             <h2>
                 <i class="fa fa-pencil task-details-edit-icon"></i>
