@@ -1,16 +1,24 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
-import LocalStorage from './localStorage';
 
 export default {
 
     /* tasklist & task data */
 
+    resetStorage(state) {
+        state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
+    },
+    clearTasklists(state) {
+        state.tasklists = [];
+    },
     addTasklist(state) {
         state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
     },
     removeTasklist(state, index) {
         state.tasklists.splice(index, 1);
+        if (!state.tasklists.length) {
+            state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
+        }
     },
     updateTasklistTitle(state, { listId, title }) {
         state.tasklists[ listId ].title = title;
@@ -25,7 +33,6 @@ export default {
         state.tasklists[ listId ].tasks.push(Task({text: 'test title'}));
     },
     removeTask(state, { listId, taskId }) {
-        console.log(listId, taskId);
         state.tasklists[ listId ].tasks.splice(taskId, 1);
     },
     updateTaskText(state, { listId, taskId, text }) {

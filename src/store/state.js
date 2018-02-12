@@ -1,11 +1,12 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
-import localStorage from './localStorage';
-
-localStorage.init();
+import testData from './testData';
 
 export default {
-    tasklists: localStorage.getTasklists(),
+    tasklists: testData.tasklists,
+    //tasklists: [ 
+        //Tasklist({ tasks: [ Task() ] }) 
+    //],
     auth: {
         signedIntoGoogle: false
     },
