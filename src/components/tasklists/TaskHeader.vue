@@ -224,6 +224,7 @@
                     taskId: this.taskId,
                     text: e.target.value 
                 };
+                console.log(payload);
                 store.commit('updateTaskText', payload); 
             },
             enableInput(e) {

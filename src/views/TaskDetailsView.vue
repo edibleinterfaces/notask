@@ -15,11 +15,8 @@
 <template>
 
     <div class="task-details-container">
-        <task-details 
-            :list-id="listId" 
-            :task-id="taskId">
-        </task-details>
-        <dashboard></dashboard>
+        <task-details :list-id="listId" :task-id="taskId" />
+        <dashboard />
     </div>
 
 </template>

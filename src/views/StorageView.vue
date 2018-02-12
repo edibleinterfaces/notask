@@ -38,7 +38,8 @@
     <div class="storage-view-container">
         <div class="storage-view">
             <ul class="storage-options">
-                <li class="storage-option">Reset storage</li>
+                <li @click="resetStorage" class="storage-option">Reset storage</li>
+                <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
                 <li class="storage-option">Import</li>
                 <li class="storage-option">Export</li>
             </ul>
@@ -49,13 +50,18 @@
 
 <script>
     import Dashboard from '../components/Dashboard';
+    import store from '../store';
 
     export default {
-        data: function() {
-            return {};
-        },
-        components: {
-            Dashboard
+        components: { Dashboard },
+        methods: {
+            resetStorage() {
+                store.commit('clearTasklists');
+            },
+            resetTasklists() {
+                store.commit('resetStorage');
+            }
+
         }
     };
 </script>
