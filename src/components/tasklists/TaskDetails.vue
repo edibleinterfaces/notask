@@ -3,6 +3,15 @@
 
         position: relative;
 
+        .reminder-modal > .time-label {
+            text-align: center;
+        }
+        .reminder-modal > .time-picker,
+        .reminder-modal > .date-picker {
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
         button.reminder-set-unset {
             width: 100px;
         }
@@ -67,8 +76,20 @@
 
 <template>
     <div class="task-details-container">
-        <modal :active="modalActive" @modalclose="modalActive = false">
-            <vue-timepicker></vue-timepicker>
+        <modal 
+            class="reminder-modal"
+            :list-id="listId" 
+            :task-id="taskId" 
+            :active="modalActive" 
+            @modalclose="modalActive = false">
+        <h2 class="time-label">{{reminderTime.HH}}:{{reminderTime.mm}} {{reminderTime.A}} on {{reminderDate}}</h2>
+            <vue-timepicker class="time-picker" v-model="reminderTime"></vue-timepicker>
+            <datepicker 
+                class="date-picker"
+                wrapper-class="datepicker-container"
+                v-model="reminderDateString" 
+                :inline="true">
+            </datepicker>
         </modal>
         <task-header :text="task.text" :list-id="listId" :task-id="taskId" />
         <div class="task-details">
@@ -79,17 +100,11 @@
             <div class="task-details-description-container">
                 <textarea @blur="updateTaskDetails" class="task-details-input">{{ task.details }}</textarea>
             </div>
-            <h2>
+            <h2 v-on:click="openModal">
                 <i class="fa fa-clock-o task-details-reminder-icon"></i>
                 Schedule a Reminder
             </h2>
             <div class="task-details-reminder-container">
-                <datepicker 
-                    wrapper-class="datepicker-container"
-                    v-on:selected="openModal"
-                    v-model="reminderDateString" 
-                    :inline="true">
-                </datepicker>
                 <h3>Remind me on </h3>
                 {{ reminderHours }}:{{reminderMinutes}}, {{ reminderDate }}
             </div>
@@ -122,7 +137,13 @@
                 reminderActive: false,
                 reminderDateString: new Date(),
                 reminderMinutesString: 0,
-                reminderHoursString: 0
+                reminderHoursString: 0,
+                reminderTime: {
+                    HH: "10",
+                    mm: "05",
+                    ss: "00",
+                    A: 'A'
+                } 
             };
         },
         methods: {
