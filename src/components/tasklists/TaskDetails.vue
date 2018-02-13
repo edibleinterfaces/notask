@@ -1,6 +1,8 @@
 <style lang="scss">
     .task-details-container {
+
         position: relative;
+
         button.reminder-set-unset {
             width: 100px;
         }
@@ -62,9 +64,12 @@
 
     }
 </style>
+
 <template>
     <div class="task-details-container">
-        <modal :active="modalActive" @modalclose="modalActive = false"/>
+        <modal :active="modalActive" @modalclose="modalActive = false">
+            <vue-timepicker></vue-timepicker>
+        </modal>
         <task-header :text="task.text" :list-id="listId" :task-id="taskId" />
         <div class="task-details">
             <h2>
@@ -98,14 +103,18 @@
     import Datepicker from 'vuejs-datepicker';
     import dateFns from 'date-fns';
     import modal from '../../components/modals/Modal';
+    import Vue from 'vue';
+    import VueTimepicker from 'vue2-timepicker';
 
+    Vue.use(VueTimepicker);
     export default {
         name: 'task-details',
         props: ['listId','taskId'],
         components: {
             TaskHeader,
             Datepicker,
-            modal
+            modal,
+            VueTimepicker,
         },
         data: function() {
             return {
