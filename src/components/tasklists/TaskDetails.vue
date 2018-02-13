@@ -1,10 +1,18 @@
 <style lang="scss">
     .task-details-container {
 
-        position: relative;
-
-        .reminder-modal > .time-label {
+        button.add-reminder {
+            width: 40%;
+                height: 60px;
+            max-width: 200px;
+        }
+        .reminder-modal > .current-time {
             text-align: center;
+            background: white;
+        }
+        .reminder-modal > h3.time-label {
+            display: inline-block;
+            margin-right: 2%;
         }
         .reminder-modal > .time-picker,
         .reminder-modal > .date-picker {
@@ -82,14 +90,25 @@
             :task-id="taskId" 
             :active="modalActive" 
             @modalclose="modalActive = false">
-        <h2 class="time-label">{{reminderTime.HH}}:{{reminderTime.mm}} {{reminderTime.A}} on {{reminderDate}}</h2>
-            <vue-timepicker class="time-picker" v-model="reminderTime"></vue-timepicker>
+
+            <h3 class="current-time">{{reminderTime.HH}}:{{reminderTime.mm}} {{reminderTime.A}} on {{reminderDate}}</h3>
+            <h3 class="time-label">Time: </h3>
+            <vue-timepicker 
+                format="HH:mm A"
+                class="time-picker" 
+                :minuteInterval="5" 
+                v-model="reminderTime">
+            </vue-timepicker>
+            <button v-on:click="updateReminders" class="add-reminder">Add Reminder</button>
+
+            <h3 class="date-label">Date:</h3>
             <datepicker 
                 class="date-picker"
                 wrapper-class="datepicker-container"
                 v-model="reminderDateString" 
                 :inline="true">
             </datepicker>
+
         </modal>
         <task-header :text="task.text" :list-id="listId" :task-id="taskId" />
         <div class="task-details">
@@ -104,31 +123,38 @@
                 <i class="fa fa-clock-o task-details-reminder-icon"></i>
                 Schedule a Reminder
             </h2>
-            <div class="task-details-reminder-container">
-                <h3>Remind me on </h3>
-                {{ reminderHours }}:{{reminderMinutes}}, {{ reminderDate }}
+            <div v-if="reminders.length" class="reminder-list-container">
+                <h3>Reminders</h3>
+                <ul v-for="(reminder, index) in reminders" class="task-details-reminder-container">
+                    <li>{{ reminderHours }}:{{reminderMinutes}}, {{ reminderDate }}
+                        <i :index="index" v-on:click="deleteReminder(index)" class="delete-reminder fa fa-close"></i>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+
+    import Vue from 'vue';
+    import VueTimepicker from 'vue2-timepicker';
+    import dateFns from 'date-fns';
+
     import store from '../../store';
     import TaskHeader from './TaskHeader';
     import Datepicker from 'vuejs-datepicker';
-    import dateFns from 'date-fns';
-    import modal from '../../components/modals/Modal';
-    import Vue from 'vue';
-    import VueTimepicker from 'vue2-timepicker';
+    import Modal from '../../components/modals/Modal';
 
     Vue.use(VueTimepicker);
+
     export default {
         name: 'task-details',
         props: ['listId','taskId'],
         components: {
             TaskHeader,
             Datepicker,
-            modal,
+            Modal,
             VueTimepicker,
         },
         data: function() {
@@ -142,7 +168,7 @@
                     HH: "10",
                     mm: "05",
                     ss: "00",
-                    A: 'A'
+                    A: ''
                 } 
             };
         },
@@ -151,7 +177,6 @@
                 this.modalActive = true;
             },
             closeModal() {
-                console.log('ya');
                 this.modalActive = false;
             },
             toggleReminder() {
@@ -164,7 +189,31 @@
                     details: event.target.value
                 };
                 store.commit('updateTaskDetails', payload); 
+            },
+            updateReminders() {
+                const payload = {
+                    taskId: this.taskId,
+                    listId: this.listId,
+                    reminderData: {
+                        date: this.reminderDate,  
+                        hour: this.reminderTime.HH,
+                        minute: this.reminderTime.mm,
+                        am: this.reminderTime.A
+                    }
+                }; 
+                console.log(payload, this);
+                store.commit('updateReminders', payload);
+            },
+            deleteReminder(reminderIndex) {
+                const payload = {
+                    reminderIndex,
+                    listId: this.listId,
+                    taskId: this.taskId
+                };
+                store.commit('deleteReminder', payload);
             }
+
+
         },
         computed: {
 
@@ -179,7 +228,10 @@
             },
             task() {
                 return store.getters.task({ listId: this.listId, taskId: this.taskId });
-            } 
+            },
+            reminders() {
+                return store.getters.reminders({ listId: this.listId, taskId: this.taskId });
+            }
         },
     };
 </script>

@@ -5,15 +5,12 @@
         position: absolute;
         top: 0px;
         left: 0px;
+        height: 90vh;
+        width: 100vw;
         z-index: 1000;
-        width: 80%;
-        height: auto;
-        margin-top: 10vh;
-        margin-bottom: 10vh;
-        margin-left: 10vw;
-        margin-right: 10vw;
+        overflow-y: scroll;
         border: 1px solid lightgray;
-        background: whitesmoke;
+        background: rgba(203,255,230,0.9);
     }    
     .modal-close {
         width: 100%;
@@ -22,6 +19,15 @@
     }
     .active {
         display: block;
+    }
+    @media (max-width: 500px) {
+        .modal {
+            margin: 0;
+        }
+    }
+    @media (min-width: 501px) {
+        .modal {
+        }
     }
 </style>
 

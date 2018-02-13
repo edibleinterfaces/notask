@@ -41,7 +41,12 @@ export default {
     updateTaskDetails(state, { listId, taskId, details }) {
         state.tasklists[ listId ].tasks[ taskId ].details = details;
     },
-
+    updateReminders(state, { listId, taskId, reminderData }) {
+        state.tasklists[ listId ].tasks[ taskId ].reminders.push(reminderData);
+    },
+    deleteReminder(state, { reminderIndex, listId, taskId}) {
+        state.tasklists[ listId ].tasks[ taskId ].reminders.splice(reminderIndex, 1);
+    }, 
     /* google drive authentication */
     updateSigninStatus(state, isSignedIn) {
         state.auth.signedIntoGoogle = isSignedIn;
