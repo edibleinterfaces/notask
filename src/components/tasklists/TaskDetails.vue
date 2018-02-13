@@ -1,5 +1,6 @@
 <style lang="scss">
     .task-details-container {
+        position: relative;
         button.reminder-set-unset {
             width: 100px;
         }
@@ -63,6 +64,7 @@
 </style>
 <template>
     <div class="task-details-container">
+        <modal :active="modalActive" @modalclose="modalActive = false"/>
         <task-header :text="task.text" :list-id="listId" :task-id="taskId" />
         <div class="task-details">
             <h2>
@@ -79,6 +81,7 @@
             <div class="task-details-reminder-container">
                 <datepicker 
                     wrapper-class="datepicker-container"
+                    v-on:selected="openModal"
                     v-model="reminderDateString" 
                     :inline="true">
                 </datepicker>
@@ -94,16 +97,19 @@
     import TaskHeader from './TaskHeader';
     import Datepicker from 'vuejs-datepicker';
     import dateFns from 'date-fns';
+    import modal from '../../components/modals/Modal';
 
     export default {
         name: 'task-details',
         props: ['listId','taskId'],
         components: {
             TaskHeader,
-            Datepicker
+            Datepicker,
+            modal
         },
         data: function() {
             return {
+                modalActive: false,
                 reminderActive: false,
                 reminderDateString: new Date(),
                 reminderMinutesString: 0,
@@ -111,6 +117,13 @@
             };
         },
         methods: {
+            openModal() {
+                this.modalActive = true;
+            },
+            closeModal() {
+                console.log('ya');
+                this.modalActive = false;
+            },
             toggleReminder() {
                 this.reminderActive = !this.reminderActive;
             }, 
@@ -135,8 +148,7 @@
                 return dateFns.format(this.reminderMinutesString, 'mm');
             },
             task() {
-                return store.getters.task({ listId: this.listId, taskId: this.taskId});
-
+                return store.getters.task({ listId: this.listId, taskId: this.taskId });
             } 
         },
     };
