@@ -8,7 +8,6 @@
         }
         .reminder-modal > .current-time {
             text-align: center;
-            background: white;
         }
         .reminder-modal > h3.time-label {
             display: inline-block;
