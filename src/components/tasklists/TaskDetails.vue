@@ -1,9 +1,12 @@
 <style lang="scss">
+
+    @import "../../../style/colors.scss";
+
     .task-details-container {
 
         button.add-reminder {
             width: 40%;
-                height: 60px;
+            height: 60px;
             max-width: 200px;
         }
         .reminder-modal > .current-time {
@@ -47,7 +50,7 @@
             .task-details-input {
                 &:focus {
                     outline: none;
-                        background: aquamarine;
+                    background: $input-focus-background;
                 }
                 height: 200px !important;
                 width: 100%;
@@ -56,6 +59,9 @@
             }
         }
         .datepicker-container {
+            .cell.selected {
+                background: $input-focus-background;
+            }
             > div:nth-child(2) { 
                 padding: 4%;
                 width: 100%;
@@ -102,6 +108,7 @@
 
             <h3 class="date-label">Date:</h3>
             <datepicker 
+                :input-class="test"
                 class="date-picker"
                 wrapper-class="datepicker-container"
                 v-model="reminderDateString" 
@@ -200,7 +207,6 @@
                         am: this.reminderTime.A
                     }
                 }; 
-                console.log(payload, this);
                 store.commit('updateReminders', payload);
             },
             deleteReminder(reminderIndex) {

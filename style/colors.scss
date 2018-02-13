@@ -1,0 +1,12 @@
+$font-stack: "Comfortaa", "Arial", "sans-serif"; 
+
+$background: whitesmoke;
+
+$input-focus-background: rgba(127,255,212,0.5); // aquamarine with transparency
+$font-primary: aquamarine;
+$font-secondary: salmon;
+
+:export {
+    background: $background;
+    input-focus-background: $input-focus-background;
+}
