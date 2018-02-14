@@ -50,7 +50,7 @@
             .task-details-input {
                 &:focus {
                     outline: none;
-                    background: $input-focus-background;
+                    background: $input-focus-bg;
                 }
                 height: 200px !important;
                 width: 100%;
@@ -60,7 +60,7 @@
         }
         .datepicker-container {
             .cell.selected {
-                background: $input-focus-background;
+                background: $input-focus-bg;
             }
             > div:nth-child(2) { 
                 padding: 4%;
@@ -108,7 +108,6 @@
 
             <h3 class="date-label">Date:</h3>
             <datepicker 
-                :input-class="test"
                 class="date-picker"
                 wrapper-class="datepicker-container"
                 v-model="reminderDateString" 

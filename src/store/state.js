@@ -10,5 +10,6 @@ export default {
     auth: {
         signedIntoGoogle: false
     },
-    online: navigator.onLine
+    online: navigator.onLine,
+    theme: 'bw'
 };

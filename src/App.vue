@@ -6,15 +6,16 @@
 </template>
 
 <script>
+
     import disablePulldownRefresh from './services/disablePulldownRefresh';
     import Modal from './components/modals/Modal'; 
+    import store from './store';
 
     disablePulldownRefresh();
 
     export default {
         name: 'app',
-        components: {
-            Modal
-        }
+        components: { Modal },
     }
+
 </script>
