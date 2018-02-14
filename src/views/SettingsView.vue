@@ -1,11 +1,16 @@
 <style lang="scss">
+
+    @import '../../style/themes.scss';
+
     .settings-view-container {
         height: 100%;
         width: 100%;
         .settings-view {
             height: 90%;
             width: 100%;
-            background: aquamarine;
+            @include themify($themes) {
+                background: themed('primary');
+            }
             a {
                 position: relative;
                 display: flex;
@@ -15,14 +20,9 @@
                 height: 20%;
                 width: 100%;
                 border-bottom: 1px solid lightgray;
-                background: whitesmoke;
-                .setting-slide-icon {
-                    position: absolute;
-                    top: calc(50% - 2vh);
-                    right: 5%;
-                    font-size: 4vh;
-                    color: lightgray;
-                } 
+                @include themify($themes) {
+                    background: themed('secondary');
+                }
             }
         }
     }

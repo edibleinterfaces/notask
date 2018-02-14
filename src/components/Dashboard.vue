@@ -7,9 +7,10 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        background: rgba(251,251,251,1);
         border-top: 1px solid #f1f1f1;
-
+        @include themify($themes) {
+            background: themed('secondary');
+        }
         .settings-icons-container {
             width: 100%;
             height: 100%;

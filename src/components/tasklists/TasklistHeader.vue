@@ -1,8 +1,6 @@
 <style lang="scss">
 
-    @import '../../../style/colors.scss';
     @import '../../../style/themes.scss';
-
 
     .tasklist-header {
 
@@ -19,12 +17,16 @@
             font-size: 0;
             border-bottom: 1px solid whitesmoke;
 
-            &.edit-mode {
-                background: whitesmoke;
+            @include themify($themes) {
+                &.edit-mode {
+                    background: themed('primary');
+                }
             }
 
             &.sortable-chosen:not(.sortable-ghost) {
-                background: lightgray;
+                @include themify($themes) {
+                    background: themed('primary');
+                }
                 div.trashcan {
                     visibility: hidden !important;
                 }
@@ -36,8 +38,10 @@
 
             button.sort-handle {
                 background-color: transparent;
-                .handle-icon {
-                    color: themify('secondary');
+                @include themify($themes) {
+                    .handle-icon {
+                        color: themed('primary');
+                    }
                 }
             }
 
@@ -115,7 +119,9 @@
 
             .trashcan {
                 cursor: pointer;
-                background: salmon;
+                @include themify($themes) {
+                    background: themed('primary');
+                }
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -125,14 +131,15 @@
                 .delete-tasklist-icon,
                 .delete-tasklist-icon-confirm {
                     font-size: 5vh;
-                    color: whitesmoke;
+                    @include themify($themes) {
+                        color: themed('secondary');
+                    }
                 }
                 .delete-tasklist-icon-confirm {
 
                 }
             }
         }
-
 
         @media(max-height: 400px) {
             .tasklist-header {

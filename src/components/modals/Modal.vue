@@ -1,4 +1,7 @@
 <style lang="scss">
+
+    @import "../../../style/themes.scss";
+
     .modal {
         display: none;
         padding:2%;
@@ -10,7 +13,11 @@
         z-index: 1000;
         overflow-y: scroll;
         border: 1px solid lightgray;
-        background: rgba(203,255,230,0.9);
+
+        @include themify($themes) {
+            background: themed('secondary');
+        }
+
     }    
     .modal-close {
         width: 100%;

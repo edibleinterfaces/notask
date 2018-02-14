@@ -1,5 +1,9 @@
 <style lang="scss">
+
+    @import "../../../style/themes.scss";
+
     .task-header {
+
         display: inline-flex; 
         align-items: center;
         justify-content: center;
@@ -8,7 +12,9 @@
         transition: right 0.2s ease-in-out;
 
         &.sortable-chosen:not(.sortable-ghost) {
-            background: whitesmoke !important;
+            @include themify($themes) {
+                background: themed('secondary') !important;
+            }
             div.trashcan {
                 background: transparent !important;
                 visibility: hidden !important;
@@ -31,11 +37,13 @@
         }
 
         .details-handle {
-            .details-handle-icon {
-                text-align: center;
-                color: lightgray;
-                font-size: 5vh;
-                width: 100%;
+            @include themify($themes) {
+                .details-handle-icon {
+                    text-align: center;
+                    color: themed('primary');
+                    font-size: 5vh;
+                    width: 100%;
+                }
             }
         }
 
@@ -74,7 +82,9 @@
 
         .trashcan {
             color: whitesmoke;
-            background: salmon;
+            @include themify($themes) {
+                background: themed('primary');
+            }
             height: 100%;
             display: flex;
             justify-content: center;
@@ -204,11 +214,7 @@
                 editingText: false,
             };
         },
-        components: {
-            vueTouch
-        },
-        created() {
-        },
+        components: { vueTouch },
         methods: {
             triggerFocusAndSelect(element) {
                 console.log(element);

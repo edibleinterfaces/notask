@@ -1,6 +1,6 @@
 <style lang="scss">
 
-    @import "../../../style/colors.scss";
+    @import "../../../style/themes.scss";
 
     .task-details-container {
 
@@ -50,7 +50,9 @@
             .task-details-input {
                 &:focus {
                     outline: none;
-                    background: $input-focus-bg;
+                    @include themify($themes) {
+                        background: themed('secondary');
+                    }
                 }
                 height: 200px !important;
                 width: 100%;
@@ -60,7 +62,9 @@
         }
         .datepicker-container {
             .cell.selected {
-                background: $input-focus-bg;
+                @include themify($themes) { 
+                    background: themed('secondary'); 
+                }
             }
             > div:nth-child(2) { 
                 padding: 4%;
