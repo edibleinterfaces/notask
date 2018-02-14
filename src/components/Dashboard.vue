@@ -1,4 +1,6 @@
 <style lang="scss">
+    @import '../../style/colors.scss';
+    @import '../../style/themes.scss';
 
     .dashboard {
         display: flex;

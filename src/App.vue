@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" class="theme" :class="themeClass">
         <modal></modal>
         <router-view></router-view>
     </div>
@@ -16,6 +16,11 @@
     export default {
         name: 'app',
         components: { Modal },
+        computed: {
+            themeClass() {
+                return `theme-${store.getters.theme}`; 
+            }
+        }
     }
 
 </script>

@@ -1,12 +1,7 @@
 <style lang="scss">
+
     @import 'style/colors.scss';
     @import 'style/themes.scss';
-
-    .theme {
-        height: 100%;
-        width: 100%;
-        text-decoration: none;
-    }
 
     .landing-container {
 
@@ -30,7 +25,7 @@
 </style>
 
 <template>
-    <router-link to="/tasklists" class="theme" :class="themeClass">
+    <router-link to="/tasklists">
         <div class="landing-container">
             <div class="title">
                 <span class="no">No</span><span class="task">Task</span>
