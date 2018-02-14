@@ -1,181 +1,191 @@
 <style lang="scss">
 
-    ::selection{
-        background: salmon;
-    }
+    @import '../../../style/colors.scss';
+    @import '../../../style/themes.scss';
+
 
     .tasklist-header {
 
-        right: 0%;
-        -webkit-transition: right 0.2s ease, background 0.4s ease;
-        position: relative;
-        display: flex;
-        font-size: 0;
-        border-bottom: 1px solid whitesmoke;
-
-        &.edit-mode {
-            background: whitesmoke;
-        }
-
-        &.sortable-chosen:not(.sortable-ghost) {
-            background: lightgray;
-            div.trashcan {
-                visibility: hidden !important;
+            @include themify($themes) {
+                ::selection {
+                    background: themed('secondary');
+                }
             }
-        }
 
-        .nav-handle {
-            text-decoration: none;
-        }
-
-        button.sort-handle {
-            background-color: transparent;
-            .handle-icon {
-                color: aquamarine;
-            }
-        }
-
-        .nav-handle,
-        .sort-handle,
-        .title-container {
-            cursor: pointer;
-            height: 100%;
-        }
-
-        .title-container {
+            right: 0%;
+            -webkit-transition: right 0.2s ease, background 0.4s ease;
             position: relative;
-        }
-
-        .swipe-handle {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            .swipe-icon {
-                color: #efbbbb;
-                font-size: 4vh;
-                    
-            }
-        }
+            font-size: 0;
+            border-bottom: 1px solid whitesmoke;
 
-        .nav-handle,
-        .sort-handle {
-            transition: background 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: aquamarine;
-            height: 100%;
-
-            .handle-icon {
-                font-size: 5vh;
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-
-        .title-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            font-size: initial;
-            text-align: center;
-
-            .tasklist-title-input {
-                overflow-x: scroll;
-                background: transparent;
-                width: 100%;
-                height: 100%;
-                margin:0;
-                padding:0;
-                flex: 1;
-                text-align: center;
-                font-size: 5vh;
-                border: none;
-                outline: none;
+            &.edit-mode {
+                background: whitesmoke;
             }
 
-            .tasklist-title-input[disabled] {
-                -webkit-user-select: none;
-                user-select: none;
+            &.sortable-chosen:not(.sortable-ghost) {
+                background: lightgray;
+                div.trashcan {
+                    visibility: hidden !important;
+                }
             }
 
-        }
-
-        .trashcan {
-            cursor: pointer;
-            background: salmon;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            font-size: initial;
-
-            .delete-tasklist-icon,
-            .delete-tasklist-icon-confirm {
-                font-size: 5vh;
-                color: whitesmoke;
-            }
-            .delete-tasklist-icon-confirm {
-
-            }
-        }
-    }
-
-
-    @media(max-height: 400px) {
-        .tasklist-header {
-            height: 50%;
-            .sort-handle,
             .nav-handle {
+                text-decoration: none;
+            }
+
+            button.sort-handle {
+                background-color: transparent;
                 .handle-icon {
-                    font-size: 15vh;
+                    color: themify('secondary');
+                }
+            }
+
+            .nav-handle,
+            .sort-handle,
+            .title-container {
+                cursor: pointer;
+                height: 100%;
+            }
+
+            .title-container {
+                position: relative;
+            }
+
+            @include themify($themes) {
+                .swipe-handle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .swipe-icon {
+                        color: themed('primary');
+                        font-size: 4vh;
+                    }
+                }
+            }
+
+            @include themify($themes) {
+                .nav-handle,
+                .sort-handle {
+                    transition: background 0.2s ease-in-out;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    color: themed('secondary');
+                    height: 100%;
+
+                    .handle-icon {
+                        font-size: 5vh;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+
+
+            .title-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                font-size: initial;
+                text-align: center;
+
+                .tasklist-title-input {
+                    overflow-x: scroll;
+                    background: transparent;
+                    width: 100%;
+                    height: 100%;
+                    margin:0;
+                    padding:0;
+                    flex: 1;
+                    text-align: center;
+                    font-size: 5vh;
+                    border: none;
+                    outline: none;
+                }
+
+                .tasklist-title-input[disabled] {
+                    -webkit-user-select: none;
+                    user-select: none;
+                }
+
+            }
+
+            .trashcan {
+                cursor: pointer;
+                background: salmon;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                font-size: initial;
+
+                .delete-tasklist-icon,
+                .delete-tasklist-icon-confirm {
+                    font-size: 5vh;
+                    color: whitesmoke;
+                }
+                .delete-tasklist-icon-confirm {
+
                 }
             }
         }
-    }
 
-    @media (min-height: 400px) {
-        .tasklist-header {
-            height: 20%;
-        }
-    }
 
-    @media(max-width: 750px) {
-        .tasklist-header {
-            width: 120%;
+        @media(max-height: 400px) {
+            .tasklist-header {
+                height: 50%;
+                .sort-handle,
+                .nav-handle {
+                    .handle-icon {
+                        font-size: 15vh;
+                    }
+                }
+            }
         }
-        .title-container {
-            width: 60%;
+
+        @media (min-height: 400px) {
+            .tasklist-header {
+                height: 20%;
+            }
         }
-        .sort-handle,
-        .nav-handle,
-        .swipe-handle,
-        .trashcan {
-            width: 20%;
+
+        @media(max-width: 750px) {
+            .tasklist-header {
+                width: 120%;
+            }
+            .title-container {
+                width: 60%;
+            }
+            .sort-handle,
+            .nav-handle,
+            .swipe-handle,
+            .trashcan {
+                width: 20%;
+            }
+            .tasklist-header.delete-mode {
+                right: 20%;
+            }
         }
-        .tasklist-header.delete-mode {
-            right: 20%;
+        @media(min-width: 750px) {
+            .tasklist-header {
+                width: 115%;
+            }
+            .title-container {
+                width: 80%;
+            }
+            .sort-handle,
+            .swipe-handle,
+            .nav-handle,
+            .trashcan {
+                width: 15%;
+            }
+            .tasklist-header.delete-mode {
+                right: 15%;
+            }
         }
-    }
-    @media(min-width: 750px) {
-        .tasklist-header {
-            width: 115%;
-        }
-        .title-container {
-            width: 80%;
-        }
-        .sort-handle,
-        .swipe-handle,
-        .nav-handle,
-        .trashcan {
-            width: 15%;
-        }
-        .tasklist-header.delete-mode {
-            right: 15%;
-        }
-    }
 
 </style>
 
