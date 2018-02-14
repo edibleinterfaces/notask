@@ -1,6 +1,8 @@
 <style lang="scss">
 
-    @import '../../../style/themes.scss';
+    @import "../../../style/themes.scss";
+    @import "../../../../../common/style/themify.scss";
+
 
     .tasklist-header {
 

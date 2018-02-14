@@ -1,6 +1,7 @@
 <style lang="scss">
-    @import '../../style/colors.scss';
+
     @import '../../style/themes.scss';
+    @import '../../../../common/style/themify.scss';
 
     .dashboard {
         display: flex;

@@ -1,4 +1,8 @@
 <style lang="scss">
+
+    @import '../../../../common/style/themify.scss'; 
+    @import '../../style/themes.scss'; 
+
     .appearance-container {
         height: 100%; 
         width: 100%;

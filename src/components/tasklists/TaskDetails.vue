@@ -1,6 +1,7 @@
 <style lang="scss">
 
     @import "../../../style/themes.scss";
+    @import "../../../../../common/style/themify.scss";
 
     .task-details-container {
 
