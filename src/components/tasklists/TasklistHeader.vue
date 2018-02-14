@@ -225,7 +225,7 @@
             </input>
         </v-touch>
         <div 
-            v-on:click="deleteMode = deleteMode ? false : true"
+            v-on:click="deleteMode ? disableDeleteMode() : enableDeleteMode()"
             class="swipe-handle">
             <i class="fa fa-ellipsis-v swipe-icon"></i>
         </div>
