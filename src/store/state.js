@@ -8,6 +8,14 @@ export default {
         signedIntoGoogle: false
     },
     online: navigator.onLine,
-    theme: 'icecream',
-    themes: ['bw','icecream']
+    appearance: {
+        theme: {
+            selected: 'icecream',
+            options: ['bw','icecream']
+        },
+        font: {
+            selected: '16px',
+            options: ['16px', '18px', '20px', '24px']
+        }
+    }
 };

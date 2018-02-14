@@ -48,8 +48,10 @@ export default {
         state.tasklists[ listId ].tasks[ taskId ].reminders.splice(reminderIndex, 1);
     }, 
     updateTheme(state, newTheme) {
-        state.theme = newTheme;
-        console.log(state.theme);
+        state.appearance.theme.selected = newTheme;
+    },
+    updateFontSize(state, newSize) {
+        state.appearance.font.selected = newSize;
     },
     /* google drive authentication */
     updateSigninStatus(state, isSignedIn) {
