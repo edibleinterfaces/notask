@@ -1,74 +1,42 @@
 <style lang="scss">
-
     @import 'style/colors.scss';
-	$themes: (
-		icecream: (
-			primary: salmon,
-			secondary: aquamarine
-		),
-		bw: (
-			primary: lightslategrey,
-			secondary: whitesmoke
-		)
-	);
+    @import 'style/themes.scss';
 
-	@mixin themify($themes) {
-	  @each $theme, $map in $themes {
-		.theme-#{$theme} & {
-		  $theme-map: () !global;
-		  @each $key, $submap in $map {
-			$value: map-get(map-get($themes, $theme), '#{$key}');
-			$theme-map: map-merge($theme-map, ($key: $value)) !global;
-		  }
-		  @content;
-		  $theme-map: null !global;
-		}
-	  }
-	}
+    .theme {
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+    }
 
-	@function themed($key) {
-	  @return map-get($theme-map, $key);
-	}
+    .landing-container {
 
-        .theme {
-            height: 100%;
-            width: 100%;
-        }
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        .landing-container {
-
-
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            .title {
-                text-decoration: none;
-                font-size: 10vw;
-                font-weight: 600;
-                padding: 5%;
-                @include themify($themes) {
-
-                    .no {
-                        color: themed('primary');
-                    }
-                    .task {
-                        color: themed('secondary');
-                    }
-                }
+        .title {
+            font-size: 10vw;
+            font-weight: 600;
+            padding: 5%;
+            @include themify($themes) {
+                .no { color: themed('primary'); }
+                .task { color: themed('secondary'); }
             }
         }
+
+    }
 </style>
+
 <template>
-    <div class="theme" :class="colorThemeClass">
+    <router-link to="/tasklists" class="theme" :class="themeClass">
         <div class="landing-container">
-            <router-link to="/tasklists" class="title">
+            <div class="title">
                 <span class="no">No</span><span class="task">Task</span>
-            </router-link>
+            </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -77,17 +45,12 @@
     import store from './../store';
 
     export default {
-      name: 'landing-page',
+      name: 'LandingView',
       components: { Tasklist, Task },
       props: ['tasklists'],
-      data: function() {
-          return {
-              colorThemeClass: 'theme-' + store.getters.colorTheme,
-          };
-      },
-      getters: {
-          colorTheme() {
-              return store.getters.colorTheme;
+      computed: {
+          themeClass() {
+              return `theme-${ store.getters.theme }`;
           }
       }
     }

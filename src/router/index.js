@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import AppearanceView from '../views/AppearanceView';
 import LandingView from '../views/LandingView';
 import ListView from '../views/ListView';
 import ListsView from '../views/ListsView';
@@ -66,6 +67,11 @@ export default new Router({
             path: '/settings/sync',
             name: 'SyncView',
             component: SyncView
+        },
+        {
+            path: '/settings/appearance',
+            name: 'AppearanceView',
+            component: AppearanceView
         },
         {
             path: '/oops',

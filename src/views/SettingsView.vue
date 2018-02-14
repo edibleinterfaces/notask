@@ -31,20 +31,12 @@
 <template>
     <div class="settings-view-container">
         <div class="settings-view">
-            <router-link to="/settings/storage">
-                Storage
-            </router-link>
-            <router-link to="/settings/sync">
-                Sync from the Cloud
-            </router-link>
-            <router-link to="/settings/appearance">
-                Appearance
-            </router-link>
-            <router-link to="/settings/about">
-                About NoTask
-            </router-link>
+            <router-link to="/settings/storage">Storage</router-link>
+            <router-link to="/settings/sync">Sync from the Cloud</router-link>
+            <router-link to="/settings/appearance">Appearance</router-link>
+            <router-link to="/settings/about">About NoTask</router-link>
         </div>
-        <dashboard></dashboard>
+        <dashboard/>
     </div>
 </template>
 
@@ -52,11 +44,7 @@
     import Dashboard from '../components/Dashboard';
 
     export default {
-        data: function() {
-            return {};
-        },
-        components: {
-            Dashboard
-        }
+        name: 'SettingsView',
+        components: { Dashboard }
     };
 </script>

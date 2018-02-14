@@ -47,6 +47,10 @@ export default {
     deleteReminder(state, { reminderIndex, listId, taskId}) {
         state.tasklists[ listId ].tasks[ taskId ].reminders.splice(reminderIndex, 1);
     }, 
+    updateTheme(state, newTheme) {
+        state.theme = newTheme;
+        console.log(state.theme);
+    },
     /* google drive authentication */
     updateSigninStatus(state, isSignedIn) {
         state.auth.signedIntoGoogle = isSignedIn;

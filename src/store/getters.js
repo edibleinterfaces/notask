@@ -4,5 +4,6 @@ export default {
     task: (state) => ({ listId, taskId }) => state.tasklists[ listId ].tasks[ taskId ],
     online: (state) => state.online,
     reminders: (state) => ({listId, taskId }) => state.tasklists[ listId ].tasks[ taskId ].reminders,
-    colorTheme: (state) => state.theme,
+    themes: (state) => state.themes,
+    theme: (state) => state.theme
 };
