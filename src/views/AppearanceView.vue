@@ -32,6 +32,9 @@
         methods: {
             updateTheme(event) {
                 store.commit('updateTheme', event.target.value);
+            },
+            updateFontSize(event) {
+                store.commit('updateFontSize', event.target.value);
             }
         },
         computed: {
