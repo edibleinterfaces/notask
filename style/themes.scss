@@ -1,10 +1,22 @@
 $themes: (
 	icecream: (
 		primary: salmon,
-		secondary: aquamarine
+		secondary: aquamarine,
+        primary-font: black,
+        secondary-font: lightslategray,
+        selected-font-bg: aquamarine, 
+        bg-light: salmon,
+        bg-dark: aquamarine
 	),
 	bw: (
 		primary: lightslategrey,
-		secondary: whitesmoke
+		secondary: whitesmoke,
+        primary-font: lightslategray,
+        secondary-font: lightgray,
+        selected-font-bg: whitesmoke, 
+        bg-light: lightgray,
+        bg-dark: lightslategray 
 	)
 );
+
+:export {}
