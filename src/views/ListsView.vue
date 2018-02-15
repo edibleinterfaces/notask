@@ -1,24 +1,19 @@
 <style lang="scss">
-
     .lists-view-container {
-
         height: 100%;
         width: 100%;
-
         overflow-x: hidden; 
         ::-webkit-scrollbar {
             display: none;
         }
-
         > .lists-view { 
+            position: relative;
             width: 100%;
             overflow-y: scroll;
             overflow-x: hidden; 
             -webkit-overflow-scrolling: touch;
         }
-
     }
-
     @media (max-height: 400px){
         .lists-view {
             height: 75%;
@@ -29,7 +24,6 @@
             height: 90%;
         }
     }
-
 </style>
 <template>
     <div class="lists-view-container">
@@ -47,6 +41,7 @@
                 :title="tasklist.title"
                 :key="listId">
             </tasklist-header>
+            <progress-bar :value="progressBarWidth" />
         </draggable>
         <dashboard></dashboard>
     </div>
@@ -58,14 +53,11 @@
     import Dashboard from '../components/Dashboard.vue';
     import draggable from 'vuedraggable';
     import store from '../store';
+    import ProgressBar from '../components/ProgressBar';
 
     export default {
         name: 'listview',
-        components: {
-            TasklistHeader,
-            Dashboard,
-            draggable
-        },
+        components: { TasklistHeader, Dashboard, draggable, ProgressBar },
         props: ['listId', 'taskId'],
         computed: {
             tasklists: {
@@ -74,6 +66,9 @@
                 },
                 set(newTasklists) {
                     store.commit('updateTasklists', newTasklists);
+                },
+                progressBarWidth() {
+                    return 50;
                 }
             }
         },

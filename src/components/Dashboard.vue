@@ -2,6 +2,7 @@
     @import '../../style/themes.scss';
     @import '../../../../common/style/themify.scss';
     .dashboard {
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -77,19 +78,22 @@
         </div>
     </div>
 </template>
-
 <script>
-
     import store from '../store';
     import googleDrive from '../services/googleDrive';
-
     export default {
         name: 'dashboard',
         props: ['listId'],
+        components: {},
         created: googleDrive.authenticate,
         computed: {
             online: function() {
                 return store.getters.online;
+            },
+            distanceFromTop: function() {
+                return "50%";
+            },
+            tasklistHeight: function() {
             }
         },
         methods: {

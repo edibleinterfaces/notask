@@ -13,14 +13,9 @@
     import TasklistBody from './TasklistBody';
 
     export default {
-
         name: 'tasklist',
         props: ['listId'], 
-        components: {
-            TasklistHeader,
-            TasklistBody
-        }
-
+        components: { TasklistHeader, TasklistBody }
     };
 
 </script>
