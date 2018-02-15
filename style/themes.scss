@@ -1,22 +1,57 @@
 $themes: (
 	icecream: (
-		primary: salmon,
-		secondary: aquamarine,
-        primary-font: black,
-        secondary-font: lightslategray,
-        selected-font-bg: aquamarine, 
-        bg-light: salmon,
-        bg-dark: aquamarine
+
+        landing-no: aquamarine,
+        landing-task: salmon,
+
+        tasklist-header-bg: whitesmoke, 
+        tasklist-font-selection-bg: aquamarine,
+        tasklist-sort-handle: aquamarine,
+        tasklist-swipe-handle: salmon,
+        tasklist-delete-handle: white,
+        tasklist-delete-handle-bg: aquamarine,
+        tasklist-nav-back: aquamarine,
+
+        task-header-bg: whitesmoke, 
+        task-details-handle: lightgray,
+        task-sort-handle: aquamarine,
+
+        task-details-bg: white,
+
+        dashboard-icons: gray,
+        dashboard-bg: whitesmoke,
+
+        modal-bg: aquamarine, 
+
+        appearance-page-bg: aquamarine,
+
 	),
-	bw: (
-		primary: lightslategrey,
-		secondary: whitesmoke,
-        primary-font: lightslategray,
-        secondary-font: lightgray,
-        selected-font-bg: whitesmoke, 
-        bg-light: lightgray,
-        bg-dark: lightslategray 
-	)
+	grayscale: (
+    
+        landing-no: lightslategray,
+        landing-task: lightgray,
+
+        tasklist-header-bg: whitesmoke, 
+        tasklist-font-selection-bg: lightslategray,
+        tasklist-sort-handle: lightslategray,
+        tasklist-swipe-handle: lightslategray,
+        tasklist-delete-handle: white,
+        tasklist-delete-handle-bg: lightgray,
+        tasklist-nav-back: grey,
+
+        task-header-bg: whitesmoke, 
+        task-details-handle: lightgray,
+        task-sort-handle: darkgray,
+
+        task-details-bg: white,
+
+        dashboard-icons: gray,
+        dashboard-bg: whitesmoke,
+
+        modal-bg: lightgray, 
+
+        appearance-page-bg: lightgray,
+    )
 );
 
 :export {}

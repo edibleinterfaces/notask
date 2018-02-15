@@ -1,75 +1,70 @@
 <style lang="scss">
-
     @import "../../../style/themes.scss";
     @import "../../../../../common/style/themify.scss";
-
-
     .tasklist-header {
-
             @include themify($themes) {
                 ::selection {
-                    background: themed('secondary');
+                    background: themed('tasklist-font-selection-bg');
                 }
             }
-
+            @include themify($themes) {
+                background: themed('tasklist-header-bg');
+            }
             right: 0%;
             -webkit-transition: right 0.2s ease, background 0.4s ease;
             position: relative;
             display: flex;
             font-size: 0;
-            border-bottom: 1px solid whitesmoke;
-
+            border-bottom: 1px solid lightgray;
             @include themify($themes) {
                 &.edit-mode {
-                    background: themed('primary');
+                    background: themed('primary-bg');
                 }
             }
-
             &.sortable-chosen:not(.sortable-ghost) {
                 @include themify($themes) {
-                    background: themed('primary');
+                    background: themed('primary-bg');
                 }
                 div.trashcan {
                     visibility: hidden !important;
                 }
             }
-
             .nav-handle {
                 text-decoration: none;
             }
-
+            @include themify($themes) {
+                .handle-icon {
+                    color: themed('tasklist-sort-handle');
+                }
+            }
             button.sort-handle {
                 background-color: transparent;
                 @include themify($themes) {
                     .handle-icon {
-                        color: themed('primary');
+                        color: themed('sort-handle');
                     }
                 }
             }
-
             .nav-handle,
             .sort-handle,
             .title-container {
                 cursor: pointer;
                 height: 100%;
             }
-
             .title-container {
                 position: relative;
             }
-
             @include themify($themes) {
                 .swipe-handle {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     .swipe-icon {
-                        color: themed('primary');
+                        color: themed('swipe-handle');
                         font-size: 4vh;
                     }
                 }
             }
-
             @include themify($themes) {
                 .nav-handle,
                 .sort-handle {
@@ -77,10 +72,8 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-
                     color: themed('secondary');
                     height: 100%;
-
                     .handle-icon {
                         font-size: 5vh;
                         width: 100%;
@@ -88,8 +81,6 @@
                     }
                 }
             }
-
-
             .title-container {
                 display: flex;
                 flex-direction: row;
@@ -97,7 +88,6 @@
                 justify-content: center;
                 font-size: initial;
                 text-align: center;
-
                 .tasklist-title-input {
                     overflow-x: scroll;
                     background: transparent;
@@ -111,25 +101,22 @@
                     border: none;
                     outline: none;
                 }
-
                 .tasklist-title-input[disabled] {
                     -webkit-user-select: none;
                     user-select: none;
                 }
-
             }
-
             .trashcan {
                 cursor: pointer;
                 @include themify($themes) {
-                    background: themed('primary');
+                    background: themed('tasklist-delete-handle-bg');
+                    color: themed('tasklist-delete-handle');
                 }
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 height: 100%;
                 font-size: initial;
-
                 .delete-tasklist-icon,
                 .delete-tasklist-icon-confirm {
                     font-size: 5vh;
@@ -138,11 +125,9 @@
                     }
                 }
                 .delete-tasklist-icon-confirm {
-
                 }
             }
         }
-
         @media(max-height: 400px) {
             .tasklist-header {
                 height: 50%;
@@ -154,13 +139,11 @@
                 }
             }
         }
-
         @media (min-height: 400px) {
             .tasklist-header {
                 height: 20%;
             }
         }
-
         @media(max-width: 750px) {
             .tasklist-header {
                 width: 120%;
@@ -195,7 +178,6 @@
                 right: 15%;
             }
         }
-
 </style>
 
 <template>

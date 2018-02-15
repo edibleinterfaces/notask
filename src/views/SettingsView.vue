@@ -10,7 +10,7 @@
             height: 90%;
             width: 100%;
             @include themify($themes) {
-                background: themed('primary');
+                background: themed('bg-light');
             }
             a {
                 position: relative;

@@ -1,5 +1,8 @@
 <style lang="scss">
 
+    @import '../../style/themes.scss';
+    @import '../../../../common/style/themify.scss';
+
     .task-details-container {
         -webkit-overflow-scrolling: touch;
         overflow-x: hidden;
@@ -8,6 +11,16 @@
         .task-details {
             height: 90%;
             width: 100%;
+        }
+        & > .task-header {
+            @include themify($themes) {
+                background: themed('task-header-bg');
+            }
+        }
+    }
+    .task-details {
+        @include themify($themes) {
+            background: theme('task-details-bg');
         }
     }
 

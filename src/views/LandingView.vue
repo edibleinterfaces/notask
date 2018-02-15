@@ -16,8 +16,8 @@
             font-weight: 600;
             padding: 5%;
             @include themify($themes) {
-                .no { color: themed('primary'); }
-                .task { color: themed('secondary'); }
+                .no { color: themed('no'); }
+                .task { color: themed('task'); }
             }
         }
 

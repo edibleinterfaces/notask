@@ -11,7 +11,7 @@ export default {
     appearance: {
         theme: {
             selected: 'icecream',
-            options: ['bw','icecream']
+            options: ['grayscale','icecream']
         },
         font: {
             selected: '16px',

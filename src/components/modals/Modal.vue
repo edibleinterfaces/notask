@@ -16,7 +16,7 @@
         border: 1px solid lightgray;
 
         @include themify($themes) {
-            background: themed('secondary');
+            background: themed('modal-bg');
         }
 
     }    

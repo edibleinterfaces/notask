@@ -1,8 +1,6 @@
 <style lang="scss">
-
     @import '../../style/themes.scss';
     @import '../../../../common/style/themify.scss';
-
     .dashboard {
         display: flex;
         flex-direction: row;
@@ -10,20 +8,20 @@
         width: 100%;
         border-top: 1px solid #f1f1f1;
         @include themify($themes) {
-            background: themed('secondary');
+            background: themed('dashboard-bg');
         }
         .settings-icons-container {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
-
-            .add-tasklist-icon,
-            .settings-icon,
-            .settings-icon {
-                color: lightgray;
+            @include themify($themes) {
+                .add-tasklist-icon,
+                .settings-icon,
+                .settings-icon {
+                    color: themed('dashboard-icons');
+                }
             }
-
             .add-tasklist-icon,
             .settings-icon {
                 font-size: 5vh;
@@ -35,12 +33,8 @@
             .settings-icon {
                 margin-right: auto;
             }
-
         }
-
-
     }
-
     @media (max-height:400px) {
         .dashboard {
             height: 25%; 
@@ -57,7 +51,6 @@
         .dashboard {
             height: 10%; 
         }
-
     }
     @media(max-width: 750px) {
         .settings-icons-container  i {

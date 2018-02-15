@@ -1,27 +1,22 @@
 <style lang="scss">
-
     @import "../../../style/themes.scss";
     @import "../../../../../common/style/themify.scss";
-
     .task-header {
-
         display: inline-flex; 
         align-items: center;
         justify-content: center;
         position: relative;
         right: 0%; 
         transition: right 0.2s ease-in-out;
-
         &.sortable-chosen:not(.sortable-ghost) {
             @include themify($themes) {
-                background: themed('secondary') !important;
+                background: themed('task-header-bg') !important;
             }
             div.trashcan {
                 background: transparent !important;
                 visibility: hidden !important;
             }
         }
-
         .details-handle,
         .sort-handle {
             outline: none;
@@ -36,32 +31,37 @@
             text-align: center !important;
             background: transparent;
         }
-
         .details-handle {
             @include themify($themes) {
                 .details-handle-icon {
                     text-align: center;
-                    color: themed('primary');
+                    color: themed('task-details-handle');
                     font-size: 5vh;
                     width: 100%;
                 }
             }
         }
-
         .sort-handle {
+            @include themify($themes) {
+                .task-sort-handle-icon {
+                    color: themed('task-sort-handle');
+                }
+                .task-nav-back-icon {
+                    color: themed('task-nav-back');
+                }
+            }
             .task-sort-handle-icon,
             .task-nav-back-icon {
                 width: 100%;
                 text-align: center;
-                color: lightgray;
                 font-size: 5vh;
             }
-
-            .task-sort-handle-icon:hover {
-                color: aquamarine;
+            @include themify($themes) {
+                .task-sort-handle-icon:hover {
+                    color: themed('task-sort-handle');
+                }
             }
         }
-
         .task-title-container {
             display: flex;
             align-items: center;
@@ -80,17 +80,15 @@
                 font-size: 1em;
             }
         }
-
         .trashcan {
-            color: whitesmoke;
             @include themify($themes) {
-                background: themed('primary');
+                background: themed('task-icon');
+                color: themed('task-icon');
             }
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-
             .delete-task-icon,
             .delete-task-icon-confirmed {
                 width: 100%;
@@ -99,7 +97,6 @@
             }
         }
     }
-    
     @media (max-width: 750px) {
         .task-header {
             width: 120%;

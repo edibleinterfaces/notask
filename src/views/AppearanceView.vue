@@ -6,7 +6,9 @@
     .appearance-container {
         height: 100%; 
         width: 100%;
-        background: lightgray;
+        @include themify($themes) {
+            background: themed('appearance-page-bg');
+        }
     }
 </style>
 
