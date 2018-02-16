@@ -28,7 +28,12 @@
 <template>
     <div class="lists-view-container">
         <progress-bar :value="progress"></progress-bar> 
-        <draggable v-on:scroll.native="scrollHandler" class="lists-view" :options="draggableOptions" v-model="tasklists">
+        <!-- using 'event.native' on draggable component lets you access native event. standard vuejs feature. --> 
+        <draggable 
+            class="lists-view" 
+            @scroll.native="scrollHandler" 
+            :options="draggableOptions" 
+            v-model="tasklists">
             <tasklist-header 
                 v-for="(tasklist, listId) in tasklists" 
                 v-on:navigate="navigate"

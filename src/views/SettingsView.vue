@@ -10,7 +10,7 @@
             height: 90%;
             width: 100%;
             @include themify($themes) {
-                background: themed('bg-light');
+                background: themed('appearance-page-bg-light');
             }
             a {
                 position: relative;
@@ -22,7 +22,7 @@
                 width: 100%;
                 border-bottom: 1px solid lightgray;
                 @include themify($themes) {
-                    background: themed('secondary');
+                    background: themed('appearance-page-bg-light');
                 }
             }
         }

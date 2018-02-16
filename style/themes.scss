@@ -5,6 +5,8 @@ $themes: (
         landing-task: salmon,
 
         tasklist-header-bg: whitesmoke, 
+        tasklist-header-bg-dark: lightslategray, 
+        tasklist-header-drag-bg: white,
         tasklist-font-selection-bg: aquamarine,
         tasklist-sort-handle: aquamarine,
         tasklist-swipe-handle: salmon,
@@ -16,10 +18,11 @@ $themes: (
         tasklist-progress-bar-bg: aquamarine,
 
         task-header-bg: whitesmoke, 
-        task-details-handle: lightgray,
         task-sort-handle: aquamarine,
+        task-details-handle: lightgray,
+        task-details-focus-bg: aquamarine,
+        task-details-date-selected: aquamarine,
 
-        task-details-bg: white,
 
         dashboard-icons: gray,
         dashboard-bg: whitesmoke,
@@ -27,6 +30,7 @@ $themes: (
         modal-bg: aquamarine, 
 
         appearance-page-bg: aquamarine,
+        appearance-page-bg-light: white,
 
 	),
 	grayscale: (
@@ -34,7 +38,9 @@ $themes: (
         landing-no: lightslategray,
         landing-task: lightgray,
 
-        tasklist-header-bg: whitesmoke, 
+        tasklist-header-bg: white, 
+        tasklist-header-bg-dark: lightgray, 
+        tasklist-header-drag-bg: white,
         tasklist-font-selection-bg: lightslategray,
         tasklist-sort-handle: lightslategray,
         tasklist-swipe-handle: lightslategray,
@@ -46,10 +52,11 @@ $themes: (
         tasklist-progress-bar-bg: lightgray,
 
         task-header-bg: whitesmoke, 
-        task-details-handle: lightgray,
         task-sort-handle: darkgray,
 
-        task-details-bg: white,
+        task-details-handle: lightgray,
+        task-details-focus-bg: whitesmoke,
+        task-details-date-selected: whitesmoke,
 
         dashboard-icons: gray,
         dashboard-bg: whitesmoke,
@@ -57,6 +64,7 @@ $themes: (
         modal-bg: lightgray, 
 
         appearance-page-bg: lightgray,
+        appearance-page-bg-light: white,
     )
 );
 

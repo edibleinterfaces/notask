@@ -3,12 +3,10 @@
     @import "../../../../../common/style/themify.scss";
     .tasklist-header {
             @include themify($themes) {
+                background: themed('tasklist-header-bg');
                 ::selection {
                     background: themed('tasklist-font-selection-bg');
                 }
-            }
-            @include themify($themes) {
-                background: themed('tasklist-header-bg');
             }
             right: 0%;
             -webkit-transition: right 0.2s ease, background 0.4s ease;
@@ -18,12 +16,12 @@
             border-bottom: 1px solid lightgray;
             @include themify($themes) {
                 &.edit-mode {
-                    background: themed('primary-bg');
+                    background: themed('tasklist-header-bg-dark');
                 }
             }
             &.sortable-chosen:not(.sortable-ghost) {
                 @include themify($themes) {
-                    background: themed('primary-bg');
+                    background: themed('tasklist-header-drag-bg');
                 }
                 div.trashcan {
                     visibility: hidden !important;
@@ -41,7 +39,7 @@
                 background-color: transparent;
                 @include themify($themes) {
                     .handle-icon {
-                        color: themed('sort-handle');
+                        color: themed('tasklist-sort-handle');
                     }
                 }
             }
@@ -60,7 +58,7 @@
                     align-items: center;
                     justify-content: center;
                     .swipe-icon {
-                        color: themed('swipe-handle');
+                        color: themed('tasklist-swipe-handle');
                         font-size: 4vh;
                     }
                 }
@@ -72,7 +70,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    color: themed('secondary');
+                    color: themed('tasklist-sort-handle');
                     height: 100%;
                     .handle-icon {
                         font-size: 5vh;
@@ -121,7 +119,7 @@
                 .delete-tasklist-icon-confirm {
                     font-size: 5vh;
                     @include themify($themes) {
-                        color: themed('secondary');
+                        color: themed('tasklist-delete-handle');
                     }
                 }
                 .delete-tasklist-icon-confirm {

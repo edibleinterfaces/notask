@@ -52,7 +52,7 @@
                 &:focus {
                     outline: none;
                     @include themify($themes) {
-                        background: themed('secondary');
+                        background: themed('task-details-focus-bg') !important;
                     }
                 }
                 height: 200px !important;
@@ -64,7 +64,7 @@
         .datepicker-container {
             .cell.selected {
                 @include themify($themes) { 
-                    background: themed('secondary'); 
+                    background: themed('task-details-date-selected'); 
                 }
             }
             > div:nth-child(2) { 
