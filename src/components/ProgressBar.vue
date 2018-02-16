@@ -2,11 +2,12 @@
     @import '../../style/themes.scss';
     @import '../../../../common/style/themify.scss';
     .progress-bar-container {
-        position: absolute;
-        bottom: 0;
+        position: fixed;
+        top: 0;
         left: 0;
         height: 1px;
         width: 100%;
+        z-index: 1000;
         & > .progress {
             height: 100%;
             @include themify($themes) {
@@ -15,7 +16,6 @@
         }
     }
 </style>
-
 <template>
     <div class="progress-bar-container">
         <div class="progress" :style="progress"></div>

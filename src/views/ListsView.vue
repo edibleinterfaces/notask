@@ -27,13 +27,8 @@
 </style>
 <template>
     <div class="lists-view-container">
-        <draggable 
-            :options="{ 
-                handle: '.sort-handle', 
-                draggable: '.tasklist-header' 
-            }"
-            v-model="tasklists" 
-            class="lists-view">
+        <progress-bar :value="progressBarWidth"></progress-bar> 
+        <draggable v-on:scroll.native="scrollHandler" class="lists-view" :options="draggableOptions" v-model="tasklists">
             <tasklist-header 
                 v-for="(tasklist, listId) in tasklists" 
                 v-on:navigate="navigate"
@@ -41,7 +36,6 @@
                 :title="tasklist.title"
                 :key="listId">
             </tasklist-header>
-            <progress-bar :value="progressBarWidth" />
         </draggable>
         <dashboard></dashboard>
     </div>
@@ -59,6 +53,12 @@
         name: 'listview',
         components: { TasklistHeader, Dashboard, draggable, ProgressBar },
         props: ['listId', 'taskId'],
+        data: function() {
+            return {
+                progressBarWidth: 50,
+                draggableOptions: { handle: '.sort-handle', draggable: '.tasklist-header' },
+            }
+        },
         computed: {
             tasklists: {
                 get() {
@@ -69,11 +69,20 @@
                 },
                 progressBarWidth() {
                     return 50;
-                }
+                },
             }
         },
+        created() {
+            window.addEventListener('scroll', function(e) { console.log(e) });
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.scrollHandler);
+        },
         methods: {
-            navigate: function(newPath) {
+            scrollHandler(event) {
+                console.log(event);
+            },
+            navigate(newPath) {
                 this.$router.push(newPath);
             }
         }
