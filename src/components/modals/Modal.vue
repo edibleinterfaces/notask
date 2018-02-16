@@ -40,7 +40,7 @@
 </style>
 
 <template>
-    <div class="modal" v-bind:class="{'active': active }">
+    <div class="modal" v-bind:class="classObj">
         <i @click="modalClose" class="modal-close fa fa-close"></i>
         <slot></slot>
     </div>
@@ -52,6 +52,13 @@
         props: ['active'],
         data() {
             return {};
+        },
+        computed: {
+            classObj() {
+                return {
+                    active: this.active
+                }
+            }
         },
         methods: {
             modalClose() {
