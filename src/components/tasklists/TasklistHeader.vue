@@ -21,7 +21,7 @@
             }
             &.sortable-chosen:not(.sortable-ghost) {
                 @include themify($themes) {
-                    background: themed('tasklist-header-drag-bg');
+                    background: themed('tasklist-header-bg-drag');
                 }
                 div.trashcan {
                     visibility: hidden !important;
@@ -86,9 +86,11 @@
                 justify-content: center;
                 font-size: initial;
                 text-align: center;
+                @include themify($themes) {
                 .tasklist-title-input {
                     overflow-x: scroll;
                     background: transparent;
+                    color: themed('tasklist-header-font');
                     width: 100%;
                     height: 100%;
                     margin:0;
@@ -98,6 +100,7 @@
                     font-size: 5vh;
                     border: none;
                     outline: none;
+                }
                 }
                 .tasklist-title-input[disabled] {
                     -webkit-user-select: none;

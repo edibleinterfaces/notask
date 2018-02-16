@@ -67,17 +67,23 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            .task-title-input {
-                background: transparent;
-                transition: background 0.2s ease;
-                outline: none;
-                border: 0;
-                margin: 0;
-                padding: 0;
-                width: 120%;
-                height: 100%;
-                text-align: center;
-                font-size: 1em;
+            @include themify($themes) {
+                ::selection {
+                    background: themed('task-header-text-selected'); 
+                }
+                .task-title-input {
+                    background: transparent;
+                    color: themed('tasklist-header-font'); 
+                    transition: background 0.2s ease;
+                    outline: none;
+                    border: 0;
+                    margin: 0;
+                    padding: 0;
+                    width: 120%;
+                    height: 100%;
+                    text-align: center;
+                    font-size: 1em;
+                }
             }
         }
         .trashcan {

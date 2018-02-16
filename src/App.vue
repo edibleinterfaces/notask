@@ -1,4 +1,9 @@
-<style>
+<style lang="scss">
+
+    @import '../style/themes.scss';
+    @import '../style/fonts.scss';
+    @import '../../../common/style/themify.scss';
+
     html,
     body,
     #app {
@@ -8,7 +13,7 @@
     body, 
     body * {
         box-sizing: border-box;
-        font-family: "Comfortaa", cursive;
+        font-family: $font-stack,
     }
     body {
         margin: 0;
@@ -31,14 +36,13 @@
 <script>
 
     import disablePulldownRefresh from './services/disablePulldownRefresh';
-    import Modal from './components/modals/Modal'; 
     import store from './store';
 
     disablePulldownRefresh();
 
     export default {
         name: 'app',
-        components: { Modal },
+        components: {},
         computed: {
             themeClass() {
                 return `theme-${store.getters.theme}`; 

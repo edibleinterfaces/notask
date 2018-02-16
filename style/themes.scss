@@ -1,15 +1,23 @@
+$salmon-dark: rgba(250, 128, 114, 1);
+$salmon-medium: rgba(250, 128, 114, 0.8);
+$salmon-light: rgba(250, 128, 114, 0.5);
+
 $themes: (
 	icecream: (
+
+        font-color: rgb(84,84,84),
 
         landing-no: aquamarine,
         landing-task: salmon,
 
-        tasklist-header-bg: whitesmoke, 
+        tasklist-header-font: rgb(84,84,84),
+        tasklist-header-bg: white, 
         tasklist-header-bg-dark: lightslategray, 
-        tasklist-header-drag-bg: white,
+        tasklist-header-bg-drag: lightgray,
+
         tasklist-font-selection-bg: aquamarine,
         tasklist-sort-handle: aquamarine,
-        tasklist-swipe-handle: salmon,
+        tasklist-swipe-handle: $salmon-light,
         tasklist-delete-handle: white,
         tasklist-delete-handle-bg: aquamarine,
         tasklist-nav-back: aquamarine,
@@ -18,29 +26,38 @@ $themes: (
         tasklist-progress-bar-bg: aquamarine,
 
         task-header-bg: whitesmoke, 
+        task-header-text-selected: $salmon-light,
+
         task-sort-handle: aquamarine,
+
         task-details-handle: lightgray,
         task-details-focus-bg: aquamarine,
         task-details-date-selected: aquamarine,
-
 
         dashboard-icons: gray,
         dashboard-bg: whitesmoke,
 
         modal-bg: aquamarine, 
 
-        appearance-page-bg: aquamarine,
-        appearance-page-bg-light: white,
+        settings-view-bg: aquamarine,
+        settings-view-link-bg: whitesmoke,
+        settings-view-link: salmon,
+
+        appearance-view-bg: aquamarine,
 
 	),
 	grayscale: (
     
+        font-color: rgb(84,84,84),
+
         landing-no: lightslategray,
         landing-task: lightgray,
 
+        tasklist-header-font: rgb(84,84,84),
         tasklist-header-bg: white, 
         tasklist-header-bg-dark: lightgray, 
-        tasklist-header-drag-bg: white,
+        tasklist-header-bg-drag: white,
+
         tasklist-font-selection-bg: lightslategray,
         tasklist-sort-handle: lightslategray,
         tasklist-swipe-handle: lightslategray,
@@ -52,6 +69,8 @@ $themes: (
         tasklist-progress-bar-bg: lightgray,
 
         task-header-bg: whitesmoke, 
+        task-header-text-selected: $salmon-light,
+
         task-sort-handle: darkgray,
 
         task-details-handle: lightgray,
@@ -63,9 +82,10 @@ $themes: (
 
         modal-bg: lightgray, 
 
-        appearance-page-bg: lightgray,
-        appearance-page-bg-light: white,
+        settings-view-bg: white,
+        settings-view-link-bg: whitesmoke,
+        settings-view-link: rgb(84,84,84),
+
+        appearance-view-bg: whitesmoke,
     )
 );
-
-:export {}

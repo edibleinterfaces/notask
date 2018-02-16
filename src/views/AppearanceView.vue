@@ -7,7 +7,7 @@
         height: 100%; 
         width: 100%;
         @include themify($themes) {
-            background: themed('appearance-page-bg');
+            background: themed('appearance-view-bg');
         }
     }
 </style>

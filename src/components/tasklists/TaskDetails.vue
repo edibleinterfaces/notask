@@ -154,19 +154,14 @@
     import store from '../../store';
     import TaskHeader from './TaskHeader';
     import Datepicker from 'vuejs-datepicker';
-    import Modal from '../../components/modals/Modal';
+    import Modal from '../../../../../common/modal/Modal.vue';
 
     Vue.use(VueTimepicker);
 
     export default {
         name: 'task-details',
         props: ['listId','taskId'],
-        components: {
-            TaskHeader,
-            Datepicker,
-            Modal,
-            VueTimepicker,
-        },
+        components: { TaskHeader, Datepicker, Modal, VueTimepicker },
         data: function() {
             return {
                 modalActive: false,
