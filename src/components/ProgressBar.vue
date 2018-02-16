@@ -30,7 +30,6 @@
         props: ['value'],
         computed: {
             progress() {
-                console.log(this.value);
                 return { width: `${this.value * 100}%` };
             }
         }

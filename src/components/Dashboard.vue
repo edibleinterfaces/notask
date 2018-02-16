@@ -8,45 +8,40 @@
         align-items: center;
         width: 100%;
         border-top: 1px solid #f1f1f1;
+        transition: 0.3s background ease-out;
         @include themify($themes) {
-            background: themed('dashboard-bg');
+        background: themed('dashboard-bg');
+            &.pulse {
+                background: themed('dashboard-bg-pulse') !important;
+            }
         }
-        .settings-icons-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            @include themify($themes) {
-                .add-tasklist-icon,
-                .settings-icon,
-                .settings-icon {
-                    color: themed('dashboard-icons');
-                }
-            }
-            .add-tasklist-icon,
-            .settings-icon {
-                font-size: 5vh;
-                text-align: center;
-            }
-            .add-tasklist-icon {
-                margin-left: auto;
-            }
-            .settings-icon {
-                margin-right: auto;
-            }
+        @include themify($themes) {
+        .add-tasklist-icon,
+        .settings-icon,
+        .settings-icon {
+            color: themed('dashboard-icons');
+        }
+        }
+        .add-tasklist-icon,
+        .settings-icon {
+            font-size: 5vh;
+            text-align: center;
+        }
+        .add-tasklist-icon {
+            margin-left: auto;
+        }
+        .settings-icon {
+            margin-right: auto;
         }
     }
     @media (max-height:400px) {
         .dashboard {
             height: 25%; 
-            .settings-icons-container {
-                .add-tasklist-icon,
-                .settings-icon {
-                    font-size: 15vh;
-                }
+            .add-tasklist-icon,
+            .settings-icon {
+                font-size: 15vh;
             }
         }
-
     }
     @media (min-height: 400px) {
         .dashboard {
@@ -54,28 +49,26 @@
         }
     }
     @media(max-width: 750px) {
-        .settings-icons-container  i {
+        .settings-icon,
+        .add-tasklist-icon {
             width: 20%;
         }
     }
-    @media(min-width: 750px) {
-        .settings-icons-container  i{
+    @media(min-width: 751px) {
+        .settings-icon,
+        .add-tasklist-icon {
             width: 15%;
         }
     }
 </style>
 
 <template>
-    <div class="dashboard">
-        <div class="settings-icons-container">
-            <i
-                v-on:click="navigate"
-                class="fa fa-cog settings-icon"></i>
+    <div v-on:click.self="pulse" class="dashboard" :class="classObj">
+            <i v-on:click="navigate" class="fa fa-cog settings-icon"></i>
             <i 
-                v-show="['ListsView','ListView'].includes($route.name)"
-                v-on:click="add" 
-                class="fa fa-plus add-tasklist-icon"></i>
-        </div>
+                class="fa fa-plus add-tasklist-icon" 
+                v-show="['ListsView','ListView'].includes($route.name)" 
+                v-on:click="add"></i>
     </div>
 </template>
 <script>
@@ -83,6 +76,14 @@
     import googleDrive from '../services/googleDrive';
     export default {
         name: 'dashboard',
+        data: function() {
+            return {
+                classObj: {
+                   pulse: false
+                },
+                pulseTimeMS: 100
+            };
+        },
         props: ['listId'],
         components: {},
         created: googleDrive.authenticate,
@@ -93,10 +94,14 @@
             distanceFromTop: function() {
                 return "50%";
             },
-            tasklistHeight: function() {
-            }
+
         },
         methods: {
+            pulse() {
+                this.$emit('list-top');
+                this.classObj.pulse = true;
+                setTimeout(()=>{ this.classObj.pulse = false; }, this.pulseTimeMS);
+            },
             navigate() {
                 if (this.$route.name === 'SettingsView')
                     this.$router.back();

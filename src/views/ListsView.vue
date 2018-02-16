@@ -42,7 +42,7 @@
                 :key="listId">
             </tasklist-header>
         </draggable>
-        <dashboard></dashboard>
+        <dashboard v-on:list-top="scrollToListTop"></dashboard>
     </div>
 </template>
 
@@ -61,8 +61,12 @@
         data: function() {
             return {
                 progress: 0,
+                listsViewEl: null,
                 draggableOptions: { handle: '.sort-handle', draggable: '.tasklist-header' },
             }
+        },
+        mounted() {
+            this.listsViewEl = this.$el.querySelector('.lists-view');
         },
         computed: {
             tasklists: {
@@ -77,11 +81,10 @@
                 },
             }
         },
-        created() {
-        },
-        destroyed() {
-        },
         methods: {
+            scrollToListTop() {
+                this.listsViewEl.scrollTo(0,0);
+            },
             scrollHandler({ target }) {
                 const possibleDistanceToMove = target.scrollHeight - target.clientHeight; 
                 const distanceFromTop = target.scrollTop;
