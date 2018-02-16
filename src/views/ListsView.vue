@@ -90,8 +90,9 @@
 
                 let fnHandle;
                 const el = this.listsViewEl;
+
                 const scrollInterval = 2;
-                const scrollDelta = 10;
+                const scrollDelta = 30;
 
                 function scrollFn() {
                     if (el.scrollTop <= 0) {
@@ -111,7 +112,7 @@
                 let fnHandle;
                 const el = this.listsViewEl;
                 const scrollInterval = 2;
-                const scrollDelta = 10;
+                const scrollDelta = 30;
 
                 function scrollFn() {
                     if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
