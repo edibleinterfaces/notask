@@ -109,6 +109,7 @@
                     this.$router.push('/settings');
             },
             add() {
+                this.$emit('list-bottom');
                 if (this.$route.name === 'ListView') 
                     store.commit('addTask', this.listId);
                 if (this.$route.name === 'ListsView') 

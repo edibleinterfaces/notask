@@ -42,7 +42,7 @@
                 :key="listId">
             </tasklist-header>
         </draggable>
-        <dashboard v-on:list-top="scrollToListTop"></dashboard>
+        <dashboard v-on:list-top="scrollToListTop" v-on:list-bottom="scrollToListBottom"></dashboard>
     </div>
 </template>
 
@@ -84,6 +84,9 @@
         methods: {
             scrollToListTop() {
                 this.listsViewEl.scrollTo(0,0);
+            },
+            scrollToListBottom() {
+                this.listsViewEl.scrollTo(0,1000000);
             },
             scrollHandler({ target }) {
                 const possibleDistanceToMove = target.scrollHeight - target.clientHeight; 
