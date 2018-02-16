@@ -5,9 +5,12 @@
         position: fixed;
         top: 0;
         left: 0;
-        height: 1px;
+        height: 2px;
         width: 100%;
         z-index: 1000;
+        @include themify($themes) {
+            background: themed('tasklist-progress-bar-bg');
+        }
         & > .progress {
             height: 100%;
             @include themify($themes) {

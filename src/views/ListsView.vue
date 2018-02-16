@@ -27,7 +27,7 @@
 </style>
 <template>
     <div class="lists-view-container">
-        <progress-bar :value="progressBarWidth"></progress-bar> 
+        <progress-bar :value="progress"></progress-bar> 
         <draggable v-on:scroll.native="scrollHandler" class="lists-view" :options="draggableOptions" v-model="tasklists">
             <tasklist-header 
                 v-for="(tasklist, listId) in tasklists" 
@@ -55,7 +55,7 @@
         props: ['listId', 'taskId'],
         data: function() {
             return {
-                progressBarWidth: 50,
+                progress: 0,
                 draggableOptions: { handle: '.sort-handle', draggable: '.tasklist-header' },
             }
         },
@@ -67,20 +67,20 @@
                 set(newTasklists) {
                     store.commit('updateTasklists', newTasklists);
                 },
-                progressBarWidth() {
-                    return 50;
+                progress() {
+                    return this.progress;
                 },
             }
         },
         created() {
-            window.addEventListener('scroll', function(e) { console.log(e) });
         },
         destroyed() {
-            window.removeEventListener('scroll', this.scrollHandler);
         },
         methods: {
-            scrollHandler(event) {
-                console.log(event);
+            scrollHandler({ target }) {
+                const possibleDistanceToMove = target.scrollHeight - target.clientHeight; 
+                const distanceFromTop = target.scrollTop;
+                this.progress = distanceFromTop / possibleDistanceToMove;
             },
             navigate(newPath) {
                 this.$router.push(newPath);
