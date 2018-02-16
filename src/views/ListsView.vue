@@ -42,16 +42,20 @@
                 :key="listId">
             </tasklist-header>
         </draggable>
-        <dashboard v-on:list-top="scrollToListTop" v-on:list-bottom="scrollToListBottom"></dashboard>
+        <dashboard 
+            v-on:list-top="scrollToTop('top')" 
+            v-on:list-bottom="scrollToBottom('bottom')" />
     </div>
 </template>
 
 <script>
 
-    import TasklistHeader from '../components/tasklists/TasklistHeader.vue';
-    import Dashboard from '../components/Dashboard.vue';
+    import Vue from 'vue';
     import draggable from 'vuedraggable';
     import store from '../store';
+
+    import TasklistHeader from '../components/tasklists/TasklistHeader.vue';
+    import Dashboard from '../components/Dashboard.vue';
     import ProgressBar from '../components/ProgressBar';
 
     export default {
@@ -60,8 +64,8 @@
         props: ['listId', 'taskId'],
         data: function() {
             return {
-                progress: 0,
                 listsViewEl: null,
+                progress: 0,
                 draggableOptions: { handle: '.sort-handle', draggable: '.tasklist-header' },
             }
         },
@@ -82,11 +86,44 @@
             }
         },
         methods: {
-            scrollToListTop() {
-                this.listsViewEl.scrollTo(0,0);
+            scrollToTop() {
+
+                let fnHandle;
+                const el = this.listsViewEl;
+                const scrollInterval = 2;
+                const scrollDelta = 10;
+
+                function scrollFn() {
+                    if (el.scrollTop <= 0) {
+                        clearInterval(fnHandle);
+                        console.log('clearing scroll fn');
+                    }
+                    el.scrollTo(0, el.scrollTop - scrollDelta);
+                    console.log('scroll fn active');
+                };
+
+                fnHandle = setInterval(scrollFn, scrollInterval); 
+
+
             },
-            scrollToListBottom() {
-                this.listsViewEl.scrollTo(0,1000000);
+            scrollToBottom() {
+
+                let fnHandle;
+                const el = this.listsViewEl;
+                const scrollInterval = 2;
+                const scrollDelta = 10;
+
+                function scrollFn() {
+                    if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
+                        clearInterval(fnHandle);
+                        console.log('clearing scroll fn');
+                    }
+                    el.scrollTo(0, el.scrollTop + scrollDelta);
+                    console.log('scroll fn active');
+                };
+
+                fnHandle = setInterval(scrollFn, scrollInterval); 
+
             },
             scrollHandler({ target }) {
                 const possibleDistanceToMove = target.scrollHeight - target.clientHeight; 
