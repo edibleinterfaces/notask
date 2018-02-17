@@ -1,0 +1,3 @@
+add textured background to listsview
+convert setInterval to request animation frame
+look into time to load, a little slow
