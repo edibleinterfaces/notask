@@ -279,7 +279,10 @@
             }
 
         },
-        mounted() {
+        destroyed() {
+            console.log('destroyed');
+        },
+        created() {
             const self = this;
             setTimeout(function() { 
                 self.init = false;
