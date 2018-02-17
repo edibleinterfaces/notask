@@ -22,7 +22,7 @@
                 width: 100%;
                 border-bottom: 1px solid lightgray;
                 @include themify($themes) {
-                    color: themed('settings-view-link');
+                    color: themed('settings-list-item-font');
                     background: themed('settings-view-link-bg');
                 }
             }
