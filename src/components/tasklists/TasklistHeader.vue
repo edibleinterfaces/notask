@@ -24,6 +24,10 @@
                 }
             }
             &.sortable-chosen:not(.sortable-ghost) {
+                & .sort-handle > .handle-icon:before {
+                    content: "\f255";
+                    color: salmon;
+                }
                 @include themify($themes) {
                     background: themed('tasklist-header-bg-drag');
                 }

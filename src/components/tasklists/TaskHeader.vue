@@ -158,11 +158,8 @@
     <div 
         v-bind:class="{'trashcan-visible': trashcanVisible}"
         class="task-header">
-        <button 
-            v-if="$route.name === 'TaskDetailsView'"
-            class="sort-handle">
-            <i  v-on:click="$router.go(-1)"
-                class="fa fa-arrow-left task-sort-handle-icon"></i>
+        <button v-if="$route.name === 'TaskDetailsView'" class="sort-handle">
+            <i  v-on:click="$router.go(-1)" class="far fa-arrow-left task-sort-handle-icon"></i>
         </button>
         <button v-else class="sort-handle"> 
             <i class="far fa-hand-paper task-sort-handle-icon"></i>

@@ -27,13 +27,23 @@
 </style>
 <template>
     <div class="lists-view-container">
-        <progress-bar :progress-value="progress" :progress-bg-color="progressBgColor" :progress-color="progressBarColor"></progress-bar> 
+        <!-- Progress Bar: scroll distance from top of list -->
+        <progress-bar 
+            :progress-value="progress" 
+            :progress-bg-color="progressBgColor" 
+            :progress-color="progressBarColor" /> 
+
+        <!-- Draggable Wrapper around Tasklist Header -->
         <!-- using 'event.native' on draggable component lets you access native event. standard vuejs feature. --> 
         <draggable 
             class="lists-view" 
             @scroll.native="scrollHandler" 
+            @end="endHandler"
+            @start="startHandler"
             :options="draggableOptions" 
             v-model="tasklists">
+
+            <!-- Tasklist Header -->
             <tasklist-header 
                 v-on:navigate="navigate"
                 v-for="(tasklist, listId) in tasklists" 
@@ -42,6 +52,8 @@
                 :title="tasklist.title">
             </tasklist-header>
         </draggable>
+
+        <!-- Dashboard -->
         <dashboard 
             v-on:list-top="scrollToTop('top')" 
             v-on:list-bottom="scrollToBottom('bottom')" />
@@ -96,6 +108,12 @@
             }
         },
         methods: {
+            startHandler() {
+                console.log('start', arguments);
+            },
+            endHandler(){
+                console.log('end', arguments);
+            },
             scrollToTop() {
 
                 let fnHandle;
