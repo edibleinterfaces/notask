@@ -64,9 +64,9 @@
 
 <template>
     <div v-on:click.self="pulse" class="dashboard" :class="classObj">
-            <i v-on:click="navigate" class="fa fa-cog settings-icon"></i>
+            <i v-on:click="navigate" class="far fa-circle settings-icon"></i>
             <i 
-                class="fa fa-plus add-tasklist-icon" 
+                class="fas fa-plus add-tasklist-icon" 
                 v-show="['ListsView','ListView'].includes($route.name)" 
                 v-on:click="add"></i>
     </div>

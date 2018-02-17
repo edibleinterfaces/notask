@@ -197,7 +197,7 @@
             v-on:tap="navigate" 
             v-if="Number.isInteger(listId)" 
             class="sort-handle">
-            <i class="fa fa-hand-paper-o handle-icon"></i>
+            <i class="far fa-hand-paper handle-icon"></i>
         </div>
         <router-link 
             v-else

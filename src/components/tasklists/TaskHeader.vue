@@ -165,7 +165,7 @@
                 class="fa fa-arrow-left task-sort-handle-icon"></i>
         </button>
         <button v-else class="sort-handle"> 
-            <i class="fa fa-hand-paper-o task-sort-handle-icon"></i>
+            <i class="far fa-hand-paper task-sort-handle-icon"></i>
         </button>
         <v-touch 
             v-on:tap="enableInput"

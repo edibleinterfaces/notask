@@ -36,7 +36,7 @@
             <router-link to="/settings/storage">Storage</router-link>
             <router-link to="/settings/sync">Sync from the Cloud</router-link>
             <router-link to="/settings/appearance">Appearance</router-link>
-            <router-link to="/settings/about">About NoTask</router-link>
+            <router-link to="/settings/about">About doit</router-link>
         </div>
         <dashboard/>
     </div>
