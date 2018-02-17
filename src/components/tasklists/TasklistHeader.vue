@@ -7,6 +7,9 @@
                 ::selection {
                     background: themed('tasklist-font-selection-bg');
                 }
+                &.init {
+                    background: themed('tasklist-header-bg-init');
+                }
             }
             right: 0%;
             -webkit-transition: right 0.2s ease, background 0.4s ease;
@@ -184,10 +187,7 @@
 <template>
 
     <div
-        v-bind:class="{
-            'delete-mode': deleteMode,
-            'edit-mode': editingTitle
-        }"
+        v-bind:class="headerStyleObj"
         v-on:click="delegatedClick($event.target)"
         class="tasklist-header">
         <div 
@@ -256,10 +256,18 @@
                 trashcanVisible: false,
                 editingTitle: false,
                 deleteMode: false,
-                deleteConfirmed: false
+                deleteConfirmed: false,
+                init: true,
             };
         },
         computed: {
+            headerStyleObj() {
+                return {
+                    'delete-mode': this.deleteMode,
+                    'edit-mode': this.editingTitle,
+                    'init': this.init,
+                };
+            },
             tasklists: function() {
                 return store.getters.tasklists;
             },
@@ -269,6 +277,10 @@
 
         },
         mounted() {
+            const self = this;
+            setTimeout(function() { 
+                self.init = false;
+            }, 200);
         },
         methods: {
             disableInput() {

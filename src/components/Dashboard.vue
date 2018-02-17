@@ -108,12 +108,13 @@
             },
             add() {
 
-                this.$emit('list-bottom');
 
                 if (this.$route.name === 'ListView') 
                     store.commit('addTask', this.listId);
-                if (this.$route.name === 'ListsView') 
+                if (this.$route.name === 'ListsView') { 
                     store.commit('addTasklist');
+                    this.$emit('list-bottom');
+                }
             }
         }
     };

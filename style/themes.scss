@@ -1,6 +1,12 @@
 $salmon-dark: rgba(250, 128, 114, 1);
 $salmon-medium: rgba(250, 128, 114, 0.8);
-$salmon-light: rgba(250, 128, 114, 0.5);
+$salmon-medium-light: rgba(250, 128, 114, 0.5);
+$salmon-light: rgba(250, 128, 114, 0.3);
+
+$aquamarine-dark: rgba(127,255,212, 1);
+$aquamarine-medium: rgba(127,255,212, 0.8);
+$aquamarine-medium-light: rgba(127,255,212, 0.5);
+$aquamarine-light: rgba(127,255,212, 0.3);
 
 $themes: (
 	icecream: (
@@ -11,6 +17,7 @@ $themes: (
         landing-task: salmon,
 
         tasklist-header-font: rgb(84,84,84),
+        tasklist-header-bg-init: $aquamarine-light, 
         tasklist-header-bg: white, 
         tasklist-header-bg-dark: lightslategray, 
         tasklist-header-bg-drag: lightgray,
@@ -55,6 +62,7 @@ $themes: (
         landing-task: lightgray,
 
         tasklist-header-font: rgb(84,84,84),
+        tasklist-header-bg-init: lightslategray, 
         tasklist-header-bg: white, 
         tasklist-header-bg-dark: lightgray, 
         tasklist-header-bg-drag: white,
