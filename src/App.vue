@@ -12,8 +12,8 @@
     }
     body, 
     body * {
+        font-family: $font-stack;
         box-sizing: border-box;
-        font-family: $font-stack,
     }
     body {
         margin: 0;
