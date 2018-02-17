@@ -12,6 +12,7 @@
                 }
             }
             right: 0%;
+            -webkit-transition: background 0.1s ease;
             -webkit-transition: right 0.2s ease, background 0.4s ease;
             position: relative;
             display: flex;
@@ -90,24 +91,26 @@
                 font-size: initial;
                 text-align: center;
                 @include themify($themes) {
-                .tasklist-title-input {
-                    overflow-x: scroll;
-                    background: transparent;
-                    color: themed('tasklist-header-font');
-                    width: 100%;
-                    height: 100%;
-                    margin:0;
-                    padding:0;
-                    flex: 1;
-                    text-align: center;
-                    font-size: 5vh;
-                    border: none;
-                    outline: none;
-                }
-                }
-                .tasklist-title-input[disabled] {
-                    -webkit-user-select: none;
-                    user-select: none;
+                    .tasklist-title-input {
+                        overflow-x: scroll;
+                        background: transparent;
+                        color: themed('tasklist-header-font');
+                        width: 100%;
+                        height: 100%;
+                        margin:0;
+                        padding:0;
+                        flex: 1;
+                        text-align: center;
+                        font-size: 5vh;
+                        border: none;
+                        outline: none;
+                    }
+                    .tasklist-title-input[disabled] {
+                        -webkit-user-select: none;
+                        user-select: none;
+                        opacity: 1; /* required disabled input style to take effect on ios */
+                        color: themed('tasklist-header-font') !important;
+                    }
                 }
             }
             .trashcan {
