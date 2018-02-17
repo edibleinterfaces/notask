@@ -78,9 +78,7 @@
         name: 'dashboard',
         data: function() {
             return {
-                classObj: {
-                   pulse: false
-                },
+                classObj: { pulse: false },
                 pulseTimeMS: 100
             };
         },

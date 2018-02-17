@@ -38,12 +38,12 @@
                 v-model="tasks"
                 class="list-view">
                 <task-header 
-                    v-model="tasks"
-                    v-for="(task, taskId) in tasks" 
                     v-on:navigate="navigateTo"
+                    v-for="(task, taskId) in tasks" 
+                    v-model="tasks"
+                    :key="taskId"
                     :list-id="listId"
                     :task-id="taskId"
-                    :key="taskId"
                     :text="task.text">
                 </task-header>
             </draggable>

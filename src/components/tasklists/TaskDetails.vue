@@ -135,9 +135,15 @@
             </h2>
             <div v-if="reminders.length" class="reminder-list-container">
                 <h3>Reminders</h3>
-                <ul v-for="(reminder, index) in reminders" class="task-details-reminder-container">
+                <ul 
+                    class="task-details-reminder-container"
+                    v-for="(reminder, index) in reminders" 
+                    :key="index">
                     <li>{{ reminderHours }}:{{reminderMinutes}}, {{ reminderDate }}
-                        <i :index="index" v-on:click="deleteReminder(index)" class="delete-reminder fa fa-close"></i>
+                        <i 
+                            class="delete-reminder fa fa-close"
+                            :index="index" 
+                            v-on:click="deleteReminder(index)"></i>
                     </li>
                 </ul>
             </div>

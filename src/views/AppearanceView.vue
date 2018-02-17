@@ -17,12 +17,12 @@
 
         <label>theme:</label>
         <select v-on:change="updateTheme" :value="theme">
-            <option v-for="theme in themes">{{theme}}</option>
+            <option v-for="(theme, index) in themes" :key="index">{{theme}}</option>
         </select>
 
         <label>font-size:</label>
         <select v-on:change="updateFontSize" :value="fontSize">
-            <option v-for="fontSize in fontSizes">{{ fontSize }}</option>
+            <option v-for="(fontSize, index) in fontSizes" :index="index">{{ fontSize }}</option>
         </select>
 
     </div>

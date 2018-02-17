@@ -27,7 +27,7 @@
 </style>
 <template>
     <div class="lists-view-container">
-        <progress-bar :value="progress"></progress-bar> 
+        <progress-bar :progress-value="progress" :progress-bg-color="progressBgColor" :progress-color="progressBarColor"></progress-bar> 
         <!-- using 'event.native' on draggable component lets you access native event. standard vuejs feature. --> 
         <draggable 
             class="lists-view" 
@@ -35,11 +35,11 @@
             :options="draggableOptions" 
             v-model="tasklists">
             <tasklist-header 
-                v-for="(tasklist, listId) in tasklists" 
                 v-on:navigate="navigate"
+                v-for="(tasklist, listId) in tasklists" 
+                :key="listId"
                 :list-id="listId"
-                :title="tasklist.title"
-                :key="listId">
+                :title="tasklist.title">
             </tasklist-header>
         </draggable>
         <dashboard 
@@ -54,9 +54,11 @@
     import draggable from 'vuedraggable';
     import store from '../store';
 
-    import TasklistHeader from '../components/tasklists/TasklistHeader.vue';
-    import Dashboard from '../components/Dashboard.vue';
-    import ProgressBar from '../components/ProgressBar';
+    import TasklistHeader from '../components/tasklists/TasklistHeader';
+    import Dashboard from '../components/Dashboard';
+    import ProgressBar from '../../../../common/components/ProgressBar';
+
+    import styles from '../../style/themes.scss';
 
     export default {
         name: 'listview',
@@ -80,9 +82,17 @@
                 set(newTasklists) {
                     store.commit('updateTasklists', newTasklists);
                 },
-                progress() {
-                    return this.progress;
-                },
+            },
+            scrollProgress() {
+                return this.progress;
+            },
+            progressBarColor() {
+                const stylesKey = `${store.getters.theme}-progressColor`;
+                return styles[stylesKey];
+            },
+            progressBgColor() {
+                const stylesKey = `${store.getters.theme}-progressBgColor`;
+                return styles[stylesKey];
             }
         },
         methods: {

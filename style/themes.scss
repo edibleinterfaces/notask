@@ -91,3 +91,10 @@ $themes: (
         appearance-view-bg: whitesmoke,
     )
 );
+
+:export {
+    icecream: {
+        progressColor: map-get(map-get($themes, 'icecream'), 'tasklist-progress-bar');
+        progressBgColor: map-get(map-get($themes, 'icecream'), 'tasklist-progress-bar-bg');
+    }
+}
