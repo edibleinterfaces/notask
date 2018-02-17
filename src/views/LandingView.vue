@@ -16,8 +16,8 @@
             font-weight: 600;
             padding: 5%;
             @include themify($themes) {
-                .no { color: themed('landing-no'); }
-                .task { color: themed('landing-task'); }
+                .do { color: themed('landing-do'); }
+                .it { color: themed('landing-it'); }
             }
         }
 
@@ -28,7 +28,7 @@
     <router-link to="/tasklists">
         <div class="landing-container">
             <div class="title">
-                <span class="no">No</span><span class="task">Task</span>
+                <span class="do">do</span><span class="it">it</span>
             </div>
         </div>
     </router-link>
