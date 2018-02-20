@@ -11,7 +11,7 @@ function googleDrive() {
         try {
             gapi.load('client:auth2',initAuth);
         } catch(e) {
-            console.log(e);
+            console.warn(e);
             if (e.name === 'ReferenceError')
                 store.commit('updateSigninStatus', false);
         }
@@ -30,7 +30,6 @@ function googleDrive() {
     }
     function updateSigninStatus(isSignedIn) {
         store.commit('updateSigninStatus', isSignedIn);
-        console.log(isSignedIn);
     }
     function handleAuthClick(event) {
         auth2.signIn();

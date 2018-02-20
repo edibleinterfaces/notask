@@ -7,7 +7,7 @@
                 ::selection {
                     background: themed('tasklist-font-selection-bg');
                 }
-                &.init {
+                &.is-new {
                     background: themed('tasklist-header-bg-init');
                 }
             }
@@ -263,8 +263,7 @@
                 trashcanVisible: false,
                 editingTitle: false,
                 deleteMode: false,
-                deleteConfirmed: false,
-                init: true,
+                deleteConfirmed: false
             };
         },
         computed: {
@@ -272,7 +271,7 @@
                 return {
                     'delete-mode': this.deleteMode,
                     'edit-mode': this.editingTitle,
-                    'init': this.init,
+                    'is-new': this.isNew,
                 };
             },
             tasklists: function() {
@@ -280,19 +279,23 @@
             },
             listTitle: function() {
                 return store.getters.tasklists[ this.listId ].title;
+            },
+            isNew() {
+                return store.getters.tasklists[ this.listId ].isNew;
             }
 
         },
         destroyed() {
-            console.log('destroyed');
         },
         created() {
             const self = this;
             setTimeout(function() { 
-                self.init = false;
+                store.commit('markTasklistOld', self.listId);
             }, 200);
         },
         methods: {
+            markOld() {
+            },
             disableInput() {
                 this.editingTitle = false;
             },

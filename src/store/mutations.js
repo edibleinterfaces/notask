@@ -53,6 +53,11 @@ export default {
     updateFontSize(state, newSize) {
         state.appearance.font.selected = newSize;
     },
+
+    markTasklistOld(state, listId) {
+        state.tasklists[ listId ].isNew = false; 
+    },
+
     /* google drive authentication */
     updateSigninStatus(state, isSignedIn) {
         state.auth.signedIntoGoogle = isSignedIn;

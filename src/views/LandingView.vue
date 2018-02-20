@@ -45,7 +45,6 @@
       props: ['tasklists'],
       computed: {
           themeClass() {
-              console.log(store);
               return `theme-${store.getters.theme}`;
           }
       }

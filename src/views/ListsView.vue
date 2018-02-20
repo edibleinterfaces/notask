@@ -38,8 +38,6 @@
         <draggable 
             class="lists-view" 
             @scroll.native="scrollHandler" 
-            @end="endHandler"
-            @start="startHandler"
             :options="draggableOptions" 
             v-model="tasklists">
 
@@ -108,12 +106,6 @@
             }
         },
         methods: {
-            startHandler() {
-                console.log('start', arguments);
-            },
-            endHandler(){
-                console.log('end', arguments);
-            },
             scrollToTop() {
 
                 let fnHandle;
@@ -125,10 +117,8 @@
                 function scrollFn() {
                     if (el.scrollTop <= 0) {
                         clearInterval(fnHandle);
-                        console.log('clearing scroll fn');
                     }
                     el.scrollTo(0, el.scrollTop - scrollDelta);
-                    console.log('scroll fn active');
                 };
 
                 fnHandle = setInterval(scrollFn, scrollInterval); 
@@ -145,10 +135,8 @@
                 function scrollFn() {
                     if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
                         clearInterval(fnHandle);
-                        console.log('clearing scroll fn');
                     }
                     el.scrollTo(0, el.scrollTop + scrollDelta);
-                    console.log('scroll fn active');
                 };
 
                 fnHandle = setInterval(scrollFn, scrollInterval); 

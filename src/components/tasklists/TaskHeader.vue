@@ -194,7 +194,6 @@
                 v-on:click="deleteTask" 
                 class="fa fa-times delete-task-icon-confirmed"></i>
         </div>        
-
     </div>
 </template>
 
@@ -218,7 +217,6 @@
         components: { vueTouch },
         methods: {
             triggerFocusAndSelect(element) {
-                console.log(element);
                 element.focus();
                 element.setSelectionRange(0,9999);
             },
@@ -231,7 +229,6 @@
                     taskId: this.taskId,
                     text: e.target.value 
                 };
-                console.log(payload);
                 store.commit('updateTaskText', payload); 
             },
             enableInput(e) {

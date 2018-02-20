@@ -22,7 +22,6 @@
         components: {},
         methods: {
             setTime(time) {
-                console.log(time);
             }
         }
     };
