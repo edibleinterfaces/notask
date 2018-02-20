@@ -63,27 +63,33 @@
 </style>
 
 <template>
-    <div v-on:click.self="pulse" class="dashboard" :class="classObj">
-            <i v-on:click="navigate" class="far fa-circle settings-icon"></i>
-            <i 
-                class="fas fa-plus add-tasklist-icon" 
-                v-show="['ListsView','ListView'].includes($route.name)" 
-                v-on:click="add"></i>
+    <div v-on:click.self="pulse" class="dashboard" :class="dashboardClassObj">
+        <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
+        <color-icon></color-icon>
+        <i 
+            class="fas fa-plus add-tasklist-icon" 
+            v-show="['ListsView','ListView'].includes($route.name)" 
+            v-on:click="add"></i>
     </div>
 </template>
 <script>
     import store from '../store';
     import googleDrive from '../services/googleDrive';
+    import ColorIcon from './ColorIcon';
     export default {
         name: 'dashboard',
         data: function() {
             return {
-                classObj: { pulse: false },
+                dashboardClassObj: { pulse: false },
+                settingsIconClassObj: {
+                    'far fa-circle': this.$route.name === 'ListsView', 
+                    'fas fa-circle': this.$route.name !== 'ListsView', 
+                },
                 pulseTimeMS: 100
             };
         },
         props: ['listId'],
-        components: {},
+        components: { ColorIcon },
         created: googleDrive.authenticate,
         computed: {
             online: function() {
@@ -97,8 +103,8 @@
         methods: {
             pulse() {
                 this.$emit('list-top');
-                this.classObj.pulse = true;
-                setTimeout(()=>{ this.classObj.pulse = false; }, this.pulseTimeMS);
+                this.dashboardClassObj.pulse = true;
+                setTimeout(()=>{ this.dashboardClassObj.pulse = false; }, this.pulseTimeMS);
             },
             navigate() {
                 if (this.$route.name === 'SettingsView')
