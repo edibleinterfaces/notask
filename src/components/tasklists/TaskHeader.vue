@@ -1,6 +1,6 @@
 <style lang="scss">
     @import "../../../style/themes.scss";
-    @import "../../../../../common/style/themify.scss";
+    @import "../../../../common/style/themify.scss";
     .task-header {
         display: inline-flex; 
         align-items: center;

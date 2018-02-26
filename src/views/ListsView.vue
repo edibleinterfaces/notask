@@ -66,12 +66,12 @@
 
     import TasklistHeader from '../components/tasklists/TasklistHeader';
     import Dashboard from '../components/Dashboard';
-    import ProgressBar from '../../../../common/components/ProgressBar';
+    import ProgressBar from '../../../common/components/ProgressBar';
 
     import styles from '../../style/themes.scss';
 
     export default {
-        name: 'listview',
+        name: 'list-view',
         components: { TasklistHeader, Dashboard, draggable, ProgressBar },
         props: ['listId', 'taskId'],
         data: function() {

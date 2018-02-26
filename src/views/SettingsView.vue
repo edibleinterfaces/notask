@@ -1,7 +1,7 @@
 <style lang="scss">
 
     @import '../../style/themes.scss';
-    @import '../../../../common/style/themify.scss';
+    @import '../../../common/style/themify.scss';
 
     .settings-view-container {
         height: 100%;

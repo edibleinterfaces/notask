@@ -1,7 +1,7 @@
 <style lang="scss">
 
     @import "../../../style/themes.scss";
-    @import "../../../../../common/style/themify.scss";
+    @import "../../../../common/style/themify.scss";
 
     .task-details-container {
 
@@ -160,7 +160,7 @@
     import store from '../../store';
     import TaskHeader from './TaskHeader';
     import Datepicker from 'vuejs-datepicker';
-    import Modal from '../../../../../common/modal/Modal.vue';
+    import Modal from '../../../../common/modal/Modal.vue';
 
     Vue.use(VueTimepicker);
 
