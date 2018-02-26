@@ -1,8 +1,9 @@
 <style lang="scss">
 
+    @import '~Common/style/themify.scss';
+
     @import '../style/themes.scss';
     @import '../style/fonts.scss';
-    @import '../../../common/style/themify.scss';
 
     html,
     body,
@@ -28,7 +29,7 @@
     }
 </style>
 <template>
-    <div id="app" class="theme" :class="themeClass">
+    <div id="app" class="theme" :class="[themeClass]">
         <keep-alive>
         <router-view></router-view>
         </keep-alive>

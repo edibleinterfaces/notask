@@ -1,6 +1,6 @@
 <style lang="scss">
 
-    @import '../../../common/style/themify.scss'; 
+    @import '~Common/style/themify.scss'; 
     @import '../../style/themes.scss'; 
 
     .appearance-container {

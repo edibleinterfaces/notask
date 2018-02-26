@@ -1,6 +1,8 @@
 <style lang="scss">
+
     @import "../../../style/themes.scss";
-    @import "../../../../common/style/themify.scss";
+    @import "~Common/style/themify.scss";
+
     .tasklist-header {
             @include themify($themes) {
                 background: themed('tasklist-header-bg');

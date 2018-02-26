@@ -5,18 +5,13 @@ import getters from './getters';
 import state from './state';
 import vuejsStorage from 'vuejs-storage';
 
+//import Persistence from 'Common/storage';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    //plugins: [ Persistence({ namespace: 'notask' }) ],
     state,
-    plugins: [
-        vuejsStorage({
-            storage: localStorage,
-            namespace: 'no-task',
-            parse: JSON.parse,
-            stringify: JSON.stringify
-        })
-    ],
     mutations,
     getters
 });

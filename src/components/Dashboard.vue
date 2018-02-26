@@ -1,6 +1,8 @@
 <style lang="scss">
+
     @import '../../style/themes.scss';
-    @import '../../../common/style/themify.scss';
+    @import '~Common/style/themify.scss';
+
     .dashboard {
         position: relative;
         display: flex;
