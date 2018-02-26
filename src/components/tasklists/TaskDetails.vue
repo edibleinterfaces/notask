@@ -157,10 +157,11 @@
     import VueTimepicker from 'vue2-timepicker';
     import dateFns from 'date-fns';
 
+    import Modal from 'Common/modal/Modal.vue';
+
     import store from '../../store';
     import TaskHeader from './TaskHeader';
     import Datepicker from 'vuejs-datepicker';
-    import Modal from '../../../../common/modal/Modal.vue';
 
     Vue.use(VueTimepicker);
 

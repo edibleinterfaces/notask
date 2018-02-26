@@ -66,7 +66,7 @@
 
     import TasklistHeader from '../components/tasklists/TasklistHeader';
     import Dashboard from '../components/Dashboard';
-    import ProgressBar from '../../../common/components/ProgressBar';
+    import ProgressBar from 'Common/components/ProgressBar';
 
     import styles from '../../style/themes.scss';
 
