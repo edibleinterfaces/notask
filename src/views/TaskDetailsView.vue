@@ -41,10 +41,7 @@
     export default {
         name: 'list-view',
         props: ['listId', 'taskId'],
-        components: {
-            TaskDetails,
-            Dashboard
-        }
+        components: { TaskDetails, Dashboard }
     };
 
 </script>
