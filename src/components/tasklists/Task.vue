@@ -2,14 +2,8 @@
 
 <template>
     <div class="task">
-        <task-header 
-            :list-id="listId" 
-            :task-id="taskId">
-        </task-header>
-        <task-body 
-            :list-id="listId" 
-            :task-id="taskId">
-        </task-body>
+        <task-header :list-id="listId" :task-id="taskId" />
+        <task-body :list-id="listId" :task-id="taskId" />
     </div>
 </template>
 
@@ -20,10 +14,7 @@
     export default {
         name: 'task',
         props: ['taskId','listId'],
-        components: {
-            TaskHeader,
-            TaskBody
-        },
+        components: { TaskHeader, TaskBody },
         data: function() {
             return {};
         }
