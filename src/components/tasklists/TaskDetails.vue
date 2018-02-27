@@ -10,8 +10,10 @@
             height: 60px;
             max-width: 200px;
         }
+        @include themify($themes) {
         .reminder-modal {
-            background: gray;
+            background: themed('modal-bg');
+        }
         }
         .reminder-modal > .current-time {
             text-align: center;
