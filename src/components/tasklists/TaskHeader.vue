@@ -161,7 +161,7 @@
         v-bind:class="{'trashcan-visible': trashcanVisible}"
         class="task-header">
         <button v-if="$route.name === 'TaskDetailsView'" class="sort-handle">
-            <i  v-on:click="$router.go(-1)" class="far fa-arrow-left task-sort-handle-icon"></i>
+            <i  v-on:click="$router.go(-1)" class="fas fa-arrow-left task-sort-handle-icon"></i>
         </button>
         <button v-else class="sort-handle"> 
             <i class="far fa-hand-paper task-sort-handle-icon"></i>
@@ -190,11 +190,11 @@
             <i 
                 v-show="deleteMode && !deleteConfirmed" 
                 v-on:click="deleteConfirmed = true"
-                class="fa fa-trash delete-task-icon"></i>
+                class="fas fa-trash delete-task-icon"></i>
             <i 
                 v-show="deleteMode && deleteConfirmed" 
                 v-on:click="deleteTask" 
-                class="fa fa-times delete-task-icon-confirmed"></i>
+                class="fas fa-times-circle delete-task-icon-confirmed"></i>
         </div>        
     </div>
 </template>

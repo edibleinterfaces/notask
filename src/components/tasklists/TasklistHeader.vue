@@ -209,7 +209,7 @@
             v-else
             to="/tasklists"
             class="nav-handle">
-            <i class="fa fa-arrow-left handle-icon"></i>
+            <i class="fas fa-arrow-left handle-icon"></i>
         </router-link>
         <v-touch 
             v-on:swipeleft="enableDeleteMode"
@@ -228,18 +228,18 @@
         <div 
             v-on:click="deleteMode ? disableDeleteMode() : enableDeleteMode()"
             class="swipe-handle">
-            <i class="fa fa-ellipsis-v swipe-icon"></i>
+            <i class="fas fa-ellipsis-v swipe-icon"></i>
         </div>
         <div 
             class="trashcan"> 
             <i 
                 v-if="deleteMode && !deleteConfirmed" 
                 v-on:click="deleteConfirmed = true"
-                class="fa fa-trash delete-tasklist-icon"></i>
+                class="fas fa-trash delete-tasklist-icon"></i>
             <i 
                 v-if="deleteMode && deleteConfirmed" 
                 v-on:click="deleteTasklist(listId)" 
-                class="fa fa-times delete-tasklist-icon-confirm"></i>
+                class="fas fa-times-circle delete-tasklist-icon-confirm"></i>
         </div>
     </div>
 

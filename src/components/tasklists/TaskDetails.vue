@@ -10,6 +10,9 @@
             height: 60px;
             max-width: 200px;
         }
+        .reminder-modal {
+            background: gray;
+        }
         .reminder-modal > .current-time {
             text-align: center;
         }
@@ -123,14 +126,14 @@
         <task-header :text="task.text" :list-id="listId" :task-id="taskId" />
         <div class="task-details">
             <h2>
-                <i class="fa fa-pencil task-details-edit-icon"></i>
+                <i class="fas fa-pencil-alt task-details-edit-icon"></i>
                 Task Details
             </h2>
             <div class="task-details-description-container">
                 <textarea @blur="updateTaskDetails" class="task-details-input">{{ task.details }}</textarea>
             </div>
             <h2 v-on:click="openModal">
-                <i class="fa fa-clock-o task-details-reminder-icon"></i>
+                <i class="far fa-clock task-details-reminder-icon"></i>
                 Schedule a Reminder
             </h2>
             <div v-if="reminders.length" class="reminder-list-container">
@@ -141,7 +144,7 @@
                     :key="index">
                     <li>{{ reminderHours }}:{{reminderMinutes}}, {{ reminderDate }}
                         <i 
-                            class="delete-reminder fa fa-close"
+                            class="delete-reminder fas fa-times-circle"
                             :index="index" 
                             v-on:click="deleteReminder(index)"></i>
                     </li>
