@@ -1,4 +1,5 @@
 ui:
+    build modal window for color theme settings
     fix dashboard icon alignments at all screen sizes
     add textured background to listsview
     convert setInterval to request animation frame
