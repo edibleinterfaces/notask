@@ -157,7 +157,7 @@
     import VueTimepicker from 'vue2-timepicker';
     import dateFns from 'date-fns';
 
-    import Modal from 'Common/modal/Modal.vue';
+    import Modal from 'Common/components/Modal.vue';
 
     import store from '../../store';
     import TaskHeader from './TaskHeader';
