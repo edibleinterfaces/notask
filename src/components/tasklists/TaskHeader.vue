@@ -183,7 +183,7 @@
             </input>
         </v-touch>
         <button class="details-handle"> 
-            <i v-on:click="navigate" class="fa fa-pencil details-handle-icon"></i>
+            <i v-on:click="navigate" class="fas fa-pencil-alt details-handle-icon"></i>
         </button>
         <div 
             class="trashcan">
