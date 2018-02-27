@@ -1,3 +1,11 @@
-add textured background to listsview
-convert setInterval to request animation frame
-look into time to load, a little slow
+ui:
+    fix dashboard icon alignments at all screen sizes
+    add textured background to listsview
+    convert setInterval to request animation frame
+    schedule a reminder should be a button
+
+storage:
+    google drive sync code: should work for all apps
+    look into time to load, a little slow
+
+
