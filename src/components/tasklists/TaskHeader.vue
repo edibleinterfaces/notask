@@ -164,7 +164,7 @@
             <i  v-on:click="$router.go(-1)" class="fas fa-arrow-left task-sort-handle-icon"></i>
         </button>
         <button v-else class="sort-handle"> 
-            <i class="far fa-hand-paper task-sort-handle-icon"></i>
+            <i class="fas fa-hand-paper task-sort-handle-icon"></i>
         </button>
         <v-touch 
             v-on:tap="enableInput"

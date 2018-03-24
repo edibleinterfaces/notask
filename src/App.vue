@@ -1,10 +1,7 @@
 <style lang="scss">
-
     @import '~Common/style/themify.scss';
-
     @import '../style/themes.scss';
     @import '../style/fonts.scss';
-
     html,
     body,
     #app {
@@ -37,7 +34,6 @@
 </template>
 
 <script>
-
     import disablePulldownRefresh from './services/disablePulldownRefresh';
     import store from './store';
 
@@ -52,5 +48,4 @@
             }
         }
     }
-
 </script>
