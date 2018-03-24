@@ -1,9 +1,14 @@
 import store from '../store';
 
-window.addEventListener('offline', function(e) {
-    store.commit('updateConnectivityStatus', false);
-});
+const online = () => store.commit('updateConnectivityStatus', true);
+const offline = () => store.commit('updateConnectivityStatus', false);
 
-window.addEventListener('online', function(e) {
-    store.commit('updateConnectivityStatus', true);
-});
+export function init() {
+    window.addEventListener('online', online);
+    window.addEventListener('offline', offline);
+}
+export function destroy() {
+    window.removeEventListener('online', online);
+    window.removeEventListener('offline', offline);
+}
+

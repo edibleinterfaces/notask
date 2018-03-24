@@ -38,7 +38,8 @@
     <div class="sync-view-container">
         <div class="sync-view">
             <ul class="sync-options">
-                <li v-on:click="signIntoGoogleDrive" class="sync-option">Sign into Google</li>
+                <li v-on:click="signIntoGoogleDrive" class="sync-option">Sign into Google Drive</li>
+                <li v-on:click="signOutOfGoogleDrive" class="sync-option">Sign out of Google Drive</li>
             </ul>
         </div>
         <dashboard></dashboard>
@@ -58,6 +59,9 @@
             Dashboard
         },
         methods: {
+            signOutOfGoogleDrive: function() {
+                googleDrive.handleSignoutClick()
+            },
             signIntoGoogleDrive: function() {
                 googleDrive.handleAuthClick()
             }

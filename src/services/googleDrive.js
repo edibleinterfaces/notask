@@ -32,10 +32,20 @@ function googleDrive() {
         store.commit('updateSigninStatus', isSignedIn);
     }
     function handleAuthClick(event) {
-        auth2.signIn();
+        auth2.signIn()
+            .then(function() {
+                updateSigninStatus(true);
+            }).catch(function(e) {
+                console.warn(e);
+            });
     }
     function handleSignoutClick(event) {
-        auth2.signOut();
+        auth2.signOut()
+            .then(function() {
+                updateSigninStatus(false);
+            }).catch(function(e) {
+                console.warn(e);
+            });
     }
     function saveFile(file) {
         gapi.client.load('drive', 'v2', function() {
@@ -71,7 +81,6 @@ function googleDrive() {
                   close_delim;
 
             const request = gapi.client.request({
-
                 'path': '/upload/drive/v2/files',
                 'method': 'POST',
                 'params': {'uploadType': 'multipart'},
@@ -79,7 +88,6 @@ function googleDrive() {
                     'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
                 },
                 'body': multipartRequestBody
-
             });
 
             if (!callback) {

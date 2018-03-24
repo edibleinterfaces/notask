@@ -8,7 +8,7 @@ import config from '../config';
 const defaultTasklist = Tasklist({ tasks: [ Task() ] });
 const { tasklists } = storage.get(config.appKey);
 export default {
-    auth: { signedIntoGoogle: false },
+    auth: { signedIntoDrive: false },
     online: navigator.onLine,
     tasklists: tasklists || [defaultTasklist],
     appearance: {

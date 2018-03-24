@@ -12,28 +12,40 @@
         border-top: 1px solid #f1f1f1;
         transition: 0.3s background ease-out;
         @include themify($themes) {
-        background: themed('dashboard-bg');
+            background: themed('dashboard-bg');
             &.pulse {
                 background: themed('dashboard-bg-pulse') !important;
             }
+            .add-tasklist-icon,
+            .settings-icon {
+                color: themed('dashboard-icons');
+            }
+            .google-drive-icon {
+                color: themed('drive-signed-out');
+            }
+            .google-drive-icon:hover {
+                color: themed('drive-hover');
+            }
+
+            .drive-signed-in {
+                color: themed('drive-signed-in');
+            }
         }
-        @include themify($themes) {
         .add-tasklist-icon,
-        .settings-icon,
-        .settings-icon {
-            color: themed('dashboard-icons');
-        }
-        }
-        .add-tasklist-icon,
+        .google-drive-icon,
         .settings-icon {
             font-size: 5vh;
-            text-align: center;
         }
         .add-tasklist-icon {
             margin-left: auto;
+            text-align: center;
+        }
+        .google-drive-icon {
+            margin-right: auto;
+            text-align: left;
         }
         .settings-icon {
-            margin-right: auto;
+            text-align: center;
         }
     }
     @media (max-height:400px) {
@@ -65,24 +77,27 @@
 </style>
 
 <template>
-    <div v-on:click.self="pulse" class="dashboard" :class="dashboardClassObj">
+    <div :class="dashboardClassObj" v-on:click.self="pulse" class="dashboard">
         <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
-        <!--<color-icon></color-icon>-->
-        <i 
-            class="fas fa-plus add-tasklist-icon" 
-            v-show="isListView"
-            v-on:click="add"></i>
+        <i :class="{'drive-signed-in': signedIn}" class="fab fa-google-drive google-drive-icon"></i>
+        <i v-show="isAListView" v-on:click="add" class="fas fa-plus add-tasklist-icon"></i>
     </div>
 </template>
 <script>
+
     import store from '../store';
     import googleDrive from '../services/googleDrive';
+    import { init, destroy } from '../services/connectivity';
     import ColorIcon from './ColorIcon';
+
     export default {
         name: 'dashboard',
         data: function() {
             return {
                 dashboardClassObj: { pulse: false },
+                driveIconClassObj: {
+                   'drive-signed-in': this.online,
+                },
                 settingsIconClassObj: {
                     'far fa-circle': this.$route.name === 'ListsView', 
                     'fas fa-circle': this.$route.name !== 'ListsView', 
@@ -92,15 +107,24 @@
         },
         props: ['listId'],
         components: { ColorIcon },
-        created: googleDrive.authenticate,
+        created: function() {
+            googleDrive.authenticate();
+            init();
+        },
+        destroyed: function() {
+            destroy();
+        },
         computed: {
+            signedIn: function() {
+                return store.getters.signedIntoDrive;
+            },
             online: function() {
                 return store.getters.online;
             },
-            isListView: function() {
+            isAListView: function() {
                 return ['ListsView','ListView'].includes(this.$route.name);
             }
-
+            
         },
         methods: {
             pulse() {
@@ -115,8 +139,6 @@
                     this.$router.push('/settings');
             },
             add() {
-
-
                 if (this.$route.name === 'ListView') 
                     store.commit('addTask', this.listId);
                 if (this.$route.name === 'ListsView') { 

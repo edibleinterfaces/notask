@@ -27,9 +27,7 @@
 </style>
 <template>
     <div id="app" class="theme" :class="[themeClass]">
-        <keep-alive>
-        <router-view></router-view>
-        </keep-alive>
+        <keep-alive><router-view></router-view></keep-alive>
     </div>
 </template>
 
