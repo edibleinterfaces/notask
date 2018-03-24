@@ -9,7 +9,7 @@ export default {
         state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
     },
     clearTasklists(state) {
-        state.tasklists = [];
+        state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
     },
     addTasklist(state) {
         state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
