@@ -67,10 +67,10 @@
 <template>
     <div v-on:click.self="pulse" class="dashboard" :class="dashboardClassObj">
         <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
-        <color-icon></color-icon>
+        <!--<color-icon></color-icon>-->
         <i 
             class="fas fa-plus add-tasklist-icon" 
-            v-show="['ListsView','ListView'].includes($route.name)" 
+            v-show="isListView"
             v-on:click="add"></i>
     </div>
 </template>
@@ -97,9 +97,9 @@
             online: function() {
                 return store.getters.online;
             },
-            distanceFromTop: function() {
-                return "50%";
-            },
+            isListView: function() {
+                return ['ListsView','ListView'].includes(this.$route.name);
+            }
 
         },
         methods: {
