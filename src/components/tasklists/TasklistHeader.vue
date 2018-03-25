@@ -31,7 +31,7 @@
             @include themify($themes) {
                 background: themed('tasklist-header-bg-drag');
             }
-            div.trashcan {
+            div.slideout-controls {
                 visibility: hidden !important;
             }
         }
@@ -117,7 +117,7 @@
                 }
             }
         }
-        .trashcan {
+        .slideout-controls {
             cursor: pointer;
             @include themify($themes) {
                 background: themed('tasklist-delete-handle-bg');
@@ -165,7 +165,7 @@
         .sort-handle,
         .nav-handle,
         .swipe-handle,
-        .trashcan {
+        .slideout-controls {
             width: 20%;
         }
         .tasklist-header.delete-mode {
@@ -182,7 +182,7 @@
         .sort-handle,
         .swipe-handle,
         .nav-handle,
-        .trashcan {
+        .slideout-controls {
             width: 15%;
         }
         .tasklist-header.delete-mode {
@@ -227,7 +227,7 @@
             class="swipe-handle">
             <i class="fas fa-ellipsis-v swipe-icon"></i>
         </div>
-        <div class="trashcan"> 
+        <div class="slideout-controls"> 
             <i 
                 v-if="deleteMode && !deleteConfirmed" 
                 v-on:click="deleteConfirmed = true"

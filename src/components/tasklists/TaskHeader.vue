@@ -14,7 +14,7 @@
             @include themify($themes) {
                 background: themed('task-header-bg') !important;
             }
-            div.trashcan {
+            div.slideout-controls {
                 background: transparent !important;
                 visibility: hidden !important;
             }
@@ -92,8 +92,9 @@
                 }
             }
         }
-        .trashcan {
+        .slideout-controls {
             @include themify($themes) {
+                background: themed('slideout-controls-bg');
                 background: themed('task-icon');
                 color: themed('task-icon');
                 height: 100%;
@@ -108,6 +109,10 @@
                     width: 100%;
                     font-size: 5vh;
                     text-align: center;
+                    color: themed('slideout-controls-icons');
+                    &:hover {
+                        color: whitesmoke;
+                    }
                 }
             }
         }
@@ -121,7 +126,7 @@
             .sort-handle,
             .details-handle,
             .task-nav-back-icon,
-            .trashcan {
+            .slideout-controls {
                 width: 20%;
             }
             &.trashcan-visible {
@@ -139,7 +144,7 @@
             .sort-handle, 
             .details-handle,
             .task-nav-back-icon,
-            .trashcan {
+            .slideout-controls {
                 width: 15%;
             }
             &.trashcan-visible {
@@ -193,7 +198,7 @@
             <i  
                 class="fas fa-ellipsis-v swipe-icon"></i>
         </button>
-        <div class="trashcan">
+        <div class="slideout-controls">
             <i v-on:click="navigate" class="fas fa-pencil-alt details-handle-icon"></i>
             <i 
                 class="task-complete" 
