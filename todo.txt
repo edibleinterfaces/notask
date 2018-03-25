@@ -4,6 +4,7 @@ ui:
     add textured background to listsview
     convert setInterval to request animation frame
     schedule a reminder should be a button
+    complete toggle, sort functionality by completed
 
 storage:
     google drive sync code: should work for all apps
