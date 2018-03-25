@@ -1,200 +1,197 @@
 <style lang="scss">
-
     @import "../../../style/themes.scss";
     @import "~Common/style/themify.scss";
-
     .tasklist-header {
+        @include themify($themes) {
+            background: themed('tasklist-header-bg');
+            ::selection {
+                background: themed('tasklist-font-selection-bg');
+            }
+            &.is-new {
+                background: themed('tasklist-header-bg-init');
+            }
+        }
+        right: 0%;
+        -webkit-transition: background 0.1s ease;
+        -webkit-transition: right 0.2s ease, background 0.4s ease;
+        position: relative;
+        display: flex;
+        font-size: 0;
+        border-bottom: 1px solid lightgray;
+        @include themify($themes) {
+            &.edit-mode {
+                background: themed('tasklist-header-bg-dark');
+            }
+        }
+        &.sortable-chosen:not(.sortable-ghost) {
+            & .sort-handle > .handle-icon:before {
+                content: "\f255";
+                color: salmon;
+            }
             @include themify($themes) {
-                background: themed('tasklist-header-bg');
-                ::selection {
-                    background: themed('tasklist-font-selection-bg');
-                }
-                &.is-new {
-                    background: themed('tasklist-header-bg-init');
-                }
+                background: themed('tasklist-header-bg-drag');
             }
-            right: 0%;
-            -webkit-transition: background 0.1s ease;
-            -webkit-transition: right 0.2s ease, background 0.4s ease;
-            position: relative;
-            display: flex;
-            font-size: 0;
-            border-bottom: 1px solid lightgray;
-            @include themify($themes) {
-                &.edit-mode {
-                    background: themed('tasklist-header-bg-dark');
-                }
+            div.trashcan {
+                visibility: hidden !important;
             }
-            &.sortable-chosen:not(.sortable-ghost) {
-                & .sort-handle > .handle-icon:before {
-                    content: "\f255";
-                    color: salmon;
-                }
-                @include themify($themes) {
-                    background: themed('tasklist-header-bg-drag');
-                }
-                div.trashcan {
-                    visibility: hidden !important;
-                }
+        }
+        .nav-handle {
+            text-decoration: none;
+        }
+        @include themify($themes) {
+            .handle-icon {
+                color: themed('tasklist-sort-handle');
             }
-            .nav-handle {
-                text-decoration: none;
-            }
+        }
+        button.sort-handle {
+            background-color: transparent;
             @include themify($themes) {
                 .handle-icon {
                     color: themed('tasklist-sort-handle');
                 }
             }
-            button.sort-handle {
-                background-color: transparent;
-                @include themify($themes) {
-                    .handle-icon {
-                        color: themed('tasklist-sort-handle');
-                    }
-                }
-            }
-            .nav-handle,
-            .sort-handle,
-            .title-container {
-                cursor: pointer;
-                height: 100%;
-            }
-            .title-container {
-                position: relative;
-            }
-            @include themify($themes) {
-                .swipe-handle {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    .swipe-icon {
-                        color: themed('tasklist-swipe-handle');
-                        font-size: 4vh;
-                    }
-                }
-            }
-            @include themify($themes) {
-                .nav-handle,
-                .sort-handle {
-                    transition: background 0.2s ease-in-out;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: themed('tasklist-sort-handle');
-                    height: 100%;
-                    .handle-icon {
-                        font-size: 5vh;
-                        width: 100%;
-                        text-align: center;
-                    }
-                }
-            }
-            .title-container {
+        }
+        .nav-handle,
+        .sort-handle,
+        .title-container {
+            cursor: pointer;
+            height: 100%;
+        }
+        .title-container {
+            position: relative;
+        }
+        @include themify($themes) {
+            .swipe-handle {
                 display: flex;
-                flex-direction: row;
                 align-items: center;
                 justify-content: center;
-                font-size: initial;
-                text-align: center;
-                @include themify($themes) {
-                    .tasklist-title-input {
-                        overflow-x: scroll;
-                        background: transparent;
-                        color: themed('tasklist-header-font');
-                        width: 100%;
-                        height: 100%;
-                        margin:0;
-                        padding:0;
-                        flex: 1;
-                        text-align: center;
-                        font-size: 5vh;
-                        border: none;
-                        outline: none;
-                    }
-                    .tasklist-title-input[disabled] {
-                        -webkit-user-select: none;
-                        user-select: none;
-                        opacity: 1; /* required disabled input style to take effect on ios */
-                        color: themed('tasklist-header-font') !important;
-                    }
+                .swipe-icon {
+                    color: themed('tasklist-swipe-handle');
+                    font-size: 4vh;
                 }
             }
-            .trashcan {
-                cursor: pointer;
+        }
+        @include themify($themes) {
+            .nav-handle,
+            .sort-handle {
+                transition: background 0.2s ease-in-out;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: themed('tasklist-sort-handle');
+                height: 100%;
+                .handle-icon {
+                    font-size: 5vh;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+        .title-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            font-size: initial;
+            text-align: center;
+            @include themify($themes) {
+                .tasklist-title-input {
+                    overflow-x: scroll;
+                    background: transparent;
+                    color: themed('tasklist-header-font');
+                    width: 100%;
+                    height: 100%;
+                    margin:0;
+                    padding:0;
+                    flex: 1;
+                    text-align: center;
+                    font-size: 5vh;
+                    border: none;
+                    outline: none;
+                }
+                .tasklist-title-input[disabled] {
+                    -webkit-user-select: none;
+                    user-select: none;
+                    opacity: 1; /* required disabled input style to take effect on ios */
+                    color: themed('tasklist-header-font') !important;
+                }
+            }
+        }
+        .trashcan {
+            cursor: pointer;
+            @include themify($themes) {
+                background: themed('tasklist-delete-handle-bg');
+                color: themed('tasklist-delete-handle');
+            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: initial;
+            .delete-tasklist-icon,
+            .delete-tasklist-icon-confirm {
+                font-size: 5vh;
                 @include themify($themes) {
-                    background: themed('tasklist-delete-handle-bg');
                     color: themed('tasklist-delete-handle');
                 }
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100%;
-                font-size: initial;
-                .delete-tasklist-icon,
-                .delete-tasklist-icon-confirm {
-                    font-size: 5vh;
-                    @include themify($themes) {
-                        color: themed('tasklist-delete-handle');
-                    }
-                }
-                .delete-tasklist-icon-confirm {
-                }
+            }
+            .delete-tasklist-icon-confirm {
             }
         }
-        @media(max-height: 400px) {
-            .tasklist-header {
-                height: 50%;
-                .sort-handle,
-                .nav-handle {
-                    .handle-icon {
-                        font-size: 15vh;
-                    }
-                }
-            }
-        }
-        @media (min-height: 400px) {
-            .tasklist-header {
-                height: 20%;
-            }
-        }
-        @media(max-width: 750px) {
-            .tasklist-header {
-                width: 120%;
-            }
-            .title-container {
-                width: 60%;
-            }
+    }
+    @media(max-height: 400px) {
+        .tasklist-header {
+            height: 50%;
             .sort-handle,
-            .nav-handle,
-            .swipe-handle,
-            .trashcan {
-                width: 20%;
-            }
-            .tasklist-header.delete-mode {
-                right: 20%;
+            .nav-handle {
+                .handle-icon {
+                    font-size: 15vh;
+                }
             }
         }
-        @media(min-width: 750px) {
-            .tasklist-header {
-                width: 115%;
-            }
-            .title-container {
-                width: 80%;
-            }
-            .sort-handle,
-            .swipe-handle,
-            .nav-handle,
-            .trashcan {
-                width: 15%;
-            }
-            .tasklist-header.delete-mode {
-                right: 15%;
-            }
+    }
+    @media (min-height: 400px) {
+        .tasklist-header {
+            height: 20%;
         }
+    }
+    @media(max-width: 750px) {
+        .tasklist-header {
+            width: 120%;
+        }
+        .title-container {
+            width: 60%;
+        }
+        .sort-handle,
+        .nav-handle,
+        .swipe-handle,
+        .trashcan {
+            width: 20%;
+        }
+        .tasklist-header.delete-mode {
+            right: 20%;
+        }
+    }
+    @media(min-width: 750px) {
+        .tasklist-header {
+            width: 115%;
+        }
+        .title-container {
+            width: 80%;
+        }
+        .sort-handle,
+        .swipe-handle,
+        .nav-handle,
+        .trashcan {
+            width: 15%;
+        }
+        .tasklist-header.delete-mode {
+            right: 15%;
+        }
+    }
 </style>
 
 <template>
-
     <div
         v-bind:class="headerStyleObj"
         v-on:click="delegatedClick($event.target)"
@@ -230,8 +227,7 @@
             class="swipe-handle">
             <i class="fas fa-ellipsis-v swipe-icon"></i>
         </div>
-        <div 
-            class="trashcan"> 
+        <div class="trashcan"> 
             <i 
                 v-if="deleteMode && !deleteConfirmed" 
                 v-on:click="deleteConfirmed = true"

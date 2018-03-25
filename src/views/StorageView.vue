@@ -41,7 +41,7 @@
                 <li @click="resetStorage" class="storage-option">Reset storage</li>
                 <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
                 <li class="storage-option">Import</li>
-                <li class="storage-option">Export</li>
+                <li @click="exportStore" class="storage-option">Export</li>
             </ul>
         </div>
         <dashboard></dashboard>
@@ -51,6 +51,7 @@
 <script>
     import Dashboard from '../components/Dashboard';
     import store from '../store';
+    import converter from '../services/converter';
 
     export default {
         components: { Dashboard },
@@ -60,7 +61,12 @@
             },
             resetTasklists() {
                 store.commit('resetStorage');
+            },
+            exportStore() {
+                const data = converter.convert(store.getters.tasklists, store.getters.exportFormat);
+                console.log(data);
             }
+
 
         }
     };

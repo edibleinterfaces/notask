@@ -9,26 +9,13 @@ import plainText from './plainText';
 const Converter = function() {
 
     const converters = {
-
-        json: function(data) {
-            return JSON.stringify(data, undefined, 4);
-        },
-
-        txt: function(data) {
-           return plainText(data); 
-        },
-
-        markdown: function(data) {
-            return markdown(data);
-        }
-
+        json: (data) =>  JSON.stringify(data, undefined, 4),
+        plaintext: (data) => plainText(data), 
+        markdown: (data) => markdown(data)
     };
 
-
     return {
-        convert: function(data, format) {
-            return converters[format](data);
-        }
+        convert: (data, format) => converters[format](data)
     };
 };
 

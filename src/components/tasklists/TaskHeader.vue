@@ -41,6 +41,10 @@
                     font-size: 5vh;
                     width: 100%;
                 }
+                .swipe-icon {
+                    color: themed('task-details-handle');
+                }
+
             }
         }
         .sort-handle {
@@ -92,16 +96,19 @@
             @include themify($themes) {
                 background: themed('task-icon');
                 color: themed('task-icon');
-            }
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .delete-task-icon,
-            .delete-task-icon-confirmed {
-                width: 100%;
-                font-size: 5vh;
-                text-align: center;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                    
+                .details-handle-icon,
+                .task-complete,
+                .delete-task-icon,
+                .delete-task-icon-confirmed {
+                    width: 100%;
+                    font-size: 5vh;
+                    text-align: center;
+                }
             }
         }
     }
@@ -179,14 +186,19 @@
                 :v-model="text"
                 :value="text" 
                 :disabled="!editingText"
-                class="task-title-input"> 
+                class="task-title-input">
             </input>
         </v-touch>
-        <button class="details-handle"> 
-            <i v-on:click="navigate" class="fas fa-pencil-alt details-handle-icon"></i>
+        <button v-on:click="deleteMode ? disableDeleteMode() : enableDeleteMode()" class="details-handle"> 
+            <i  
+                class="fas fa-ellipsis-v swipe-icon"></i>
         </button>
-        <div 
-            class="trashcan">
+        <div class="trashcan">
+            <i v-on:click="navigate" class="fas fa-pencil-alt details-handle-icon"></i>
+            <i 
+                class="task-complete" 
+                :class="{'fas fa-check-square': complete, 'far fa-check-square': !complete}" 
+                v-on:click="toggleComplete"></i>
             <i 
                 v-show="deleteMode && !deleteConfirmed" 
                 v-on:click="deleteConfirmed = true"
@@ -217,7 +229,29 @@
             };
         },
         components: { vueTouch },
+        computed: {
+            complete() {
+                return store.getters.tasklists[this.listId].tasks[this.taskId].complete;
+            }
+        },
         methods: {
+			enableDeleteMode() {
+                this.swipeLeft();
+                this.deleteMode = true;
+                this.deleteConfirmed = false;
+            },
+            disableDeleteMode() {
+                this.swipeRight();
+                this.deleteMode = false;
+                this.deleteConfirmed = false;
+            },
+            toggleComplete() {
+                store.commit('toggleTaskComplete', { 
+                    listId: this.listId,
+                    taskId: this.taskId,
+                    complete: !this.complete
+                }); 
+            },
             triggerFocusAndSelect(element) {
                 element.focus();
                 element.setSelectionRange(0,9999);
