@@ -10,4 +10,7 @@ storage:
     google drive sync code: should work for all apps
     look into time to load, a little slow
 
+build:
+    convert font awesome to cdn link 
+
 
