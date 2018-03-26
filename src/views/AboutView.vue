@@ -40,7 +40,7 @@
             <ul class="storage-options">
             </ul>
         </div>
-        <dashboard></dashboard>
+        <app-dashboard />
     </div>
 </template>
 

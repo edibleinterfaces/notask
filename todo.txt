@@ -11,6 +11,6 @@ storage:
     look into time to load, a little slow
 
 build:
-    convert font awesome to cdn link 
+    x convert font awesome to cdn link 
 
 

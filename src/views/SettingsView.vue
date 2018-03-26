@@ -6,25 +6,31 @@
     .settings-view-container {
         height: 100%;
         width: 100%;
-        .settings-view {
+        @include themify($themes) {
+            background: themed('settings-view-bg');
+        }
+        .settings-container {
             height: 90%;
             width: 100%;
+            overflow-y: scroll;
+        }
+        .setting {
+            margin: 0;
+            padding: 5%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height: 20%;
+            width: 100%;
+            border-bottom: 1px solid lightgray;
             @include themify($themes) {
-                background: themed('settings-view-bg');
+                color: themed('settings-list-item-font');
+                background: themed('settings-view-link-bg');
             }
-            a {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-decoration: none;
-                height: 20%;
-                width: 100%;
-                border-bottom: 1px solid lightgray;
-                @include themify($themes) {
-                    color: themed('settings-list-item-font');
-                    background: themed('settings-view-link-bg');
-                }
+            & > h1 {
+                font-size: 1.5em;
             }
         }
     }
@@ -32,21 +38,40 @@
 
 <template>
     <div class="settings-view-container">
-        <div class="settings-view">
-            <router-link to="/settings/storage">Storage</router-link>
-            <router-link to="/settings/sync">Sync from the Cloud</router-link>
-            <router-link to="/settings/appearance">Appearance</router-link>
-            <router-link to="/settings/about">About doit</router-link>
+        <div class="settings-container">
+            <ei-collapsible>
+                <h1 class="setting" slot="header">Storage</h1>
+                <div slot="content">
+                    <app-storage />
+                    <app-sync />
+                </div>
+            </ei-collapsible>
+            <ei-collapsible :open="true">
+                <h1 class="setting" slot="header">Appearance</h1>
+                <div slot="content">
+                    <app-appearance/>
+                </div>
+            </ei-collapsible>
         </div>
-        <dashboard/>
+        <app-dashboard></app-dashboard>
     </div>
 </template>
 
 <script>
-    import Dashboard from '../components/Dashboard';
+    import AppDashboard from '../components/Dashboard';
+    import EiCollapsible from 'Common/components/Collapsible';
+
+    import AppSync from '../components/settings/Sync';
+    import AppAppearance from '../components/settings/Appearance';
+    import AppStorage from '../components/settings/Storage';
 
     export default {
-        name: 'SettingsView',
-        components: { Dashboard }
+        name: 'app-settings-view',
+        components: { EiCollapsible, AppDashboard, AppSync, AppAppearance, AppStorage },
+        methods: {
+            test() {
+                console.log(arguments);
+            }
+        },
     };
 </script>

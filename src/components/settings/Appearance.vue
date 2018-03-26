@@ -1,7 +1,7 @@
 <style lang="scss">
 
     @import '~Common/style/themify.scss'; 
-    @import '../../style/themes.scss'; 
+    @import '../../../style/themes.scss'; 
 
     .appearance-container {
         height: 100%; 
@@ -10,7 +10,6 @@
             background: themed('appearance-view-bg');
         }
     }
-
 </style>
 
 <template>
@@ -30,12 +29,10 @@
 </template>
 
 <script>
-    import Dashboard from '../components/Dashboard';
-    import store from '../store';
+    import store from '../../store';
 
     export default {
-        name: 'SettingsView',
-        components: { Dashboard },
+        name: 'app-appearance',
         methods: {
             updateTheme(event) {
                 store.commit('updateTheme', event.target.value);

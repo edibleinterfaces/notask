@@ -52,7 +52,7 @@
         </draggable>
 
         <!-- Dashboard -->
-        <dashboard 
+        <app-dashboard 
             v-on:list-top="scrollToTop('top')" 
             v-on:list-bottom="scrollToBottom('bottom')" />
     </div>
@@ -65,14 +65,14 @@
     import store from '../store';
 
     import TasklistHeader from '../components/tasklists/TasklistHeader';
-    import Dashboard from '../components/Dashboard';
+    import AppDashboard from '../components/Dashboard';
     import ProgressBar from 'Common/components/ProgressBar';
 
     import styles from '../../style/themes.scss';
 
     export default {
         name: 'list-view',
-        components: { TasklistHeader, Dashboard, draggable, ProgressBar },
+        components: { TasklistHeader, AppDashboard, draggable, ProgressBar },
         props: ['listId', 'taskId'],
         data: function() {
             return {

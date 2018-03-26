@@ -91,7 +91,7 @@
     import ColorIcon from './ColorIcon';
 
     export default {
-        name: 'dashboard',
+        name: 'app-dashboard',
         data: function() {
             return {
                 dashboardClassObj: { pulse: false },

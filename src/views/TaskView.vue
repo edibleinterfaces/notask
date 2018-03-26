@@ -10,20 +10,20 @@
 
     <div class="task-view">
         <task-body></task-body>
-        <dashboard></dashboard>
+        <app-dashboard />
     </div>
 
 </template>
 <script>
 
     import TaskBody from '../components/tasklists/TaskBody';
-    import Dashboard from '../components/Dashboard';
+    import AppDashboard from '../components/Dashboard';
 
     export default {
         name: 'list-view',
         components: {
             TaskBody,
-            Dashboard
+            AppDashboard
         }
     };
 

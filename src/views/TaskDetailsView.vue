@@ -29,19 +29,19 @@
 
     <div class="task-details-container">
         <task-details :list-id="listId" :task-id="taskId" />
-        <dashboard />
+        <app-dashboard />
     </div>
 
 </template>
 <script>
 
     import TaskDetails from '../components/tasklists/TaskDetails';
-    import Dashboard from '../components/Dashboard';
+    import AppDashboard from '../components/Dashboard';
 
     export default {
         name: 'list-view',
         props: ['listId', 'taskId'],
-        components: { TaskDetails, Dashboard }
+        components: { TaskDetails, AppDashboard }
     };
 
 </script>

@@ -48,7 +48,7 @@
                 </task-header>
             </draggable>
         </div>
-        <dashboard :list-id="listId"></dashboard>
+        <app-dashboard :list-id="listId"></app-dashboard>
     </div>
 
 </template>
@@ -56,7 +56,7 @@
 
     import TasklistHeader from '../components/tasklists/TasklistHeader';
     import TaskHeader from '../components/tasklists/TaskHeader';
-    import Dashboard from '../components/Dashboard';
+    import AppDashboard from '../components/Dashboard';
     import draggable from 'vuedraggable';
 
     import store from '../store';
@@ -67,7 +67,7 @@
         components: {
             TasklistHeader,
             TaskHeader,
-            Dashboard,
+            AppDashboard,
             draggable
         },
         computed: { 
