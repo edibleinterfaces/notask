@@ -15,6 +15,7 @@
             overflow-y: scroll;
         }
         .setting {
+            font-size: 1.5em;
             margin: 0;
             padding: 5%;
             position: relative;
@@ -29,9 +30,6 @@
                 color: themed('settings-list-item-font');
                 background: themed('settings-view-link-bg');
             }
-            & > h1 {
-                font-size: 1.5em;
-            }
         }
     }
 </style>
@@ -43,7 +41,6 @@
                 <h1 class="setting" slot="header">Storage</h1>
                 <div slot="content">
                     <app-storage />
-                    <app-sync />
                 </div>
             </ei-collapsible>
             <ei-collapsible :open="true">
@@ -58,16 +55,20 @@
 </template>
 
 <script>
-    import AppDashboard from '../components/Dashboard';
-    import EiCollapsible from 'Common/components/Collapsible';
+    import Dashboard from '../components/Dashboard';
+    import Collapsible from 'Common/components/Collapsible';
 
-    import AppSync from '../components/settings/Sync';
-    import AppAppearance from '../components/settings/Appearance';
-    import AppStorage from '../components/settings/Storage';
+    import Appearance from '../components/settings/Appearance';
+    import Storage from '../components/settings/Storage';
 
     export default {
         name: 'app-settings-view',
-        components: { EiCollapsible, AppDashboard, AppSync, AppAppearance, AppStorage },
+        components: { 
+            'ei-collapsible': Collapsible, 
+            'app-dashboard': Dashboard, 
+            'app-appearance': Appearance, 
+            'app-storage': Storage 
+        },
         methods: {
             test() {
                 console.log(arguments);

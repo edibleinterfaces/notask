@@ -42,17 +42,25 @@
                 <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
                 <li class="storage-option">Import</li>
                 <li @click="exportStore" class="storage-option">Export</li>
+                <li v-if="signedIntoDrive" v-on:click="signOutOfGoogleDrive" class="storage-option">Sign out of Google Drive</li>
+                <li v-else v-on:click="signIntoGoogleDrive" class="storage-option">Sign into Google Drive</li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-    import store from '../../store';
     import converter from '../../services/converter';
+    import googleDrive from './../../services/googleDrive';
+    import store from '../../store';
 
     export default {
         name: "app-storage",
+        computed: {
+            signedIntoDrive() {
+                return store.getters.signedIntoDrive;
+            }
+        },
         methods: {
             resetStorage() {
                 store.commit('clearTasklists');
@@ -63,8 +71,13 @@
             exportStore() {
                 const data = converter.convert(store.getters.tasklists, store.getters.exportFormat);
                 console.log(data);
+            },
+            signOutOfGoogleDrive: function() {
+                googleDrive.handleSignoutClick()
+            },
+            signIntoGoogleDrive: function() {
+                googleDrive.handleAuthClick()
             }
-
 
         }
     };
