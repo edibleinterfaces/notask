@@ -107,7 +107,6 @@
                 .delete-task-icon,
                 .delete-task-icon-confirmed {
                     width: 100%;
-                    font-size: 5vh;
                     text-align: center;
                     color: themed('slideout-controls-icons');
                     &:hover {
@@ -129,13 +128,17 @@
             .slideout-controls {
                 width: 20%;
             }
+            .task-complete,
+            .delete-task-icon {
+                font-size: 7vw;
+            }
             &.trashcan-visible {
                 right: 20%;
             }
         }
 
     }
-    @media (min-width: 750px) {
+    @media (min-width: 751px) {
         .task-header {
             width: 115%;
             .task-title-container {
@@ -146,6 +149,10 @@
             .task-nav-back-icon,
             .slideout-controls {
                 width: 15%;
+            }
+            .task-complete,
+            .delete-task-icon {
+                font-size: 3vw;
             }
             &.trashcan-visible {
                 right: 15%;
@@ -199,7 +206,7 @@
                 class="fas fa-ellipsis-v swipe-icon"></i>
         </button>
         <div class="slideout-controls">
-            <i v-on:click="navigate" class="fas fa-pencil-alt details-handle-icon"></i>
+            <!--<i v-on:click="navigate" class="fas fa-pencil-alt details-handle-icon"></i>-->
             <i 
                 class="task-complete" 
                 :class="{'fas fa-check-square': complete, 'far fa-check-square': !complete}" 
