@@ -24,6 +24,9 @@
     a, .router-link-active {
         text-decoration: none;
     }
+    li {
+        list-style-type: none;
+    }
 </style>
 <template>
     <div id="app" class="theme" :class="[themeClass]">

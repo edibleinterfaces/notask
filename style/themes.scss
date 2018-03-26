@@ -11,6 +11,11 @@ $aquamarine-light: rgba(127,255,212, 0.3);
 $themes: (
 	icecream: (
 
+        one: $salmon-dark,
+        two: $aquamarine-dark,
+        three: lightgray,
+        four: whitesmoke,
+
         font-color: rgb(84,84,84),
 
         landing-do: aquamarine,
@@ -64,6 +69,11 @@ $themes: (
 	),
 	grayscale: (
     
+        one: rgb(84,84,84),
+        two: lightgray,
+        three: white,
+        four: black,
+
         font-color: rgb(84,84,84),
 
         landing-do: lightslategray,
@@ -115,10 +125,33 @@ $themes: (
         appearance-view-bg: whitesmoke,
     )
 );
-
 :export {
     icecream: {
-        progressColor: map-get(map-get($themes, 'icecream'), 'tasklist-progress-bar');
-        progressBgColor: map-get(map-get($themes, 'icecream'), 'tasklist-progress-bar-bg');
+        one: map-get(map-get($themes, "icecream"), "one");
+        two: map-get(map-get($themes, "icecream"), "two");
+        three: map-get(map-get($themes, "icecream"), "three");
+        four: map-get(map-get($themes, "icecream"), "four");
+    };
+    grayscale: {
+        one: map-get(map-get($themes, "grayscale"), "one");
+        two: map-get(map-get($themes, "grayscale"), "two");
+        three: map-get(map-get($themes, "grayscale"), "three");
+        four: map-get(map-get($themes, "grayscale"), "four");
     }
 }
+/*
+:export {
+    icecream: {
+        one: map-get(map-get($themes, "icecream"), "one");
+        two: map-get(map-get($themes, "icecream"), "two");
+        three: map-get(map-get($themes, "icecream"), "three");
+        four: map-get(map-get($themes, "icecream"), "four");
+    },
+    grayscale: {
+        one: map-get(map-get($themes, "grayscale"), "one");
+        two: map-get(map-get($themes, "grayscale"), "two");
+        three: map-get(map-get($themes, "grayscale"), "three");
+        four: map-get(map-get($themes, "grayscale"), "four");
+    }
+}
+*/

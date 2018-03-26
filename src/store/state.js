@@ -11,9 +11,7 @@ export default {
     auth: { signedIntoDrive: false },
     online: navigator.onLine,
     tasklists: tasklists || [defaultTasklist],
-    export: {
-        format: 'plaintext'
-    },
+    export: { format: 'plaintext' },
     appearance: {
         theme: {
             selected: 'icecream',
