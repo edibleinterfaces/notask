@@ -6,6 +6,7 @@
     .privacy-policy-container {
         padding: 5%;
     }
+
 </style>
 
 <template>
@@ -16,11 +17,10 @@
 </template>
 
 <script>
-    import AppDashboard from '../components/Dashboard';
     import PrivacyPolicy from 'Common/components/PrivacyPolicy';
 
     export default {
         name: 'PrivacyPolicyView',
-        components: { PrivacyPolicy, AppDashboard }
+        components: { 'ei-privacy-policy': PrivacyPolicy }
     };
 </script>
