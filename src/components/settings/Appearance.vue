@@ -64,7 +64,6 @@
             },
             updateFontSize(index) {
                 let newFontSize = this.fontSizes[index];
-                console.log(newFontSize);
                 store.commit('updateFontSize', newFontSize);
             }
         },

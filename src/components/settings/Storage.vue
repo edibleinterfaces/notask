@@ -70,7 +70,6 @@
             },
             exportStore() {
                 const data = converter.convert(store.getters.tasklists, store.getters.exportFormat);
-                console.log(data);
             },
             signOutOfGoogleDrive: function() {
                 googleDrive.handleSignoutClick()

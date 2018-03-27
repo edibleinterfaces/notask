@@ -81,11 +81,6 @@
             'app-dashboard': Dashboard, 
             'app-appearance': Appearance, 
             'app-storage': Storage 
-        },
-        methods: {
-            test() {
-                console.log(arguments);
-            }
-        },
+        }
     };
 </script>
