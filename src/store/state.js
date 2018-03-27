@@ -6,7 +6,7 @@ import storage from 'Common/storage/LocalStorage';
 import config from '../config';
 
 const defaultTasklist = Tasklist({ tasks: [ Task() ] });
-const { tasklists } = storage.get(config.appKey);
+const { tasklists, appearance } = storage.get(config.appKey);
 export default {
     auth: { signedIntoDrive: false },
     online: navigator.onLine,
@@ -18,8 +18,8 @@ export default {
             options: ['grayscale','icecream']
         },
         font: {
-            selected: '16px',
-            options: ['16px', '18px', '20px', '24px']
+            selected: appearance.font.selected,
+            options: appearance.font.options
         }
     }
 };

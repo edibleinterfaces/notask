@@ -7,13 +7,16 @@
         height: 100%; 
         width: 100%;
         @include themify($themes) {
-            background: themed('appearance-view-bg');
+            background: white;
+            //background: themed('appearance-view-bg');
         }
         ul, li {
             margin: 0;
             padding: 0;
         }
-
+        .font-select-container {
+            width: 30%;
+        }
         .appearance-option {
             padding: 2%;
             background: white;
@@ -26,18 +29,14 @@
         <ul>
             <li class="appearance-option">
                 <label>App Theme:</label>
-                <theme-select />
-                <!--<select v-on:change="updateTheme" :value="theme">
-                    <option v-for="(theme, index) in themes" :key="index">{{theme}}</option>
-                </select>
-                -->
+                <app-theme-select />
             </li>
-            <li class="appearance-option">
-                <label>Font Size:</label>
-                <select v-on:change="updateFontSize" :value="fontSize">
-                    <option v-for="(fontSize, index) in fontSizes" :index="index">{{ fontSize }}</option>
-                </select>
-            </li>
+            <label>Font Size: {{ fontSize }}</label>
+            <ei-slide-select 
+                :options="fontSizes" 
+                :selected="fontSize" 
+                :on-update="updateFontSize"
+                class="font-select-container" /> 
         </ul>
     </div>
 </template>
@@ -45,16 +44,25 @@
 <script>
     import store from '../../store';
     import ThemeSelect from './ThemeSelect';
+    import SlideSelect from 'Common/components/SlideSelect';
 
     export default {
         name: 'app-appearance',
-        components: { ThemeSelect },
+        data: function() {
+            return {};
+        },
+        components: { 
+            'app-theme-select': ThemeSelect, 
+            'ei-slide-select': SlideSelect 
+        },
         methods: {
             updateTheme(event) {
                 store.commit('updateTheme', event.target.value);
             },
-            updateFontSize(event) {
-                store.commit('updateFontSize', event.target.value);
+            updateFontSize(index) {
+                let newFontSize = this.fontSizes[index];
+                console.log(newFontSize);
+                store.commit('updateFontSize', newFontSize);
             }
         },
         computed: {

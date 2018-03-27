@@ -48,7 +48,7 @@
 
             <li><h3>{{name}}</h3></li>
 
-            <app-colorgrid 
+            <ei-colorgrid 
                 class="color-grid"
                 :num-rows="2" 
                 :colors="colors" 
@@ -61,12 +61,12 @@
     import store from '../../store';
     import styles from '../../../style/themes.scss'; 
     import utils from 'Common/utils';
-    import ColorGrid from './ColorGrid';
+    import ColorGrid from 'Common/components/ColorGrid';
 
     export default {
-        name: 'ei-theme-select',
+        name: 'app-themeselect',
         components: {
-            'app-colorgrid': ColorGrid,
+            'ei-colorgrid': ColorGrid,
         },
         data: function() {
             return {
