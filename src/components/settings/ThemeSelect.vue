@@ -17,9 +17,10 @@
             margin: 0;
             padding: 0;
         } 
+        .selected {
+            background: lightgray;
+            padding: 5%;
 
-        .color-grid {
-            
         }
 
         @media(max-width: 750px) {
@@ -51,7 +52,7 @@
                 class="color-grid"
                 :num-rows="2" 
                 :colors="colors" 
-                :selected="isCurrentTheme(name)" />
+                :class="{selected: isCurrentTheme(name)}" />
         </ul>
     </ul>
 </template>
@@ -77,7 +78,6 @@
                 store.commit('updateTheme', newTheme);
             },
             isCurrentTheme(name) {
-                console.log(name);
                 return name == store.getters.theme;
             }
         },

@@ -1,16 +1,12 @@
 <style lang="scss">
     .colorgrid-container {
-
         .colorgrid-row {
-
             width: 100%;
-
             .colorgrid-color {
+                height: 100%;
                 display: inline-block;
             }
-
         }
-
     } 
 </style>
 
@@ -46,8 +42,8 @@
             // one way to parameterize style object... 
             colorStyle(bgColor) {
                 return {
+                    //height: `${100 / this.numRows}%`,
                     width: `${this.numRows/this.colors.length * 100}%`,
-                    height: `${100 / this.numRows}%`,
                     background: bgColor,
                 };
             },
