@@ -4,13 +4,14 @@
     @import '../../style/themes.scss';
 
     .privacy-policy-container {
+        padding: 5%;
     }
 </style>
 
 <template>
     <div class="privacy-policy-container">
+        <h1>Privacy Policy</h1>
         <privacy-policy></privacy-policy>
-        <app-dashboard/>
     </div>
 </template>
 

@@ -56,7 +56,7 @@
         },
         components: { 
             'app-theme-select': ThemeSelect, 
-            'ei-slide-select': SlideSelect 
+            'ei-slide-select': SlideSelect
         },
         methods: {
             updateTheme(event) {

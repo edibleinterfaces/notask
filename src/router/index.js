@@ -52,7 +52,7 @@ export default new Router({
             component: SettingsView,
         },
         {
-            path: '/settings/privacy',
+            path: '/privacy',
             name: 'PrivacyPolicyView',
             component: Privacy
         },

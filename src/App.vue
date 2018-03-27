@@ -23,6 +23,7 @@
     }
     a, .router-link-active {
         text-decoration: none;
+        color: inherit;
     }
     li {
         list-style-type: none;

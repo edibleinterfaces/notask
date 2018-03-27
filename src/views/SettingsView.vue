@@ -13,6 +13,10 @@
             height: 90%;
             width: 100%;
             overflow-y: scroll;
+            .privacy-policy {
+                padding: 5%;
+                line-height: 1.5em;
+            }
         }
         .setting {
             font-size: 1.5em;
@@ -49,6 +53,13 @@
                     <app-appearance/>
                 </div>
             </ei-collapsible>
+            <ei-collapsible :open="false">
+                <h1 class="setting" slot="header">Privacy Policy</h1>
+                <div slot="content">
+                    <ei-privacy-policy class="privacy-policy" />
+                </div>
+            </ei-collapsible>
+
         </div>
         <app-dashboard></app-dashboard>
     </div>
@@ -60,11 +71,13 @@
 
     import Appearance from '../components/settings/Appearance';
     import Storage from '../components/settings/Storage';
+    import PrivacyPolicy from 'Common/components/PrivacyPolicy';
 
     export default {
         name: 'app-settings-view',
         components: { 
             'ei-collapsible': Collapsible, 
+            'ei-privacy-policy': PrivacyPolicy, 
             'app-dashboard': Dashboard, 
             'app-appearance': Appearance, 
             'app-storage': Storage 

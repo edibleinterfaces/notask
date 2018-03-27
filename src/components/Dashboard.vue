@@ -88,7 +88,6 @@
     import store from '../store';
     import googleDrive from '../services/googleDrive';
     import { init, destroy } from '../services/connectivity';
-    import ColorIcon from './ColorIcon';
 
     export default {
         name: 'app-dashboard',
@@ -99,14 +98,13 @@
                    'drive-signed-in': this.online,
                 },
                 settingsIconClassObj: {
-                    'far fa-circle': this.$route.name === 'ListsView', 
-                    'fas fa-circle': this.$route.name !== 'ListsView', 
+                    'far fa-circle': ['ListsView','ListView'].includes(this.$route.name),
+                    'fas fa-circle': !['ListsView','ListView'].includes(this.$route.name)
                 },
                 pulseTimeMS: 100
             };
         },
         props: ['listId'],
-        components: { ColorIcon },
         created: function() {
             googleDrive.authenticate();
             init();
