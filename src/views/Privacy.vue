@@ -12,7 +12,7 @@
 <template>
     <div class="privacy-policy-container">
         <h1>Privacy Policy</h1>
-        <privacy-policy></privacy-policy>
+        <ei-privacy-policy></ei-privacy-policy>
     </div>
 </template>
 
