@@ -1,9 +1,7 @@
 <template>
     <div class="tasklist">
-        <tasklist-header :list-id="listId">
-        </tasklist-header>
-        <tasklist-body :list-id="listId">
-        </tasklist-body>
+        <app-tasklist-header :list-id="listId" />
+        <app-tasklist-body :list-id="listId" />
     </div>
 </template>
 
@@ -15,7 +13,10 @@
     export default {
         name: 'tasklist',
         props: ['listId'], 
-        components: { TasklistHeader, TasklistBody }
+        components: { 
+            'app-tasklist-header': TasklistHeader, 
+            'app-tasklist-body': TasklistBody 
+        }
     };
 
 </script>

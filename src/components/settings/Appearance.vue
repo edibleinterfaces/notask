@@ -14,8 +14,9 @@
             margin: 0;
             padding: 0;
         }
-        .font-select-container {
+        .font-select-slider {
             width: 30%;
+            border: 1px solid black;
         }
         .appearance-option {
             padding: 2%;
@@ -31,12 +32,14 @@
                 <label>App Theme:</label>
                 <app-theme-select />
             </li>
-            <label>Font Size: {{ fontSize }}</label>
-            <ei-slide-select 
-                :options="fontSizes" 
-                :selected="fontSize" 
-                :on-update="updateFontSize"
-                class="font-select-container" /> 
+            <li class="appearance-option">
+                <label>Font Size: {{ fontSize }}</label>
+                <ei-slide-select 
+                    :options="fontSizes" 
+                    :selected="fontSize" 
+                    :on-update="updateFontSize"
+                    class="font-select-slider" /> 
+            </li>
         </ul>
     </div>
 </template>

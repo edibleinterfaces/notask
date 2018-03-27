@@ -16,7 +16,6 @@
         -webkit-transition: right 0.2s ease, background 0.4s ease;
         position: relative;
         display: flex;
-        font-size: 0;
         border-bottom: 1px solid lightgray;
         @include themify($themes) {
             &.edit-mode {
@@ -92,7 +91,6 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            font-size: initial;
             text-align: center;
             @include themify($themes) {
                 .tasklist-title-input {
@@ -105,7 +103,7 @@
                     padding:0;
                     flex: 1;
                     text-align: center;
-                    font-size: 5vh;
+                    font-size: 3em;
                     border: none;
                     outline: none;
                 }
@@ -127,7 +125,6 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            font-size: initial;
             .delete-tasklist-icon,
             .delete-tasklist-icon-confirm {
                 font-size: 5vh;

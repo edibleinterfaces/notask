@@ -88,7 +88,7 @@
                     width: 120%;
                     height: 100%;
                     text-align: center;
-                    font-size: 1em;
+                    font-size: 2em;
                 }
             }
         }

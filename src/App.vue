@@ -29,7 +29,11 @@
     }
 </style>
 <template>
-    <div id="app" class="theme" :class="[themeClass]">
+    <div 
+        id="app" 
+        class="theme" 
+        :style="styleObj"
+        :class="[themeClass]">
         <keep-alive><router-view></router-view></keep-alive>
     </div>
 </template>
@@ -46,7 +50,11 @@
         computed: {
             themeClass() {
                 return `theme-${store.getters.theme}`; 
+            },
+            styleObj() {
+                return `font-size: ${store.getters.fontSize}`;
             }
+
         }
     }
 </script>

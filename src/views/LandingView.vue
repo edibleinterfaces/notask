@@ -12,7 +12,7 @@
         justify-content: center;
 
         .title {
-            font-size: 10vw;
+            font-size: 5em;
             font-weight: 600;
             padding: 5%;
             @include themify($themes) {
