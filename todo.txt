@@ -1,3 +1,6 @@
+update:
+    store build version as part of app key, e.g. "ei-notask-0.0.1" in client storage and check it in app init code.
+    if different, apply upgrade.
 ui:
     build modal window for color theme settings
     fix dashboard icon alignments at all screen sizes
