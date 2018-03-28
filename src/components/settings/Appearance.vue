@@ -6,6 +6,7 @@
     .appearance-container {
         height: 100%; 
         width: 100%;
+        margin: 5%;
         @include themify($themes) {
             background: white;
             //background: themed('appearance-view-bg');
@@ -19,7 +20,7 @@
             border: 1px solid black;
         }
         .appearance-option {
-            padding: 2%;
+            margin: 8%;
             background: white;
         }
     }
