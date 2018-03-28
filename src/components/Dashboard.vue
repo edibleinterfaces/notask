@@ -86,8 +86,8 @@
 <script>
 
     import store from '../store';
-    import googleDrive from '../services/googleDrive';
     import { init, destroy } from '../services/connectivity';
+
 
     export default {
         name: 'app-dashboard',
@@ -106,7 +106,6 @@
         },
         props: ['listId'],
         created: function() {
-            googleDrive.authenticate();
             init();
         },
         destroyed: function() {

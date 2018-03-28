@@ -52,7 +52,6 @@
 
 <script>
     import converter from '../../services/converter';
-    import googleDrive from './../../services/googleDrive';
     import store from '../../store';
 
     export default {
@@ -73,10 +72,10 @@
                 const data = converter.convert(store.getters.tasklists, store.getters.exportFormat);
             },
             signOutOfGoogleDrive: function() {
-                googleDrive.handleSignoutClick()
+                store.commit('signOutOfGoogleDrive');
             },
             signIntoGoogleDrive: function() {
-                googleDrive.handleAuthClick()
+                store.commit('signIntoGoogleDrive');
             }
 
         }

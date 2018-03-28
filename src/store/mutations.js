@@ -1,6 +1,12 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
 
+import GoogleDrive from 'Common/services/GoogleDrive';
+import creds from 'Common/creds';
+
+let gDrive = new GoogleDrive(creds);
+gDrive.authenticate();
+
 export default {
 
     /* tasklist & task data */
@@ -60,12 +66,24 @@ export default {
     markTasklistOld(state, listId) {
         state.tasklists[ listId ].isNew = false; 
     },
-
     /* google drive authentication */
+    signIntoGoogleDrive(state) {
+        gDrive.handleAuthClick()
+            .then(() => {
+                state.auth.signedIntoDrive = true;
+            })
+            .catch(console.warn);
+    },
+    signOutOfGoogleDrive(state) {
+        gDrive.handleSignoutClick()
+            .then(() => {
+                state.auth.signedIntoDrive = false;
+            })
+            .catch(console.warn);
+    },
     updateSigninStatus(state, isSignedIn) {
         state.auth.signedIntoDrive = isSignedIn;
     },
-
     /* internet connectivity */
     updateConnectivityStatus(state, isOnline) {
         state.online = isOnline;

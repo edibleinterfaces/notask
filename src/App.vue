@@ -47,7 +47,6 @@
 
     export default {
         name: 'app',
-        components: {},
         computed: {
             themeClass() {
                 return `theme-${store.getters.theme}`; 
@@ -56,6 +55,9 @@
                 return `font-size: ${store.getters.fontSize}`;
             }
 
+        },
+        created() {
+            console.log(this);
         }
     }
 </script>

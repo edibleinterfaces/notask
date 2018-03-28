@@ -55,7 +55,7 @@
                     <app-appearance/>
                 </div>
             </ei-collapsible>
-            <ei-collapsible :open="true">
+            <ei-collapsible :open="true" :static="true">
                 <h1 class="setting" slot="header">Privacy Policy</h1>
                 <div slot="content">
                     <ei-privacy-policy class="privacy-policy" />
