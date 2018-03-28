@@ -20,7 +20,7 @@
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                padding: 8%;
+                padding: 5%;
                 border-bottom: 1px solid lightgray;
                 background: white;
                 .setting-slide-icon {

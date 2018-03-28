@@ -20,6 +20,7 @@
             }
         }
         .setting {
+            background: white;
             font-size: 1.5em;
             margin: 0;
             padding: 5%;
