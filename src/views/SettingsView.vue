@@ -48,13 +48,13 @@
                     <app-storage />
                 </div>
             </ei-collapsible>
-            <ei-collapsible :open="true">
+            <ei-collapsible>
                 <h1 class="setting" slot="header">Appearance</h1>
                 <div slot="content">
                     <app-appearance/>
                 </div>
             </ei-collapsible>
-            <ei-collapsible :open="false">
+            <ei-collapsible :open="true">
                 <h1 class="setting" slot="header">Privacy Policy</h1>
                 <div slot="content">
                     <ei-privacy-policy class="privacy-policy" />
