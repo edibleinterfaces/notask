@@ -9,7 +9,7 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        border-top: 1px solid #f1f1f1;
+        border-top: 1px solid rgba(0,0,0,0.15);
         transition: 0.3s background ease-out;
         @include themify($themes) {
             background: themed('dashboard-bg');
