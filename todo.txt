@@ -2,6 +2,9 @@ update:
     store build version as part of app key, e.g. "ei-notask-0.0.1" in client storage and check it in app init code.
     if different, apply upgrade.
 ui:
+    distance from top progress bar missing.
+    ios scroll functions don't work.
+    scroll too fast.
     build a system for font with a generalized size hierarchy. doesn't work presently.
     modal windows for color theme settings and cloud sync.
     fix dashboard icon alignments at all screen sizes.
