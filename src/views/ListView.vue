@@ -34,7 +34,7 @@
         <div class="list-view-inner-container">
             <tasklist-header :list-id="listId"></tasklist-header>
             <draggable
-                :options="{ handle: '.sort-handle', draggable: '.task-header'}"
+                :options="{ handle: '.sort-handle', draggable: '.task-header', animation: 150}"
                 v-model="tasks"
                 class="list-view">
                 <task-header 
@@ -58,6 +58,7 @@
     import TaskHeader from '../components/tasklists/TaskHeader';
     import AppDashboard from '../components/Dashboard';
     import draggable from 'vuedraggable';
+    import utils from 'Common/utils';
 
     import store from '../store';
 
