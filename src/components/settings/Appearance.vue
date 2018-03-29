@@ -6,7 +6,7 @@
     .appearance-container {
         height: 100%; 
         width: 100%;
-        margin: 5%;
+        padding: 5%;
         @include themify($themes) {
             background: white;
             //background: themed('appearance-view-bg');
@@ -27,8 +27,7 @@
 </style>
 
 <template>
-    <div class="appearance-container">
-        <ul>
+        <ul class="appearance-container">
             <li class="appearance-option">
                 <label>App Theme:</label>
                 <app-theme-select />
@@ -42,7 +41,6 @@
                     class="font-select-slider" /> 
             </li>
         </ul>
-    </div>
 </template>
 
 <script>
