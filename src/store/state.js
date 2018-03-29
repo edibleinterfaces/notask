@@ -6,11 +6,7 @@ import defaultData from '../data/defaultData';
 import storage from 'Common/storage/LocalStorage'; 
 import config from '../config';
 
-const defaultTasklist = Tasklist({ 
-    tasks: [ Task() ] 
-});
-
-const { tasklists, appearance } = Object.assign(storage.get(config.appKey), defaultData);
+const { tasklists, appearance } = storage.get(config.appKey) || defaultData;
 
 export default {
     cloudSync: { signedIntoDrive: false },
