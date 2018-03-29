@@ -1,6 +1,10 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
 
+function listComparator(a,b) {
+    return a.complete - b.complete;
+}
+
 export default {
 
     /* tasklist & task data */
@@ -23,6 +27,9 @@ export default {
     updateTasklistTitle(state, { listId, title }) {
         state.tasklists[ listId ].title = title;
     },
+    sortTasklist(state, tasklistId) {
+        state.tasklists[ tasklistId ] .tasks.sort(listComparator);
+    }, 
     updateTasklists(state, newTasklists) {
         state.tasklists = newTasklists;
     },

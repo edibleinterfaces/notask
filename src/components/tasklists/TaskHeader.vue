@@ -4,6 +4,9 @@
     @import "../../../style/themes.scss";
 
     .task-header {
+        &.task-complete {
+            background: whitesmoke;
+        }
         display: inline-flex; 
         align-items: center;
         justify-content: center;
@@ -177,7 +180,7 @@
 </style>
 <template>
     <div 
-        v-bind:class="{'trashcan-visible': trashcanVisible}"
+        v-bind:class="{'trashcan-visible': trashcanVisible, 'task-complete': complete}"
         class="task-header">
         <button v-if="$route.name === 'TaskDetailsView'" class="sort-handle">
             <i  v-on:click="$router.go(-1)" class="fas fa-arrow-left task-sort-handle-icon"></i>
@@ -292,7 +295,7 @@
                     taskId: this.taskId
                 };
 
-                setTimeout(function() {
+                setTimeout(() => {
                     store.commit('removeTask', payload);
                 }, 300);
             },
@@ -308,6 +311,11 @@
                 this.deleteMode = false;
                 this.deleteConfirmed = false;
                 this.trashcanVisible = false;
+
+                // make these actions?
+                setTimeout(() => {
+                    store.commit('sortTasklist', this.listId);
+                }, 300);
             }
 
         }
