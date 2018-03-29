@@ -6,7 +6,7 @@ ui:
     ios scroll functions don't work.
     scroll too fast.
     build a system for font with a generalized size hierarchy. doesn't work presently.
-    modal windows for color theme settings and cloud sync.
+    modal windows for color theme settings and cloud sync(this should display at least which username used to sign in, useful to user).
     fix dashboard icon alignments at all screen sizes.
     add some css texture to list view background.
     convert setInterval to request animation frame.
