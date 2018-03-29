@@ -109,6 +109,7 @@
                 .task-complete,
                 .delete-task-icon,
                 .delete-task-icon-confirmed {
+                    font-size: 5vh;
                     width: 100%;
                     text-align: center;
                     color: themed('slideout-controls-icons');
