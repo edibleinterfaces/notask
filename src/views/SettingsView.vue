@@ -12,6 +12,7 @@
         .settings-container {
             height: 90%;
             width: 100%;
+            max-width: 100%;
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch; 
             .privacy-policy {
@@ -52,7 +53,7 @@
             <ei-collapsible>
                 <h1 class="setting" slot="header">Appearance</h1>
                 <div slot="content">
-                    <app-appearance/>
+                    <app-appearance />
                 </div>
             </ei-collapsible>
             <ei-collapsible :open="true" :static="true">

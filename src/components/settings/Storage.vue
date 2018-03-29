@@ -53,7 +53,7 @@
 <script>
     import converter from '../../services/converter';
     import store from '../../store';
-
+    
     export default {
         name: "app-storage",
         computed: {
@@ -71,11 +71,11 @@
             exportStore() {
                 const data = converter.convert(store.getters.tasklists, store.getters.exportFormat);
             },
-            signOutOfGoogleDrive: function() {
-                store.commit('signOutOfGoogleDrive');
+            signIntoGoogleDrive() {
+                store.dispatch('signIn');
             },
-            signIntoGoogleDrive: function() {
-                store.commit('signIntoGoogleDrive');
+            signOutOfGoogleDrive() {
+                store.dispatch('signOut');
             }
 
         }

@@ -7,6 +7,8 @@
     #app {
         height: 100%;
         width: 100%;
+        max-height: 100%;
+        max-width: 100%;
     }
     body, 
     body * {
@@ -42,9 +44,8 @@
 <script>
     import disablePulldownRefresh from './services/disablePulldownRefresh';
     import store from './store';
-    import GoogleDrive from 'Common/services/GoogleDrive'; 
-    import creds from 'Common/creds';
 
+    store.dispatch('authenticate');
 
     export default {
         name: 'app',
@@ -55,7 +56,6 @@
             styleObj() {
                 return `font-size: ${store.getters.fontSize}`;
             }
-
         },
         mounted() {
             disablePulldownRefresh();

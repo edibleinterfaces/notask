@@ -88,7 +88,6 @@
     import store from '../store';
     import { init, destroy } from '../services/connectivity';
 
-
     export default {
         name: 'app-dashboard',
         data: function() {

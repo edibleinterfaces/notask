@@ -3,17 +3,22 @@ import Vuex from 'vuex';
 import mutations from './mutations'; 
 import getters from './getters'; 
 import state from './state';
+import actions from './actions';
 import vuejsStorage from 'vuejs-storage';
 
 import Persistence from 'Common/storage';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
     plugins: [ 
         Persistence({ namespace:'notask' }) 
     ],
     state,
+    actions,
     mutations,
-    getters
+    getters,
+    strict: true,
 });
+
+export default store;

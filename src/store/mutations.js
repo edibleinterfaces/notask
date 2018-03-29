@@ -61,10 +61,7 @@ export default {
     },
 
     /* google drive authentication */
-    signIntoGoogleDrive(state, signedIn) {
-        state.auth.signedIntoDrive = signedIn;
-    },
-    signOutOfGoogleDrive(state, signedIn) {
+    updateSigninState(state, signedIn) {
         state.auth.signedIntoDrive = signedIn;
     },
 
