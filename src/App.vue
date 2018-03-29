@@ -42,8 +42,9 @@
 <script>
     import disablePulldownRefresh from './services/disablePulldownRefresh';
     import store from './store';
+    import GoogleDrive from 'Common/services/GoogleDrive'; 
+    import creds from 'Common/creds';
 
-    disablePulldownRefresh();
 
     export default {
         name: 'app',
@@ -56,8 +57,8 @@
             }
 
         },
-        created() {
-            console.log(this);
+        mounted() {
+            disablePulldownRefresh();
         }
     }
 </script>
