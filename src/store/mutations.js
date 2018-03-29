@@ -62,7 +62,7 @@ export default {
 
     /* google drive authentication */
     updateSigninState(state, signedIn) {
-        state.auth.signedIntoDrive = signedIn;
+        state.cloudSync.signedIntoDrive = signedIn;
     },
 
     /* internet connectivity */

@@ -10,19 +10,10 @@ const defaultTasklist = Tasklist({
     tasks: [ Task() ] 
 });
 
-const defaultAppearance = { 
-    appearance: { 
-        font: { 
-            selected: '16px', 
-            options: ['16px', '18px', '20px', '24px'] 
-        } 
-    } 
-};
-
-const { tasklists, appearance } = Object.assign(storage.get(config.appKey), defaultAppearance);
+const { tasklists, appearance } = Object.assign(storage.get(config.appKey), defaultData);
 
 export default {
-    auth: { signedIntoDrive: false },
+    cloudSync: { signedIntoDrive: false },
     online: navigator.onLine,
     tasklists: tasklists || [defaultTasklist],
     export: { format: 'plaintext' },

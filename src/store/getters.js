@@ -4,7 +4,7 @@ export default {
     task: (state) => ({ listId, taskId }) => state.tasklists[ listId ].tasks[ taskId ],
     exportFormat: (state) => state.export.format,
     online: (state) => state.online,
-    signedIntoDrive: (state) => state.auth.signedIntoDrive,
+    signedIntoDrive: (state) => state.cloudSync.signedIntoDrive,
     reminders: (state) => ({listId, taskId }) => state.tasklists[ listId ].tasks[ taskId ].reminders,
     theme: (state) => state.appearance.theme.selected,
     themes: (state) => state.appearance.theme.options,
