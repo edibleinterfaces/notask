@@ -10,6 +10,10 @@
         max-height: 100%;
         max-width: 100%;
     }
+    input {
+        -webkit-opacity: 1; 
+        background: white;
+    },
     body, 
     body * {
         font-family: $font-stack;

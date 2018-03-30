@@ -94,6 +94,7 @@
             text-align: center;
             @include themify($themes) {
                 .tasklist-title-input {
+
                     overflow-x: scroll;
                     background: transparent;
                     color: themed('tasklist-header-font');
