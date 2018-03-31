@@ -2,6 +2,7 @@ update:
     store build version as part of app key, e.g. "ei-notask-0.0.1" in client storage and check it in app init code.
     if different, apply upgrade.
 ui:
+    read: overscroll behavior https://developers.google.com/web/updates/2017/11/overscroll-behavior
     distance from top progress bar missing.
     ios scroll functions don't work.
     scroll too fast.
@@ -20,5 +21,6 @@ storage:
 
 build:
     x convert font awesome to cdn link 
+
 
 
