@@ -1,0 +1,1 @@
+input overflow-x scroll not working on ios11. verified with: https://codepen.io/anon/pen/geeEEb
