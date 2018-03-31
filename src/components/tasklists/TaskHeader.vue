@@ -201,7 +201,7 @@
                 v-on:change="updateTaskText"
                 :v-model="text"
                 :value="text" 
-                :disabled="!editingText"
+                :readonly="!editingText"
                 class="task-title-input">
             </input>
         </v-touch>

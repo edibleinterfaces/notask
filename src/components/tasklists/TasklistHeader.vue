@@ -108,7 +108,7 @@
                     border: none;
                     outline: none;
                 }
-                .tasklist-title-input[disabled] {
+                .tasklist-title-input[readonly] {
                     -webkit-user-select: none;
                     user-select: none;
                     opacity: 1; /* required disabled input style to take effect on ios */
@@ -212,7 +212,7 @@
             class="title-container">
             <input 
                 :value="listTitle" 
-                :disabled="this.$route.name === 'ListsView'"
+                :readonly="this.$route.name === 'ListsView'"
                 v-on:click="navigateOrEnableInput($event.target)"
                 v-on:change="updateTasklistTitle"
                 v-on:blur="disableInput"
