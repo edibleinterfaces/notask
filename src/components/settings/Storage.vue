@@ -15,6 +15,7 @@
                 background: white;
             }
             li.storage-option {
+                background: white;  /* fixme: insert macro for themed bg color */
                 position: relative;
                 display: flex;
                 justify-content: center;
