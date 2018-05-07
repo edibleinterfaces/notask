@@ -104,7 +104,7 @@
                     padding:0;
                     flex: 1;
                     text-align: center;
-                    font-size: 3em;
+                    font-size: 2em;
                     border: none;
                     outline: none;
                 }
@@ -281,8 +281,6 @@
             }
 
         },
-        destroyed() {
-        },
         created() {
             const self = this;
             setTimeout(function() { 
@@ -290,8 +288,6 @@
             }, 200);
         },
         methods: {
-            markOld() {
-            },
             disableInput() {
                 this.editingTitle = false;
             },
