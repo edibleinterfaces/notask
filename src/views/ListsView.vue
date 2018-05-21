@@ -30,8 +30,8 @@
         <!-- Progress Bar: scroll distance from top of list -->
         <progress-bar 
             :progress-value="progress" 
-            :progress-bg-color="progressBgColor" 
-            :progress-color="progressBarColor" /> 
+            :progress-bar-bg-color="progressBarBgColor" 
+            :progress-bar-fg-color="progressBarFgColor" /> 
 
         <!-- Draggable Wrapper around Tasklist Header -->
         <!-- using 'event.native' on draggable component lets you access native event. standard vuejs feature. --> 
@@ -96,12 +96,13 @@
             scrollProgress() {
                 return this.progress;
             },
-            progressBarColor() {
-                const stylesKey = `${store.getters.theme}-progressColor`;
+            progressBarFgColor() {
+                console.log(styles);
+                const stylesKey = `${store.getters.theme}-progress-bar-fg`;
                 return styles[stylesKey];
             },
-            progressBgColor() {
-                const stylesKey = `${store.getters.theme}-progressBgColor`;
+            progressBarBgColor() {
+                const stylesKey = `${store.getters.theme}-progress-bar-bg`;
                 return styles[stylesKey];
             }
         },

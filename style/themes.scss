@@ -34,8 +34,8 @@ $themes: (
         tasklist-delete-handle-bg: aquamarine,
         tasklist-nav-back: aquamarine,
 
-        tasklist-progress-bar: salmon,
-        tasklist-progress-bar-bg: aquamarine,
+        progress-bar-fg: salmon,
+        progress-bar-bg: aquamarine,
 
         task-header-bg: whitesmoke, 
         task-header-text-selected: $salmon-light,
@@ -92,8 +92,8 @@ $themes: (
         tasklist-delete-handle-bg: lightgray,
         tasklist-nav-back: grey,
 
-        tasklist-progress-bar: lightslategray,
-        tasklist-progress-bar-bg: lightgray,
+        progress-bar-fg: lightslategray,
+        progress-bar-bg: lightgray,
 
         task-header-bg: whitesmoke, 
         task-header-text-selected: $salmon-light,
@@ -125,33 +125,22 @@ $themes: (
         appearance-view-bg: whitesmoke,
     )
 );
+
 :export {
     icecream: {
         one: map-get(map-get($themes, "icecream"), "one");
         two: map-get(map-get($themes, "icecream"), "two");
         three: map-get(map-get($themes, "icecream"), "three");
         four: map-get(map-get($themes, "icecream"), "four");
+        progress-bar-fg: map-get(map-get($themes, "icecream"), "progress-bar-fg");
+        progress-bar-bg: map-get(map-get($themes, "icecream"), "progress-bar-bg");
     };
     grayscale: {
         one: map-get(map-get($themes, "grayscale"), "one");
         two: map-get(map-get($themes, "grayscale"), "two");
         three: map-get(map-get($themes, "grayscale"), "three");
         four: map-get(map-get($themes, "grayscale"), "four");
+        progress-bar-fg: map-get(map-get($themes, "grayscale"), "progress-bar-fg");
+        progress-bar-bg: map-get(map-get($themes, "grayscale"), "progress-bar-bg");
     }
 }
-/*
-:export {
-    icecream: {
-        one: map-get(map-get($themes, "icecream"), "one");
-        two: map-get(map-get($themes, "icecream"), "two");
-        three: map-get(map-get($themes, "icecream"), "three");
-        four: map-get(map-get($themes, "icecream"), "four");
-    },
-    grayscale: {
-        one: map-get(map-get($themes, "grayscale"), "one");
-        two: map-get(map-get($themes, "grayscale"), "two");
-        three: map-get(map-get($themes, "grayscale"), "three");
-        four: map-get(map-get($themes, "grayscale"), "four");
-    }
-}
-*/
