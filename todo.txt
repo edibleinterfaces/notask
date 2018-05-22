@@ -1,13 +1,13 @@
-update:
-    store build version as part of app key, e.g. "ei-notask-0.0.1" in client storage and check it in app init code.
-    if different, apply upgrade.
+predictive symbols instead of default text, when you a new task
+improve scroll animations on addition
+restore details view
+
 ui:
+    allow user to insert icons in place of the default ones, and also to reset them, or exert more fine-grained control
+    via preferences.
     read: overscroll behavior https://developers.google.com/web/updates/2017/11/overscroll-behavior
-    distance from top progress bar missing.
-    ios scroll functions don't work.
-    scroll too fast.
-    build a system for font with a generalized size hierarchy. doesn't work presently.
-    modal windows for color theme settings and cloud sync(this should display at least which username used to sign in, useful to user).
+    modal windows for color theme settings and cloud sync. This should display at least which username used to sign in, useful to the user.
+    change reset behavior. should clear local storage and reload the page.
     fix dashboard icon alignments at all screen sizes.
     add some css texture to list view background.
     convert setInterval to request animation frame.
