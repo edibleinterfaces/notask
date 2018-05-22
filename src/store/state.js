@@ -9,7 +9,7 @@ const { tasklists, appearance } = storage.get(config.appKey) || defaultData;
 export default {
     cloudSync: { signedIntoDrive: false },
     online: navigator.onLine,
-    tasklists: tasklists || [TasklistDefault],  // bug 
+    tasklists: tasklists || [ TasklistDefault ],  // bug, what the heck is going on here? 
     export: { format: 'plaintext' },
     appearance: {
         theme: {
