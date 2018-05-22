@@ -1,5 +1,5 @@
 import Task from '../models/Task';
-import { TasklistDefault } from '../models/Tasklist';
+import { TasklistDefault, Tasklist } from '../models/Tasklist';
 
 function listComparator(a,b) {
     return a.complete - b.complete;

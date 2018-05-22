@@ -1,4 +1,3 @@
-import demo from './demo';
 import { TasklistDefault } from '../models/Tasklist';
 
 export default {
