@@ -9,18 +9,27 @@ export function TasklistDefault() {
     return { 
         title: '🛒', 
         tasks: [
-            {
+            Task({
                 text: '💻',
+                complete: false,
+                details: '',
+                reminders: []
 
-            },
-            {
-                text: '👖'
-            },
-            {
-                text: '🎒'
-            }
+            }),
+            Task({
+                text: '👖',
+                complete: false,
+                details: '',
+                reminders: []
+            }),
+            Task({
+                text: '🎒',
+                complete: false,
+                details: '',
+                reminders: []
+            })
         ],
         isNew: true
     };
 
-}
+};

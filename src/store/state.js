@@ -1,24 +1,17 @@
 import config from '../config';
-import defaultData from '../data/defaultData';
+import defaults from '../data/defaults';
 import storage from 'Common/storage/LocalStorage'; 
-import Task from '../models/Task';
-import { Tasklist, TasklistDefault } from '../models/Tasklist';
 
-const { tasklists, appearance } = storage.get(config.appKey) || defaultData;
+const store = storage.get(config.appKey) || defaults;
+console.log(JSON.stringify(store, null, 2));
 
-export default {
+export default store;
+/*
+{
+    appearance,
     cloudSync: { signedIntoDrive: false },
-    online: navigator.onLine,
-    tasklists: tasklists || [ TasklistDefault ],  // bug, what the heck is going on here? 
     export: { format: 'plaintext' },
-    appearance: {
-        theme: {
-            selected: 'icecream',
-            options: ['grayscale','icecream']
-        },
-        font: {
-            selected: appearance.font.selected,
-            options: appearance.font.options
-        }
-    }
+    online: navigator.onLine,
+    tasklists
 };
+*/

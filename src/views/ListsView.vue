@@ -97,7 +97,6 @@
                 return this.progress;
             },
             progressBarFgColor() {
-                console.log(styles);
                 const stylesKey = `${store.getters.theme}-progress-bar-fg`;
                 return styles[stylesKey];
             },
