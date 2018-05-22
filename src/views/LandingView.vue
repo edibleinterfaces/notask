@@ -28,7 +28,8 @@
     <router-link to="/tasklists">
         <div class="landing-container">
             <div class="title">
-                <span class="do">do</span><span class="it">it</span>
+                <!--<span class="do">do</span><span class="it">it</span>-->
+                <span class="do">Task</span>
             </div>
         </div>
     </router-link>
