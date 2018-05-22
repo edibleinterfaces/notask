@@ -242,6 +242,7 @@
 <script>
     import Vue from 'vue';
     import VueTouch from 'vue-touch';
+
     import store from '../../store';
 
     Vue.use(VueTouch);

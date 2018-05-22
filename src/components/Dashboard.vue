@@ -83,6 +83,7 @@
         <i v-show="isAListView" v-on:click="add" class="fas fa-plus add-tasklist-icon"></i>
     </div>
 </template>
+
 <script>
 
     import store from '../store';
@@ -126,7 +127,9 @@
             pulse() {
                 this.$emit('list-top');
                 this.dashboardClassObj.pulse = true;
-                setTimeout(()=>{ this.dashboardClassObj.pulse = false; }, this.pulseTimeMS);
+                setTimeout(() => { 
+                    this.dashboardClassObj.pulse = false; 
+                }, this.pulseTimeMS);
             },
             navigate() {
                 if (this.$route.name === 'SettingsView')

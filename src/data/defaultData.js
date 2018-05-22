@@ -20,27 +20,6 @@ export default {
         signedIntoDrive: false,
     },
     online: false,
-    tasklists: [
-        Tasklist(
-            { 
-                title: '🛒',
-                tasks: [ 
-                    Task({ 
-                        text:'💻',
-                        details: 'Get a new computer'
-                    }), 
-                    Task({ 
-                        text:'👖',
-                        details: '2 X Levis 511'
-                    }), 
-                    Task({ 
-                        text:'🎒',
-                        details: 'New backpack for school!'
-                    }), 
-                ]
-            }
-        ) 
-    ]
 }
 
 

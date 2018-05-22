@@ -44,18 +44,21 @@
 <template>
     <div class="settings-view-container">
         <div class="settings-container">
+
             <ei-collapsible>
                 <h1 class="setting" slot="header">Storage</h1>
                 <div slot="content">
                     <app-storage />
                 </div>
             </ei-collapsible>
+
             <ei-collapsible>
                 <h1 class="setting" slot="header">Appearance</h1>
                 <div slot="content">
                     <app-appearance />
                 </div>
             </ei-collapsible>
+
             <ei-collapsible :open="true" :static="true">
                 <h1 class="setting" slot="header">Privacy Policy</h1>
                 <div slot="content">
