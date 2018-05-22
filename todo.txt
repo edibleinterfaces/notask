@@ -24,3 +24,6 @@ build:
 
 
 
+features:
+
+    autoconvert links to a tags inside of task text and tasklist text

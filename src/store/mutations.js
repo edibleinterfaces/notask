@@ -1,5 +1,6 @@
 import Task from '../models/Task';
-import { TasklistDefault, Tasklist } from '../models/Tasklist';
+import Tasklist from '../models/Tasklist';
+import defaults from '../data/defaults';
 
 function listComparator(a,b) {
     return a.complete - b.complete;
@@ -11,7 +12,6 @@ export default {
 
     resetStorage(state) {
         state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
-        //state.tasklists = [ TasklistDefault() ];
     },
     clearTasklists(state) {
         state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
@@ -38,7 +38,7 @@ export default {
         state.tasklists[ listId ].tasks = newTasks;
     },
     addTask(state, listId) {
-        state.tasklists[ listId ].tasks.push(Task({text: 'test title'}));
+        state.tasklists[ listId ].tasks.push(Task({text: 'New Task'}));
     },
     removeTask(state, { listId, taskId }) {
         state.tasklists[ listId ].tasks.splice(taskId, 1);
