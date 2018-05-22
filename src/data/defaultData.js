@@ -1,5 +1,6 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
+import demoData from './demoData';
 
 export default {
     appearance: { 
@@ -19,9 +20,28 @@ export default {
         signedIntoDrive: false,
     },
     online: false,
-    tasklists: [ 
-        Tasklist({ 
-            tasks: [ Task() ] 
-        })
+    tasklists: [
+        Tasklist(
+            { 
+                title: '🛒',
+                tasks: [ 
+                    Task({ 
+                        text:'💻',
+                        details: 'Get a new computer'
+                    }), 
+                    Task({ 
+                        text:'👖',
+                        details: '2 X Levis 511'
+                    }), 
+                    Task({ 
+                        text:'🎒',
+                        details: 'New backpack for school!'
+                    }), 
+                ]
+            }
+        ) 
     ]
 }
+
+
+
