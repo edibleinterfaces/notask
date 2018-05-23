@@ -7,7 +7,7 @@
         height: 100%;
         width: 100%;
         @include themify($themes) {
-            background: themed('settings-view-bg');
+            //background: themed('settings-view-bg');
         }
         .settings-container {
             height: 90%;
@@ -21,7 +21,6 @@
             }
         }
         .setting {
-            background: white;
             font-size: 1.5em;
             margin: 0;
             padding: 5%;
@@ -45,22 +44,32 @@
     <div class="settings-view-container">
         <div class="settings-container">
 
-            <ei-collapsible>
-                <h1 class="setting" slot="header">Storage</h1>
+            <ei-collapsible class="setting-container" >
+                <h1 
+                    v-pulse="pulseConfig"
+                    class="setting" 
+                    slot="header">Storage</h1>
+
                 <div slot="content">
                     <app-storage />
                 </div>
             </ei-collapsible>
 
-            <ei-collapsible>
-                <h1 class="setting" slot="header">Appearance</h1>
+            <ei-collapsible class="setting-container">
+                <h1 
+                    v-pulse="pulseConfig"
+                    class="setting" 
+                    slot="header">Appearance</h1>
                 <div slot="content">
                     <app-appearance />
                 </div>
             </ei-collapsible>
 
-            <ei-collapsible :open="true" :static="true">
-                <h1 class="setting" slot="header">Privacy Policy</h1>
+            <ei-collapsible class="setting-container" :open="true" :static="true">
+                <h1 
+                    v-pulse="pulseConfig"
+                    class="setting" 
+                    slot="header">Privacy Policy</h1>
                 <div slot="content">
                     <ei-privacy-policy class="privacy-policy" />
                 </div>
@@ -79,8 +88,16 @@
     import Storage from '../components/settings/Storage';
     import PrivacyPolicy from 'Common/components/PrivacyPolicy';
 
+    import pulse from 'Common/directives/pulse';
+
     export default {
         name: 'app-settings-view',
+        directives: { pulse },
+        data: function() {
+            return {
+                pulseConfig: { bgColor: 'lightgray', timeout: 200 }
+            }
+        },
         components: { 
             'ei-collapsible': Collapsible, 
             'ei-privacy-policy': PrivacyPolicy, 

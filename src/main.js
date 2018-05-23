@@ -9,9 +9,9 @@ Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 const app = new Vue({
+  components: { App },
   el: '#app',
   router,
   store,
-  template: '<App/>',
-  components: { App }
+  template: '<App/>'
 });

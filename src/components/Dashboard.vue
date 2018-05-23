@@ -10,12 +10,8 @@
         align-items: center;
         width: 100%;
         border-top: 1px solid rgba(0,0,0,0.15);
-        transition: 0.3s background ease-out;
         @include themify($themes) {
             background: themed('dashboard-bg');
-            &.pulse {
-                background: themed('dashboard-bg-pulse') !important;
-            }
             .add-tasklist-icon,
             .settings-icon {
                 color: themed('dashboard-icons');
@@ -77,7 +73,7 @@
 </style>
 
 <template>
-    <div :class="dashboardClassObj" v-on:click.self="pulse" class="dashboard">
+    <div v-pulse.self="pulseConfig" class="dashboard">
         <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
         <i :class="{'drive-signed-in': signedIn}" class="fab fa-google-drive google-drive-icon"></i>
         <i v-show="isAListView" v-on:click="add" class="fas fa-plus add-tasklist-icon"></i>
@@ -86,14 +82,19 @@
 
 <script>
 
-    import store from '../store';
     import { init, destroy } from '../services/connectivity';
+    import pulse from 'Common/directives/pulse';
+    import store from '../store';
 
     export default {
         name: 'app-dashboard',
+        directives: { pulse },
         data: function() {
             return {
-                dashboardClassObj: { pulse: false },
+                pulseConfig: {
+                    bgColor: 'lightgray',
+                    timeout: 200,
+                },
                 driveIconClassObj: {
                    'drive-signed-in': this.online,
                 },
@@ -101,7 +102,6 @@
                     'far fa-circle': ['ListsView','ListView'].includes(this.$route.name),
                     'fas fa-circle': !['ListsView','ListView'].includes(this.$route.name)
                 },
-                pulseTimeMS: 100
             };
         },
         props: ['listId'],
@@ -124,13 +124,6 @@
             
         },
         methods: {
-            pulse() {
-                this.$emit('list-top');
-                this.dashboardClassObj.pulse = true;
-                setTimeout(() => { 
-                    this.dashboardClassObj.pulse = false; 
-                }, this.pulseTimeMS);
-            },
             navigate() {
                 if (this.$route.name === 'SettingsView')
                     this.$router.back();
