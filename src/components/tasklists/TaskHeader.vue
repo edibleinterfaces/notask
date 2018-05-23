@@ -196,6 +196,7 @@
             class="task-title-container">
             <input 
                 v-on:click="triggerFocusAndSelect($event.target)"
+                v-on:focus="onFocus"
                 v-on:blur="editingText = false"
                 v-on:keydown.enter="triggerBlur($event.target)"
                 v-on:change="updateTaskText"
@@ -251,6 +252,9 @@
             }
         },
         methods: {
+            onFocus(element) {
+                this.enableInput(element);
+            },
 			enableDeleteMode() {
                 this.swipeLeft();
                 this.deleteMode = true;
