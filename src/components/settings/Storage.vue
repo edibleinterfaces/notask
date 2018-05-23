@@ -40,7 +40,7 @@
     <div class="storage-view-container">
         <div class="storage-view">
             <ul class="storage-options">
-                <li @click="resetStorage" class="storage-option">Reset storage</li>
+                <li @click="resetStore" class="storage-option">Reset storage</li>
                 <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
                 <li class="storage-option">Import</li>
                 <li @click="exportStore" class="storage-option">Export</li>
@@ -63,14 +63,18 @@
             }
         },
         methods: {
-            resetStorage() {
-                store.commit('clearTasklists');
-            },
             resetTasklists() {
-                store.commit('resetStorage');
+                store.commit('resetTasklists');
+            },
+            resetStore() {
+                store.commit('resetStore');
+                this.$router.push('/');
             },
             exportStore() {
-                const data = converter.convert(store.getters.tasklists, store.getters.exportFormat);
+                const data = converter.convert(
+                    store.getters.tasklists, 
+                    store.getters.exportFormat
+                );
             },
             signIntoGoogleDrive() {
                 store.dispatch('signIn');

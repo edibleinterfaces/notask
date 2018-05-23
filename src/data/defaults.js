@@ -1,39 +1,32 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
 
-function makeDefaultTasklists() { 
+export default function makeDefaults() {
+    return {
+        appearance: { 
+            font: { 
+                selected: '12px', 
+                options: ['12px', '14px', '16px', '18px', '24px'] 
+            },
+            theme: {
+                selected: 'icecream',
+                options: ['icecream', 'grayscale'],
+            },
+        },
+        cloudSync: { signedIntoDrive: false },
+        exportFormat: 'plaintext',
+        online: false,
+        tasklists: makeDefaultTasklists()
+    };
+};
+
+export function makeDefaultTasklists() { 
 
     return [
 
         Tasklist({ 
-            isNew: true,
-            title: '🛒', 
-            tasks: [
-                Task({
-                    text: '💻',
-                    complete: false,
-                    details: '',
-                    reminders: []
-
-                }),
-                Task({
-                    text: '👖',
-                    complete: false,
-                    details: '',
-                    reminders: []
-                }),
-                Task({
-                    text: '🎒',
-                    complete: false,
-                    details: '',
-                    reminders: []
-                })
-            ],
-        }),
-
-        Tasklist({ 
             title: '🎹', 
-            isNew: true,
+            isNew: false,
             tasks: [
                 Task({
                     text: "Beethoven's 7th",
@@ -58,7 +51,7 @@ function makeDefaultTasklists() {
         }), 
         Tasklist({ 
             title: '📚', 
-            isNew: true,
+            isNew: false,
             tasks: [
                 Task({
                     text: "https://en.wikipedia.org/wiki/Blockchain",
@@ -80,25 +73,34 @@ function makeDefaultTasklists() {
                     reminders: []
                 })
             ],
-        })
+        }),
+        Tasklist({ 
+            isNew: false,
+            title: '🛒', 
+            tasks: [
+                Task({
+                    text: '💻',
+                    complete: false,
+                    details: '',
+                    reminders: []
+
+                }),
+                Task({
+                    text: '👖',
+                    complete: false,
+                    details: '',
+                    reminders: []
+                }),
+                Task({
+                    text: '🎒',
+                    complete: false,
+                    details: '',
+                    reminders: []
+                })
+            ],
+        }),
+
+
     ]
 
-};
-
-//
-export default {
-    appearance: { 
-        font: { 
-            selected: '14px', 
-            options: ['12px', '14px', '16px', '18px', '24px'] 
-        },
-        theme: {
-            selected: 'icecream',
-            options: ['icecream', 'grayscale'],
-        },
-    },
-    cloudSync: { signedIntoDrive: false },
-    export: { format: 'plaintext' },
-    online: false,
-    tasklists: makeDefaultTasklists()
 };

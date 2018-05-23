@@ -1,6 +1,8 @@
 import Task from '../models/Task';
 import Tasklist from '../models/Tasklist';
-import defaults from '../data/defaults';
+import makeDefaults, { makeDefaultTasklists } from '../data/defaults';
+import localStorage from 'Common/storage/LocalStorage';
+
 
 function listComparator(a,b) {
     return a.complete - b.complete;
@@ -10,11 +12,16 @@ export default {
 
     /* tasklist & task data */
 
-    resetStorage(state) {
-        state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
+    resetStore(state) {
+        // update state, will update storage accordingly
+        const { appearance, cloudSync, exportFormat, tasklists } = makeDefaults();
+        state.appearance = appearance;
+        state.cloudSync = cloudSync;
+        state.exportFormat = exportFormat;
+        state.tasklists = tasklists;
     },
-    clearTasklists(state) {
-        state.tasklists = [ Tasklist({ tasks: [ Task() ]}) ];
+    resetTasklists(state) {
+        state.tasklists = makeDefaultTasklists();
     },
     addTasklist(state) {
         state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
