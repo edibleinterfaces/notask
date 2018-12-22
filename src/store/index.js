@@ -11,14 +11,12 @@ import Persistence from 'Common/storage';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    plugins: [ 
-        Persistence({ namespace:'notask' }) 
-    ],
-    state,
     actions,
-    mutations,
     getters,
+    mutations,
+    state,
     strict: true,
+    plugins: [ Persistence({ namespace: 'notask' }) ],
 });
 
 export default store;

@@ -3,6 +3,9 @@ import Tasklist from '../models/Tasklist';
 
 export default function makeDefaults() {
     return {
+        googleDrive: {
+            syncFile: { name: '', id: '' }
+        },
         appearance: { 
             font: { 
                 selected: '12px', 

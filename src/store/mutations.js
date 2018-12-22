@@ -3,7 +3,6 @@ import Tasklist from '../models/Tasklist';
 import makeDefaults, { makeDefaultTasklists } from '../data/defaults';
 import localStorage from 'Common/storage/LocalStorage';
 
-
 function listComparator(a,b) {
     return a.complete - b.complete;
 }
