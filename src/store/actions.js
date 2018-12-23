@@ -22,10 +22,17 @@ export default {
                   () => commit('updateSigninState', true))
     },
     syncWithDrive({ commit }, { content }) {
-        gDrive.sync(content).then(fileId => {
-          const appData = storage.get('notask')
-          appData.googleDrive.syncFile.id = fileId
-          storage.set('notask', appData)
+        // if we're logged in:
+        //    check local storage for sync file id  
+        //    if exists:
+        //      try to read/parse file
+        //    if not, create it with the current local storage
+
+        // use local storage data
+
+        gDrive.sync(content).then(syncFile => {
+          if (syncFile) 
+            commit('updateSyncFileId', { id: syncFile.id })
         })
     }
 }

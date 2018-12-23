@@ -49,7 +49,6 @@
     import disablePulldownRefresh from './services/disablePulldownRefresh';
     import store from './store';
 
-    store.dispatch('authenticate');
 
     export default {
         name: 'app',
@@ -63,6 +62,7 @@
         },
         mounted() {
             disablePulldownRefresh();
+            store.dispatch('authenticate');
         }
     }
 </script>

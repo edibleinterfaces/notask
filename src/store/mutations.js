@@ -1,11 +1,9 @@
-import Task from '../models/Task';
-import Tasklist from '../models/Tasklist';
-import makeDefaults, { makeDefaultTasklists } from '../data/defaults';
-import localStorage from 'Common/storage/LocalStorage';
+import Task from '../models/Task'
+import Tasklist from '../models/Tasklist'
+import makeDefaults, { makeDefaultTasklists } from '../data/defaults'
+import NoTaskLocalStorage from './NoTaskLocalStorage'
 
-function listComparator(a,b) {
-    return a.complete - b.complete;
-}
+const listComparator = (a,b) => a.complete - b.complete
 
 export default {
 
@@ -13,74 +11,75 @@ export default {
 
     resetStore(state) {
         // update state, will update storage accordingly
-        const { appearance, cloudSync, exportFormat, tasklists } = makeDefaults();
-        state.appearance = appearance;
-        state.cloudSync = cloudSync;
-        state.exportFormat = exportFormat;
-        state.tasklists = tasklists;
+        const currentStorageOption = state.storageOption
+        const { store } = makeDefaults()
+        state.store = store[currentStorageOption]
+
     },
     resetTasklists(state) {
-        state.tasklists = makeDefaultTasklists();
+        state.store[state.storageOption].tasklists = makeDefaultTasklists()
     },
     addTasklist(state) {
-        state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
+        state.store[state.storageOption].tasklists.push( Tasklist({ tasks: [ Task() ]}) )
     },
     removeTasklist(state, index) {
-        state.tasklists.splice(index, 1);
-        if (!state.tasklists.length) {
-            state.tasklists.push( Tasklist({ tasks: [ Task() ]}) );
+        state.store[state.storageOption].tasklists.splice(index, 1)
+        if (!state.store[state.storageOptions].tasklists.length) {
+            state.store[state.storageOption].tasklists.push( Tasklist({ tasks: [ Task() ]}) )
         }
     },
     updateTasklistTitle(state, { listId, title }) {
-        state.tasklists[ listId ].title = title;
+        state.store[state.storageOption].tasklists[ listId ].title = title
     },
     sortTasklist(state, tasklistId) {
-        state.tasklists[ tasklistId ] .tasks.sort(listComparator);
+        state.store[state.storageOption].tasklists[ tasklistId ] .tasks.sort(listComparator)
     }, 
     updateTasklists(state, newTasklists) {
-        state.tasklists = newTasklists;
+        state.store[state.storageOption].tasklists = newTasklists
     },
     updateTasks(state, {listId, newTasks}) {
-        state.tasklists[ listId ].tasks = newTasks;
+        state.store[state.storageOption].tasklists[ listId ].tasks = newTasks
     },
     addTask(state, listId) {
-        state.tasklists[ listId ].tasks.push(Task({text: 'New Task'}));
+        state.store[state.storageOption].tasklists[ listId ].tasks.push(Task({text: 'New Task'}))
     },
     removeTask(state, { listId, taskId }) {
-        state.tasklists[ listId ].tasks.splice(taskId, 1);
+        state.store[state.storageOption].tasklists[ listId ].tasks.splice(taskId, 1)
     },
     updateTaskText(state, { listId, taskId, text }) {
-        state.tasklists[ listId ].tasks[ taskId ].text = text;
+        state.store[state.storageOption].tasklists[ listId ].tasks[ taskId ].text = text
     },
     updateTaskDetails(state, { listId, taskId, details }) {
-        state.tasklists[ listId ].tasks[ taskId ].details = details;
+        state.store[state.storageOption].tasklists[ listId ].tasks[ taskId ].details = details
     },
     updateReminders(state, { listId, taskId, reminderData }) {
-        state.tasklists[ listId ].tasks[ taskId ].reminders.push(reminderData);
+        state.store[state.storageOption].tasklists[ listId ].tasks[ taskId ].reminders.push(reminderData)
     },
     deleteReminder(state, { reminderIndex, listId, taskId}) {
-        state.tasklists[ listId ].tasks[ taskId ].reminders.splice(reminderIndex, 1);
+        state.store[state.storageOption].tasklists[ listId ].tasks[ taskId ].reminders.splice(reminderIndex, 1)
     }, 
     toggleTaskComplete(state, { listId, taskId, complete }) {
-        state.tasklists[ listId ].tasks[ taskId ].complete = complete;
+        state.store[state.storageOption].tasklists[ listId ].tasks[ taskId ].complete = complete
     },
     updateTheme(state, newTheme) {
-        state.appearance.theme.selected = newTheme;
+        state.store[state.storageOption].appearance.theme.selected = newTheme
     },
     updateFontSize(state, newSize) {
-        state.appearance.font.selected = newSize;
+        state.store[state.storageOption].appearance.font.selected = newSize
     },
     markTasklistOld(state, listId) {
-        state.tasklists[ listId ].isNew = false; 
+        state.store[state.storageOption].tasklists[ listId ].isNew = false 
     },
 
     /* google drive authentication */
     updateSigninState(state, signedIn) {
-        state.cloudSync.signedIntoDrive = signedIn;
+        state.store[state.storageOption].cloudSync.signedIntoDrive = signedIn
     },
 
     /* internet connectivity */
     updateConnectivityStatus(state, isOnline) {
-        state.online = isOnline;
+        state.store[state.storageOption].online = isOnline
+    },
+    updateSyncFileId(state, { id }) {
     }
-};
+}

@@ -1,27 +1,7 @@
-import Task from '../models/Task';
-import Tasklist from '../models/Tasklist';
+import Task from '../models/Task'
+import Tasklist from '../models/Tasklist'
 
-export default function makeDefaults() {
-    return {
-        googleDrive: {
-            syncFile: { name: '', id: '' }
-        },
-        appearance: { 
-            font: { 
-                selected: '12px', 
-                options: ['12px', '14px', '16px', '18px', '24px'] 
-            },
-            theme: {
-                selected: 'icecream',
-                options: ['icecream', 'grayscale'],
-            },
-        },
-        cloudSync: { signedIntoDrive: false },
-        exportFormat: 'plaintext',
-        online: false,
-        tasklists: makeDefaultTasklists()
-    };
-};
+const storageOptions = ['cloud', 'local']
 
 export function makeDefaultTasklists() { 
 
@@ -106,4 +86,39 @@ export function makeDefaultTasklists() {
 
     ]
 
-};
+}
+
+export default function makeDefaults() {
+
+    let defaultStore = { 
+      storageOption: 'local', 
+      store: {
+        local: null,
+        cloud: null
+      } 
+    }
+
+    storageOptions.forEach(option => {
+        defaultStore.store[option] = {
+            googleDrive: {
+                syncFile: { name: '', id: '' }
+            },
+            appearance: { 
+                font: { 
+                    selected: '12px', 
+                    options: ['12px', '14px', '16px', '18px', '24px'] 
+                },
+                theme: {
+                    selected: 'icecream',
+                    options: ['icecream', 'grayscale'],
+                },
+            },
+            cloudSync: { signedIntoDrive: false },
+            exportFormat: 'plaintext',
+            online: false,
+            tasklists: makeDefaultTasklists()
+        }
+    })
+    return defaultStore
+}
+
