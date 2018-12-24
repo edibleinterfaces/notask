@@ -52,7 +52,7 @@
 </template>
 
 <script>
-    import converter from '../../services/converter';
+    import converter from 'Common/services/converter';
     import store from '../../store';
     
     export default {

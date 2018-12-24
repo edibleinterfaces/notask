@@ -75,17 +75,19 @@
 <template>
     <div v-pulse.self="pulseConfig" class="dashboard">
         <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
-        <i :class="{'drive-signed-in': signedIn}" @click="syncWithDrive" class="fab fa-google-drive google-drive-icon"></i>
+        <i :class="{'drive-signed-in': signedIn}" @click="syncToCloud" class="fab fa-google-drive google-drive-icon"></i>
         <i v-show="isAListView" v-on:click="add" class="fas fa-plus add-tasklist-icon"></i>
     </div>
 </template>
 
 <script>
 
+    import store from '../store';
     import { init, destroy } from '../services/connectivity';
     import pulse from 'Common/directives/pulse';
-    import saveFile from 'Common/services/GoogleDrive';
-    import store from '../store';
+    import convert from 'Common/services/converter'
+    import cloudProviders from 'Common/services/cloudStorage'
+
 
     export default {
         name: 'app-dashboard',
@@ -125,9 +127,11 @@
             
         },
         methods: {
-            syncWithDrive(){
-              store.dispatch('syncWithDrive', {
-                content: 'sync test'
+            syncToCloud(){
+              store.dispatch('syncToCloud', {
+                cloudProvider: cloudProviders[store.getters.cloudProvider],
+                content: convert(store.state, 'json'),
+                syncFileId: store.getters.syncFileId
               })
             },
             navigate() {

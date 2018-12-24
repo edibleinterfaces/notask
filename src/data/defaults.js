@@ -92,6 +92,7 @@ export default function makeDefaults() {
 
     let defaultStore = { 
       storageOption: 'local', 
+      cloudProvider: 'googleDrive',
       store: {
         local: null,
         cloud: null
@@ -101,7 +102,7 @@ export default function makeDefaults() {
     storageOptions.forEach(option => {
         defaultStore.store[option] = {
             googleDrive: {
-                syncFile: { name: '', id: '' }
+                syncFile: { id: '' }
             },
             appearance: { 
                 font: { 

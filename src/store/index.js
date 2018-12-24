@@ -10,8 +10,11 @@ import actions from './actions';
 
 Vue.use(Vuex);
 
-console.warn('clearing localstorage while developing!')
-window.localStorage.clear()
+const env = /.*edibleinterfaces.com/.test(window.location.hostname) ? 'prod' : 'dev';                                                                                              
+if (env === 'dev') {
+  console.warn('WARNING: clearing localstorage on each reload while in DEV mode!')
+  window.localStorage.clear()
+}
 
 const store = new Vuex.Store({
     actions,

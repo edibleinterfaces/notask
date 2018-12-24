@@ -1,4 +1,6 @@
 export default {
+    cloudProvider: (state) => state.cloudProvider,
+    syncFileId: (state) => state.store.cloud.googleDrive.syncFile.id,
     tasklists: (state) => state.store[state.storageOption].tasklists,
     tasks: (state) => (listId) => state.store[state.storageOption].tasklists[ listId ].tasks,
     task: (state) => ({ listId, taskId }) => state.store[state.storageOption].tasklists[ listId ].tasks[ taskId ],

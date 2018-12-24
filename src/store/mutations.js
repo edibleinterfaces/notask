@@ -80,6 +80,9 @@ export default {
     updateConnectivityStatus(state, isOnline) {
         state.store[state.storageOption].online = isOnline
     },
-    updateSyncFileId(state, { id }) {
+    syncCloudData(state, { content, id }) {
+      const updates = JSON.parse(content)
+      state.store.cloud = updates.store.cloud
+      state.store.cloud.googleDrive.syncFile.id = id
     }
 }

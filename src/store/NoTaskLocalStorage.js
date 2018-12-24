@@ -1,6 +1,5 @@
 import makeDefaults from '../data/defaults'
 import LocalStorage from 'Common/storage/LocalStorage'
-//import LocalStorage from '../../../../apps/common/storage/LocalStorage'
 
 const STORE_NAMESPACE = 'notask'  
 
@@ -30,5 +29,4 @@ class NoTaskLocalStorage extends LocalStorage {
 
 }
 
-console.log(new NoTaskLocalStorage())
 export default NoTaskLocalStorage

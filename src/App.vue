@@ -46,23 +46,23 @@
 </template>
 
 <script>
-    import disablePulldownRefresh from './services/disablePulldownRefresh';
-    import store from './store';
-
+    import disablePulldownRefresh from './services/disablePulldownRefresh'
+    import cloudProviders from 'Common/services/cloudStorage'
+    import store from './store'
 
     export default {
         name: 'app',
         computed: {
             themeClass() {
-                return `theme-${store.getters.theme}`; 
+                return `theme-${store.getters.theme}` 
             },
             styleObj() {
-                return `font-size: ${store.getters.fontSize}`;
+                return `font-size: ${store.getters.fontSize}`
             }
         },
         mounted() {
-            disablePulldownRefresh();
-            store.dispatch('authenticate');
+            disablePulldownRefresh()
+            store.dispatch('authenticate', { cloudProvider: cloudProviders[store.getters.cloudProvider] })
         }
     }
 </script>

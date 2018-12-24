@@ -1,38 +1,29 @@
-import GoogleDrive from 'Common/services/GoogleDrive';
-import LocalStorage from 'Common/storage/LocalStorage';
+import LocalStorage from 'Common/storage/LocalStorage'
+import cloudProviders from 'Common/services/cloudStorage'
 
 let storage = new LocalStorage()
-let gDrive = new GoogleDrive();
 
 export default {
-    authenticate({ commit }) {
-        gDrive.authenticate(({ signedIn, error }) => { 
-            commit('updateSigninState', signedIn); 
-        });
+    authenticate({ commit }, { cloudProvider }) {
+        cloudProvider.authenticate(({ signedIn, error }) => { 
+            commit('updateSigninState', signedIn) 
+        })
     },
-    signIn({ commit }) {
-        gDrive.signIn()
+    signIn({ commit }, { cloudProvider}) {
+        cloudProvider.signIn()
             .then(() => commit('updateSigninState', true),
                   () => commit('updateSigninState', false))
 
     },
-    signOut({ commit }) {
-        gDrive.signOut()
+    signOut({ commit }, { cloudProvider }) {
+        cloudProvider.gDrive.signOut()
             .then(() => commit('updateSigninState', false),
                   () => commit('updateSigninState', true))
     },
-    syncWithDrive({ commit }, { content }) {
-        // if we're logged in:
-        //    check local storage for sync file id  
-        //    if exists:
-        //      try to read/parse file
-        //    if not, create it with the current local storage
-
-        // use local storage data
-
-        gDrive.sync(content).then(syncFile => {
-          if (syncFile) 
-            commit('updateSyncFileId', { id: syncFile.id })
-        })
+    syncToCloud({ commit }, { content, cloudProvider, syncFileId }) {
+        cloudProvider.sync(content, syncFileId)
+          .then(({ content, id }) => {
+            commit('syncCloudData', { content, id }) 
+          })
     }
 }
