@@ -41,7 +41,7 @@
         class="theme" 
         :style="styleObj"
         :class="[themeClass]">
-        <keep-alive><router-view></router-view></keep-alive>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -62,7 +62,7 @@
         },
         mounted() {
             disablePulldownRefresh()
-            store.dispatch('authenticate', { cloudProvider: cloudProviders[store.getters.cloudProvider] })
+            store.dispatch('authenticate', store.getters.cloudProvider)
         }
     }
 </script>
