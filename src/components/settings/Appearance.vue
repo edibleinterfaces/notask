@@ -39,16 +39,16 @@
                 <ei-slide-select 
                     :options="fontSizes" 
                     :selected="fontSize" 
-                    :on-update="updateFontSize"
+                    v-on:slide-select-updated="updateFontSize"
                     class="font-select-slider" /> 
             </li>
         </ul>
 </template>
 
 <script>
-    import store from '../../store';
-    import ThemeSelect from './ThemeSelect';
-    import SlideSelect from 'Common/components/SlideSelect';
+    import store from '../../store'
+    import ThemeSelect from './ThemeSelect'
+    import SlideSelect from 'Common/components/SlideSelect'
 
     export default {
         name: 'app-appearance',
@@ -63,7 +63,8 @@
             updateTheme(event) {
                 store.commit('updateTheme', event.target.value);
             },
-            updateFontSize(index) {
+            updateFontSize(value, index) {
+              console.log(value)
                 let newFontSize = this.fontSizes[index];
                 store.commit('updateFontSize', newFontSize);
             }

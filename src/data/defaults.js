@@ -1,7 +1,7 @@
 import Task from '../models/Task'
 import Tasklist from '../models/Tasklist'
 
-const storageOptions = ['cloud', 'local']
+const storageMethods = ['cloud', 'local']
 
 export function makeDefaultTasklists() { 
 
@@ -91,7 +91,7 @@ export function makeDefaultTasklists() {
 export default function makeDefaults() {
 
     let defaultStore = { 
-      storageOption: 'local', 
+      storageMethod: 'local', 
       cloudProvider: 'googleDrive',
       store: {
         local: null,
@@ -99,8 +99,8 @@ export default function makeDefaults() {
       } 
     }
 
-    storageOptions.forEach(option => {
-        defaultStore.store[option] = {
+    storageMethods.forEach(method => {
+        defaultStore.store[method] = {
             googleDrive: {
                 syncFile: { id: '' }
             },
@@ -120,6 +120,7 @@ export default function makeDefaults() {
             tasklists: makeDefaultTasklists()
         }
     })
+    console.log(defaultStore)
     return defaultStore
 }
 

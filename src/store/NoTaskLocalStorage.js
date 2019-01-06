@@ -6,9 +6,7 @@ const STORE_NAMESPACE = 'notask'
 class NoTaskLocalStorage extends LocalStorage {
 
   constructor() {
-      super()
-      this.data = makeDefaults()
-
+      super('notask', makeDefaults())
   }
 
   get data() {

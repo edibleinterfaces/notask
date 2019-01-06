@@ -5,8 +5,8 @@ import Persistence from 'Common/storage';
 import NoTaskLocalStorage from './NoTaskLocalStorage';
 import mutations from './mutations'; 
 import getters from './getters'; 
-import state from './state';
 import actions from './actions';
+import makeDefaults from '../data/defaults'
 
 Vue.use(Vuex);
 
@@ -16,13 +16,14 @@ if (env === 'dev') {
   window.localStorage.clear()
 }
 
+const storageInstance = new NoTaskLocalStorage('notask', makeDefaults())
 const store = new Vuex.Store({
     actions,
     getters,
     mutations,
-    state,
+    state: storageInstance.data,
     strict: true,
-    plugins: [ Persistence(new NoTaskLocalStorage()) ]
+    plugins: [ Persistence(storageInstance) ]
 });
 
 export default store;

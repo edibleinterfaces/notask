@@ -31,6 +31,17 @@
                     font-size: 4vh;
                     color: lightgray;
                 } 
+                .selected-storage-method {
+                  display: inline-flex;
+                    height: 100%;
+                    width: 100%;
+                    align-content: center;
+                      justify-content: center;
+                }
+                .slide-select-container {
+                    border: 1px solid black;
+                    width: 40%;
+                }
             }
         }
     }
@@ -40,6 +51,14 @@
     <div class="storage-view-container">
         <div class="storage-view">
             <ul class="storage-options">
+              <li class="storage-option">
+                <ei-slide-select 
+                  :options="storageMethods" 
+                  :selected="selectedStorageMethod" 
+                  v-on:slide-select-updated="setCloudStorageMethod">
+                  <span slot="handle">{{ selectedStorageMethod }}</span>
+                </ei-slide-select>
+              </li>
                 <li @click="resetStore" class="storage-option">Reset storage</li>
                 <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
                 <li class="storage-option">Import</li>
@@ -52,23 +71,42 @@
 </template>
 
 <script>
-    import converter from 'Common/services/converter';
-    import store from '../../store';
+    import converter from 'Common/services/converter'
+    import SlideSelect from 'Common/components/SlideSelect'
+    import store from '../../store'
     
     export default {
         name: "app-storage",
+        data: function() {
+          return {
+            storageMethods: ['local','cloud'],
+          }
+        },
+        components: {
+          'ei-slide-select': SlideSelect
+        },
         computed: {
             signedIntoDrive() {
-                return store.getters.signedIntoDrive;
+                return store.getters.signedIntoDrive
+            },
+            selectedStorageMethod() {
+              return store.getters.cloudStorageMethod
             }
         },
         methods: {
+            setCloudStorageMethod(newMethod, index) {
+              store.commit('setCloudStorageMethod', newMethod)
+              if (newMethod === 'local')
+                store.dispatch('signOut', store.getters.cloudProvider)
+              if (newMethod === 'cloud')
+                store.dispatch('signIn', store.getters.cloudProvider)
+            },
             resetTasklists() {
-                store.commit('resetTasklists');
+                store.commit('resetTasklists')
             },
             resetStore() {
-                store.commit('resetStore');
-                this.$router.push('/');
+                store.commit('resetStore')
+                this.$router.push('/')
             },
             exportStore() {
                 const data = converter.convert(
@@ -77,10 +115,10 @@
                 );
             },
             signIntoGoogleDrive() {
-                store.dispatch('signIn');
+                store.dispatch('signIn', store.getters.cloudProvider);
             },
             signOutOfGoogleDrive() {
-                store.dispatch('signOut');
+                store.dispatch('signOut', store.getters.cloudProvider);
             }
 
         }

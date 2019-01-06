@@ -75,7 +75,7 @@
 <template>
     <div v-pulse.self="pulseConfig" class="dashboard">
         <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
-        <i :class="{'drive-signed-in': signedIn}" @click="syncToCloud" class="fab fa-google-drive google-drive-icon"></i>
+        <i v-if="cloudEnabled" :class="{'drive-signed-in': signedIn }" @click="syncToCloud" class="fab fa-google-drive google-drive-icon"></i>
         <i v-show="isAListView" v-on:click="add" class="fas fa-plus add-tasklist-icon"></i>
     </div>
 </template>
@@ -109,45 +109,50 @@
         },
         props: ['listId'],
         created: function() {
-            init();
+          if (store.getters.cloudStorageMethod === 'cloud')
+            init()
         },
         destroyed: function() {
-            destroy();
+            destroy()
         },
         computed: {
             signedIn: function() {
-                return store.getters.signedIntoDrive;
+                return store.getters.signedIntoDrive
             },
             online: function() {
-                return store.getters.online;
+                return store.getters.online
             },
             isAListView: function() {
-                return ['ListsView','ListView'].includes(this.$route.name);
+                return ['ListsView','ListView'].includes(this.$route.name)
+            },
+            cloudEnabled: function() {
+              return store.getters.cloudStorageMethod === 'cloud'
             }
+
             
         },
         methods: {
             syncToCloud(){
               store.dispatch('syncToCloud', {
-                cloudProvider: cloudProviders[store.getters.cloudProvider],
+                cloudProvider: store.getters.cloudProvider,
                 content: convert(store.state, 'json'),
                 syncFileId: store.getters.syncFileId
               })
             },
             navigate() {
                 if (this.$route.name === 'SettingsView')
-                    this.$router.back();
+                    this.$router.back()
                 else
-                    this.$router.push('/settings');
+                    this.$router.push('/settings')
             },
             add() {
                 if (this.$route.name === 'ListView') 
-                    store.commit('addTask', this.listId);
+                    store.commit('addTask', this.listId)
                 if (this.$route.name === 'ListsView') { 
-                    store.commit('addTasklist');
-                    this.$emit('list-bottom');
+                    store.commit('addTasklist')
+                    this.$emit('list-bottom')
                 }
             }
         }
-    };
+    }
 </script>
