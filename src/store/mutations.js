@@ -79,6 +79,7 @@ export default {
 
     /* google drive authentication */
     updateSigninState(state, signedIn) {
+        state.storageMethod = signedIn ? 'cloud' : 'local'
         state.store[state.storageMethod].cloudSync.signedIntoDrive = signedIn
     },
 

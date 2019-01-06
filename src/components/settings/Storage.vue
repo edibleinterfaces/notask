@@ -59,12 +59,12 @@
                   <span slot="handle">{{ selectedStorageMethod }}</span>
                 </ei-slide-select>
               </li>
-                <li @click="resetStore" class="storage-option">Reset storage</li>
-                <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
-                <li class="storage-option">Import</li>
-                <li @click="exportStore" class="storage-option">Export</li>
-                <li v-if="signedIntoDrive" v-on:click="signOutOfGoogleDrive" class="storage-option">Sign out of Google Drive</li>
-                <li v-else v-on:click="signIntoGoogleDrive" class="storage-option">Sign into Google Drive</li>
+              <li @click="resetStore" class="storage-option">Reset storage</li>
+              <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
+              <li class="storage-option">Import</li>
+              <li @click="exportStore" class="storage-option">Export</li>
+              <li v-if="signedIntoDrive" v-on:click="signOutOfGoogleDrive" class="storage-option">Sign out of Google Drive</li>
+              <li v-else v-on:click="signIntoGoogleDrive" class="storage-option">Sign into Google Drive</li>
             </ul>
         </div>
     </div>
@@ -94,8 +94,7 @@
             }
         },
         methods: {
-            setCloudStorageMethod(newMethod, index) {
-              store.commit('setCloudStorageMethod', newMethod)
+            setCloudStorageMethod(newMethod) {
               if (newMethod === 'local')
                 store.dispatch('signOut', store.getters.cloudProvider)
               if (newMethod === 'cloud')
