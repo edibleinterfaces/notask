@@ -61,9 +61,8 @@
               </li>
               <li @click="resetStore" class="storage-option">Reset storage</li>
               <li @click="resetTasklists" class="storage-option">Clear Tasklists</li>
-              <li class="storage-option">Import</li>
-              <li @click="exportStore" class="storage-option">Export</li>
-              <li v-if="signedIntoDrive" v-on:click="signOutOfGoogleDrive" class="storage-option">Sign out of Google Drive</li>
+              <li class="storage-option">Import / Export</li>
+              <li v-if="signedIntoCloud" v-on:click="signOutOfGoogleDrive" class="storage-option">Sign out of Google Drive</li>
               <li v-else v-on:click="signIntoGoogleDrive" class="storage-option">Sign into Google Drive</li>
             </ul>
         </div>
@@ -86,8 +85,8 @@
           'ei-slide-select': SlideSelect
         },
         computed: {
-            signedIntoDrive() {
-                return store.getters.signedIntoDrive
+            signedIntoCloud() {
+                return store.getters.signedIntoCloud
             },
             selectedStorageMethod() {
               return store.getters.cloudStorageMethod

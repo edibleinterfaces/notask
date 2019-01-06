@@ -80,12 +80,13 @@ export default {
     /* google drive authentication */
     updateSigninState(state, signedIn) {
         state.storageMethod = signedIn ? 'cloud' : 'local'
-        state.store[state.storageMethod].cloudSync.signedIntoDrive = signedIn
+        state.cloudSync.signedIntoCloud = signedIn
     },
 
     /* internet connectivity */
     updateConnectivityStatus(state, isOnline) {
-        state.store[state.storageMethod].online = isOnline
+      console.log(isOnline)
+        state.online = isOnline
     },
     setCloudStorageMethod(state, newMethod) {
       state.storageMethod = newMethod

@@ -91,6 +91,8 @@ export function makeDefaultTasklists() {
 export default function makeDefaults() {
 
     let defaultStore = { 
+      online: false,
+      cloudSync: { signedIntoCloud: false },
       storageMethod: 'local', 
       cloudProvider: 'googleDrive',
       store: {
@@ -114,13 +116,10 @@ export default function makeDefaults() {
                     options: ['icecream', 'grayscale'],
                 },
             },
-            cloudSync: { signedIntoDrive: false },
             exportFormat: 'plaintext',
-            online: false,
             tasklists: makeDefaultTasklists()
         }
     })
-    console.log(defaultStore)
     return defaultStore
 }
 

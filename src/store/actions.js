@@ -2,7 +2,6 @@ import cloudProviders from 'Common/services/cloudStorage'
 
 export default {
     authenticate({ commit }, cloudProvider) {
-      console.log(cloudProvider)
         cloudProviders[cloudProvider].authenticate(({ signedIn, error }) => { 
             commit('updateSigninState', signedIn) 
         })

@@ -75,19 +75,21 @@
 <template>
     <div v-pulse.self="pulseConfig" class="dashboard">
         <i v-on:click="navigate" :class="settingsIconClassObj" class="settings-icon"></i>
-        <i v-if="cloudEnabled" :class="{'drive-signed-in': signedIn }" @click="syncToCloud" class="fab fa-google-drive google-drive-icon"></i>
+        <i v-if="cloudEnabled" :class="{'drive-signed-in': signedIn && online, 'google-drive-icon': online }" @click="syncToCloud" class="fab fa-google-drive google-drive-icon"></i>
         <i v-show="isAListView" v-on:click="add" class="fas fa-plus add-tasklist-icon"></i>
     </div>
 </template>
 
 <script>
 
-    import store from '../store';
-    import { init, destroy } from '../services/connectivity';
-    import pulse from 'Common/directives/pulse';
+    import pulse from 'Common/directives/pulse'
+    import connectivity from 'Common/services/connectivity'
     import convert from 'Common/services/converter'
     import cloudProviders from 'Common/services/cloudStorage'
+    import store from '../store'
 
+
+    const { init, destroy } = connectivity(store)
 
     export default {
         name: 'app-dashboard',
@@ -108,16 +110,16 @@
             };
         },
         props: ['listId'],
-        created: function() {
-          if (store.getters.cloudStorageMethod === 'cloud')
-            init()
+        mounted: function() {
+          store.commit('updateConnectivityStatus', window.navigator.onLine)
+          init()
         },
         destroyed: function() {
-            destroy()
+          destroy()
         },
         computed: {
             signedIn: function() {
-                return store.getters.signedIntoDrive
+                return store.getters.signedIntoCloud
             },
             online: function() {
                 return store.getters.online
@@ -127,8 +129,10 @@
             },
             cloudEnabled: function() {
               return store.getters.cloudStorageMethod === 'cloud'
+            },
+            storageMethod() {
+              return store.getters.cloudStorageMethod
             }
-
             
         },
         methods: {
@@ -153,6 +157,8 @@
                     this.$emit('list-bottom')
                 }
             }
+        },
+        watch: {
         }
     }
 </script>
