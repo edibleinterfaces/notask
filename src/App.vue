@@ -52,6 +52,7 @@
 
     export default {
         name: 'app',
+        components: {},
         computed: {
             themeClass() {
                 return `theme-${store.getters.theme}` 

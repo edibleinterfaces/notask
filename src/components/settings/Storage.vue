@@ -43,6 +43,61 @@
                     width: 40%;
                 }
             }
+            .modal-close-btn {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background: white;
+              height: 10%;
+              width: 100%;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              border-radius: 0px 0px 5px 5px;
+            }
+            .modal-close-btn:active {
+              background: red;
+              color: white;
+            }
+            .modal-container {
+              border-radius: 5px 5px 0px 0px;
+              position: absolute;
+              bottom: 10%;
+              right: 0;
+              width: 100%;
+              background: gray; 
+              height: 90%;
+              overflow-y: scroll;
+              padding: 5%;
+              line-height: 1.5em;
+              font-size: 1.5em;
+
+              .cloud-sync-modal-option:active {
+                background: red;
+                color: white;
+              }
+              .cloud-sync-modal-options-container {
+
+                width: 100%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-around;
+                .cloud-sync-modal-option {
+                  width: 45%;
+                  height: 40px;
+                  border-radius: 5px;
+                }
+              }
+              p {
+                span.emphasis {
+                  font-weight: bold;
+                  text-decoration: underline;
+                }
+
+              }
+              button {
+              }
+            }
         }
     }
 </style>
@@ -65,13 +120,25 @@
               <li v-if="signedIntoCloud" v-on:click="signOutOfGoogleDrive" class="storage-option">Sign out of Google Drive</li>
               <li v-else v-on:click="signIntoGoogleDrive" class="storage-option">Sign into Google Drive</li>
             </ul>
+            <ei-modal :active="modalActive">
+              <div slot="container" class="modal-container">
+                <p>You have two choices when switching to cloud sync mode: <span class="emphasis">pull</span> and <span class="emphasis">push</span>.<p>
+                <p>Would you like to <span class="emphasis">pull</span> the existing sync file data from the cloud to your local device, or <span class="emphasis">push</span> your local changes to the cloud? (Note: your cloud settings and your local settings are separate, so your local settings will remain untouched while in cloud mode and you can revert back  by choosing <span class="emphasis">local</span> option.</p>
+                <div class="cloud-sync-modal-options-container">
+                  <button @click="syncWithCloud('push')" class="cloud-sync-modal-option">PUSH</button>
+                  <button @click="syncWithCloud('pull')" class="cloud-sync-modal-option">PULL</button>
+                </div>
+              </div>
+              <button @click="closeModal" slot="close-btn" class="modal-close-btn">CLOSE</button>
+            </ei-modal>
         </div>
     </div>
 </template>
 
 <script>
-    import converter from 'Common/services/converter'
+    import convert from 'Common/services/converter'
     import SlideSelect from 'Common/components/SlideSelect'
+    import Modal from 'Common/components/Modal'
     import store from '../../store'
     
     export default {
@@ -79,10 +146,12 @@
         data: function() {
           return {
             storageMethods: ['local','cloud'],
+            modalActive: false
           }
         },
         components: {
-          'ei-slide-select': SlideSelect
+          'ei-slide-select': SlideSelect,
+          'ei-modal': Modal
         },
         computed: {
             signedIntoCloud() {
@@ -93,11 +162,26 @@
             }
         },
         methods: {
+            closeModal() {
+              this.modalActive = false
+            },
             setCloudStorageMethod(newMethod) {
-              if (newMethod === 'local')
+
+              if (newMethod === 'local') {
                 store.dispatch('signOut', store.getters.cloudProvider)
-              if (newMethod === 'cloud')
-                store.dispatch('signIn', store.getters.cloudProvider)
+              }
+              if (newMethod === 'cloud') {
+                this.modalActive = true
+              }
+            },
+            syncWithCloud(syncDirection) {
+              // how to synchronize these actions?
+              store.dispatch('signIn', store.getters.cloudProvider, syncDirection)
+              store.dispatch('syncToCloud', {
+                cloudProvider: store.getters.cloudProvider,
+                content: convert(store.state, 'json'),
+                syncFileId: store.getters.syncFileId
+              })
             },
             resetTasklists() {
                 store.commit('resetTasklists')
