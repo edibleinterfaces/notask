@@ -71,29 +71,43 @@
               padding: 5%;
               line-height: 1.5em;
               font-size: 1.5em;
-
-              .cloud-sync-modal-option:active {
-                background: red;
-                color: white;
+              .cloud-sync-option-descriptions {
+                li {
+                  margin-bottom: 20px;
+                }
               }
               .cloud-sync-modal-options-container {
-
                 width: 100%;
+                height: 50%;
                 display: inline-flex;
                 align-items: center;
                 justify-content: space-around;
+
                 .cloud-sync-modal-option {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
                   width: 45%;
-                  height: 40px;
+                  height: 100%;
                   border-radius: 5px;
+                  label {
+                    font-size: 3em;
+                    margin-bottom: 20px;
+                  }
+                  & .fa {
+                    font-size: 2em;
+                  }
                 }
-              }
-              p {
-                span.emphasis {
-                  font-weight: bold;
-                  text-decoration: underline;
+                .cloud-sync-modal-option:active {
+                  background: red;
+                  color: white;
                 }
 
+              }
+              span.emphasis {
+                font-weight: bold;
+                text-decoration: underline;
               }
               button {
               }
@@ -122,11 +136,28 @@
             </ul>
             <ei-modal :active="modalActive">
               <div slot="container" class="modal-container">
-                <p>You have two choices when switching to cloud sync mode: <span class="emphasis">pull</span> and <span class="emphasis">push</span>.<p>
-                <p>Would you like to <span class="emphasis">pull</span> the existing sync file data from the cloud to your local device, or <span class="emphasis">push</span> your local changes to the cloud? (Note: your cloud settings and your local settings are separate, so your local settings will remain untouched while in cloud mode and you can revert back  by choosing <span class="emphasis">local</span> option.</p>
+                <p>You have two choices when switching to cloud sync mode, <span class="emphasis">pull</span> and <span class="emphasis">push</span>:</p>
+                <ul class="cloud-sync-option-descriptions">
+                  <li>Push will copy your local data into the cloud sync file and use that in cloud sync mode.</li>
+                  <li>Pull will use the existing cloud sync file as your data source (note: your local data will be preserved).</li>
+                </ul>
                 <div class="cloud-sync-modal-options-container">
-                  <button @click="syncWithCloud('push')" class="cloud-sync-modal-option">PUSH</button>
-                  <button @click="syncWithCloud('pull')" class="cloud-sync-modal-option">PULL</button>
+                  <button @click="syncWithCloud('pull')" class="cloud-sync-modal-option">
+                    <label>Pull</label>
+                    <div class="icon-group">
+                      <i class="fa fa-mobile"></i>
+                      <i class="fa fa-arrow-left"></i>
+                      <i class="fa fa-cloud"></i>
+                    </div>
+                  </button>
+                  <button @click="syncWithCloud('push')" class="cloud-sync-modal-option">
+                    <label>Push</label>
+                    <div class="icon-group">
+                      <i class="fa fa-mobile"></i>
+                      <i class="fa fa-arrow-right"></i>
+                      <i class="fa fa-cloud"></i>
+                    </div>
+                  </button>
                 </div>
               </div>
               <button @click="closeModal" slot="close-btn" class="modal-close-btn">CLOSE</button>
